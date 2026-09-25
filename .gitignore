@@ -1,0 +1,3 @@
+# Build output produced by build.py (javac classes + staging dir).
+# Not source -- never commit.
+build/
