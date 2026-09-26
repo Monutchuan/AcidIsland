@@ -387,9 +387,10 @@ public class ASkyBlock extends JavaPlugin {
             getCommand("acid").setExecutor(adminCmd);
             getCommand("acid").setTabCompleter(adminCmd);
         }
-        // ASkyBlock and AcidIsland are the same codebase and both declare /is and /island.
-        // On a server that runs both, whoever registers last silently steals them. When
-        // ASkyBlock is installed, hand those two labels to it and keep /ai for ourselves.
+        // ASkyBlock and AcidIsland are the same codebase and both declare /is, /island and
+        // /c, /challenge, /challenges. On a server that runs both, whoever registers last
+        // silently steals them. When ASkyBlock is installed, hand all of those labels to it
+        // and keep /ai, /aic and /aichallenge for ourselves.
         yieldIslandCommandsToASkyBlock();
         // ASkyBlock may not have been enabled yet (or may be enabled/reloaded later), so
         // re-run the yield whenever it finishes enabling.
@@ -1038,13 +1039,32 @@ public class ASkyBlock extends JavaPlugin {
     // ---------------------------------------------------------------------
 
     /**
-     * Command labels this plugin gives up when ASkyBlock is installed alongside it.
-     * AcidIsland keeps /ai, /aic and /acid in every case.
+     * Command labels this plugin gives up when ASkyBlock is installed alongside it, paired with
+     * the name of the ASkyBlock command each label should be re-pointed at.
+     *
+     * The two plugins are the same codebase and declare overlapping labels: /is and /island
+     * (ASkyBlock "island" vs AcidIsland "ai") and /c, /challenge, /challenges (ASkyBlock "asc"
+     * vs AcidIsland "aic").
+     *
+     * Nothing is lost by yielding them because both plugins also ship labels the other does not
+     * declare: ASkyBlock has /asc, /aschallenge and /asadmin, AcidIsland has /ai, /aic,
+     * /aichallenge and /acid. Those always stay with their own plugin.
      */
-    private static final String[] YIELDED_LABELS = { "is", "island" };
+    private static final String[][] YIELDED_LABELS = {
+            { "is", "island" },
+            { "island", "island" },
+            { "c", "asc" },
+            { "challenge", "asc" },
+            { "challenges", "asc" }
+    };
+
+    // Set once ASkyBlock's commands have been reported missing, so a slow startup does not
+    // spam the log - this method runs again on every PluginEnableEvent.
+    private boolean yieldWarned = false;
 
     /**
-     * Hands /is and /island over to ASkyBlock when that plugin is present on the same server.
+     * Hands /is, /island, /c, /challenge and /challenges over to ASkyBlock when that plugin is
+     * present on the same server. AcidIsland keeps /ai, /aic, /aichallenge and /acid.
      *
      * Nothing is unregistered: the labels are simply re-pointed at ASkyBlock's command, and
      * only while this plugin is the one currently holding them. An entry that belongs to
@@ -1057,12 +1077,7 @@ public class ASkyBlock extends JavaPlugin {
             return;
         }
         final Plugin askyblock = getServer().getPluginManager().getPlugin("ASkyBlock");
-        if (askyblock == null) {
-            return;
-        }
-        final Command target = (askyblock instanceof JavaPlugin) ? ((JavaPlugin) askyblock).getCommand("island") : null;
-        if (target == null) {
-            getLogger().warning("ASkyBlock is installed but its /island command was not found - keeping /is and /island.");
+        if (!(askyblock instanceof JavaPlugin)) {
             return;
         }
         final Map<String, Command> known = getKnownCommands();
@@ -1070,8 +1085,18 @@ public class ASkyBlock extends JavaPlugin {
             return;
         }
         int yielded = 0;
-        for (final String label : YIELDED_LABELS) {
-            final String key = label.toLowerCase();
+        for (final String[] pair : YIELDED_LABELS) {
+            final String key = pair[0].toLowerCase();
+            final Command target = ((JavaPlugin) askyblock).getCommand(pair[1]);
+            if (target == null) {
+                // ASkyBlock may still be starting up. The enable listener re-runs this when it
+                // is done, so there is nothing to do here but stay quiet about it.
+                if (!yieldWarned) {
+                    yieldWarned = true;
+                    getLogger().warning("ASkyBlock is installed but its /" + pair[1] + " command was not found yet - keeping /" + key + " for now.");
+                }
+                continue;
+            }
             final Command current = known.get(key);
             // Only give up labels this plugin currently owns. Never overwrite an entry that
             // belongs to another plugin or to a commands.yml alias.
@@ -1085,7 +1110,7 @@ public class ASkyBlock extends JavaPlugin {
             yielded++;
         }
         if (yielded > 0) {
-            getLogger().info("ASkyBlock detected - /is and /island now belong to ASkyBlock. AcidIsland keeps /ai.");
+            getLogger().info("ASkyBlock detected - /is, /island, /c, /challenge and /challenges now belong to ASkyBlock. AcidIsland keeps /ai, /aic, /aichallenge and /acid.");
         }
     }
 
@@ -1128,7 +1153,7 @@ public class ASkyBlock extends JavaPlugin {
 
     /**
      * Re-runs the yield whenever ASkyBlock finishes enabling, so the plugin load order cannot
-     * decide who ends up with /is and /island.
+     * decide who ends up with the shared labels.
      */
     public class ASkyBlockEnableListener implements Listener {
         @EventHandler(priority = EventPriority.MONITOR)
