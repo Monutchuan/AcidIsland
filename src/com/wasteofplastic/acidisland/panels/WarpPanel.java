@@ -17,9 +17,11 @@
 
 package com.wasteofplastic.acidisland.panels;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +59,13 @@ public class WarpPanel implements Listener, Requester {
     // The list of all players who have warps and their corresponding inventory icon
     // A stack of zero amount will mean they are not active
     private Map<UUID, ItemStack> cachedWarps;
+    // Inventory objects this plugin built, newest generation first. A title match alone
+    // cannot tell our panel apart from the other island plugin's - see isOurPanel().
+    private final Deque<List<Inventory>> ownPanels = new ArrayDeque<>();
     private final static boolean DEBUG = false;
+    // How many generations of panels to keep. updatePanel() rebuilds them, and a player
+    // can still be staring at the previous generation when that happens.
+    private final static int KEPT_PANEL_GENERATIONS = 8;
     /**
      * @param plugin - ASkyBlock plugin object
      */
@@ -239,6 +247,10 @@ public class WarpPanel implements Listener, Requester {
             plugin.getLogger().info("DEBUG: created panel " + (i+1));
         updated.add(Bukkit.createInventory(null, remainder, plugin.myLocale().warpsTitle + " #" + (i+1)));
         warpPanel = new ArrayList<>(updated);
+        ownPanels.addFirst(updated);
+        while (ownPanels.size() > KEPT_PANEL_GENERATIONS) {
+            ownPanels.removeLast();
+        }
         panelNumber = 0;
         int slot = 0;
         // Run through all the warps and add them to the inventories with anv buttons
@@ -277,6 +289,30 @@ public class WarpPanel implements Listener, Requester {
         return warpPanel.get(panelNumber);
     }
 
+    /**
+     * True if this plugin created the given inventory.
+     *
+     * The panel title is not unique: ASkyBlock and AcidIsland ship the same panel class
+     * and both resolve warpsTitle to the same string ("岛屿传送点" in a Chinese locale).
+     * Whichever plugin enabled first therefore recognises the other plugin's panel as its
+     * own, cancels the click (and onInventoryClick is @EventHandler(ignoreCancelled=true),
+     * so the real owner never sees the event at all) and then answers "没有任何传送点!" from
+     * its own - empty - warp list. Identity comparison removes the ambiguity.
+     *
+     * @param inventory the inventory that was clicked
+     * @return true if we built it
+     */
+    private boolean isOurPanel(Inventory inventory) {
+        for (List<Inventory> generation : ownPanels) {
+            for (Inventory candidate : generation) {
+                if (candidate == inventory) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled=true)
     public void onInventoryClick(InventoryClickEvent event) {
@@ -288,6 +324,11 @@ public class WarpPanel implements Listener, Requester {
         final Player player = (Player) event.getWhoClicked();
         String title = inventory.getTitle();
         if (!inventory.getTitle().startsWith(plugin.myLocale().warpsTitle + " #")) {
+            return;
+        }
+        // Title match is not ownership proof - another island plugin titles its panel the
+        // same way. Only handle clicks in a panel we built ourselves.
+        if (!isOurPanel(inventory)) {
             return;
         }
         event.setCancelled(true);
