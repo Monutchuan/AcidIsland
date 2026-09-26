@@ -17,11 +17,9 @@
 
 package com.wasteofplastic.acidisland.panels;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,8 +36,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -52,20 +52,14 @@ import com.wasteofplastic.acidisland.util.Requester;
 import com.wasteofplastic.acidisland.util.Util;
 import com.wasteofplastic.acidisland.util.HeadGetter.HeadInfo;
 
-public class WarpPanel implements Listener, Requester {
+public class WarpPanel implements Listener, Requester, InventoryHolder {
     private ASkyBlock plugin;
     private List<Inventory> warpPanel;
     private static final int PANELSIZE = 45; // Must be a multiple of 9
     // The list of all players who have warps and their corresponding inventory icon
     // A stack of zero amount will mean they are not active
     private Map<UUID, ItemStack> cachedWarps;
-    // Inventory objects this plugin built, newest generation first. A title match alone
-    // cannot tell our panel apart from the other island plugin's - see isOurPanel().
-    private final Deque<List<Inventory>> ownPanels = new ArrayDeque<>();
     private final static boolean DEBUG = false;
-    // How many generations of panels to keep. updatePanel() rebuilds them, and a player
-    // can still be staring at the previous generation when that happens.
-    private final static int KEPT_PANEL_GENERATIONS = 8;
     /**
      * @param plugin - ASkyBlock plugin object
      */
@@ -240,17 +234,13 @@ public class WarpPanel implements Listener, Requester {
         for (i = 0; i < panelNumber; i++) {
             if (DEBUG)
                 plugin.getLogger().info("DEBUG: created panel " + (i+1));
-            updated.add(Bukkit.createInventory(null, PANELSIZE, plugin.myLocale().warpsTitle + " #" + (i+1)));
+            updated.add(Bukkit.createInventory(this, PANELSIZE, plugin.myLocale().warpsTitle + " #" + (i+1)));
         }
         // Make the last panel
         if (DEBUG)
             plugin.getLogger().info("DEBUG: created panel " + (i+1));
-        updated.add(Bukkit.createInventory(null, remainder, plugin.myLocale().warpsTitle + " #" + (i+1)));
+        updated.add(Bukkit.createInventory(this, remainder, plugin.myLocale().warpsTitle + " #" + (i+1)));
         warpPanel = new ArrayList<>(updated);
-        ownPanels.addFirst(updated);
-        while (ownPanels.size() > KEPT_PANEL_GENERATIONS) {
-            ownPanels.removeLast();
-        }
         panelNumber = 0;
         int slot = 0;
         // Run through all the warps and add them to the inventories with anv buttons
@@ -290,6 +280,15 @@ public class WarpPanel implements Listener, Requester {
     }
 
     /**
+     * Part of InventoryHolder. Nothing in the server needs this inventory back, and
+     * handing out a live panel would only invite someone to mutate it, so it stays null.
+     */
+    @Override
+    public Inventory getInventory() {
+        return null;
+    }
+
+    /**
      * True if this plugin created the given inventory.
      *
      * The panel title is not unique: ASkyBlock and AcidIsland ship the same panel class
@@ -297,47 +296,55 @@ public class WarpPanel implements Listener, Requester {
      * Whichever plugin enabled first therefore recognises the other plugin's panel as its
      * own, cancels the click (and onInventoryClick is @EventHandler(ignoreCancelled=true),
      * so the real owner never sees the event at all) and then answers "没有任何传送点!" from
-     * its own - empty - warp list. Identity comparison removes the ambiguity.
+     * its own - empty - warp list.
+     *
+     * Neither is object identity usable: for a CHEST-sized custom inventory CraftBukkit
+     * opens it through ContainerChest.getBukkitView(), which wraps the underlying NMS
+     * inventory in a BRAND NEW CraftInventory. InventoryClickEvent.getInventory() returns
+     * that wrapper, so "inventory == the object we created" is false even for our own
+     * panel - which is why an earlier identity-based attempt let players simply pick the
+     * skulls out of the GUI.
+     *
+     * The inventory holder survives that re-wrapping, and because this check names our own
+     * WarpPanel class it is also namespace-safe: the other island plugin's panels carry
+     * its WarpPanel class, not ours.
      *
      * @param inventory the inventory that was clicked
      * @return true if we built it
      */
     private boolean isOurPanel(Inventory inventory) {
-        for (List<Inventory> generation : ownPanels) {
-            for (Inventory candidate : generation) {
-                if (candidate == inventory) {
-                    return true;
-                }
-            }
+        if (inventory == null) {
+            return false;
         }
-        return false;
+        return inventory.getHolder() instanceof WarpPanel;
     }
 
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled=true)
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getInventory(); // The inventory that was clicked in
-        if (inventory.getName() == null) {
-            return;
-        }
-        // The player that clicked the item
-        final Player player = (Player) event.getWhoClicked();
-        String title = inventory.getTitle();
-        if (!inventory.getTitle().startsWith(plugin.myLocale().warpsTitle + " #")) {
-            return;
-        }
-        // Title match is not ownership proof - another island plugin titles its panel the
-        // same way. Only handle clicks in a panel we built ourselves.
+        // Only act on a panel this plugin built. Anything else - the other island
+        // plugin's panel, a real chest, the player's own bags - is left alone.
         if (!isOurPanel(inventory)) {
             return;
         }
+        // Cancel BEFORE any early return. Every icon in here is a button, not an item;
+        // the moment we return without cancelling, the player can take the skulls.
         event.setCancelled(true);
+        // The player that clicked the item
+        final Player player = (Player) event.getWhoClicked();
         if (event.getSlotType().equals(SlotType.OUTSIDE)) {
             player.closeInventory();
             return;
         }
         if (event.getClick().equals(ClickType.SHIFT_RIGHT)) {
             player.closeInventory();
+            player.updateInventory();
+            return;
+        }
+        // Below the panel is the player's own inventory. Swallow those clicks too so
+        // nothing can be shifted in or out while the menu is open.
+        if (event.getRawSlot() >= inventory.getSize()) {
             player.updateInventory();
             return;
         }
@@ -348,16 +355,17 @@ public class WarpPanel implements Listener, Requester {
             plugin.getLogger().info("DEBUG: clicked = " + clicked);
         if (DEBUG)
             plugin.getLogger().info("DEBUG: rawslot = " + event.getRawSlot());
-        if (event.getRawSlot() >= event.getInventory().getSize() || clicked.getType() == Material.AIR) {
+        if (clicked == null || clicked.getType() == Material.AIR) {
             return;
         }
+        String title = inventory.getTitle();
         int panelNumber = 0;
         try {
             panelNumber = Integer.valueOf(title.substring(title.indexOf('#')+ 1));
         } catch (Exception e) {
             panelNumber = 0;
         }
-        if (clicked.getItemMeta().hasDisplayName()) {
+        if (clicked.hasItemMeta() && clicked.getItemMeta().hasDisplayName()) {
             String command = ChatColor.stripColor(clicked.getItemMeta().getDisplayName());
             if (DEBUG)
                 plugin.getLogger().info("DEBUG: command = " + command);
@@ -374,6 +382,17 @@ public class WarpPanel implements Listener, Requester {
                     Util.runCommand(player, Settings.ISLANDCOMMAND + " warp " + command);
                 }
             }
+        }
+    }
+
+    /**
+     * Dragging is a separate event from clicking, so cancelling clicks alone still leaves
+     * the panel open to having items dropped into it.
+     */
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    public void onInventoryDrag(InventoryDragEvent event) {
+        if (isOurPanel(event.getInventory())) {
+            event.setCancelled(true);
         }
     }
 
