@@ -563,6 +563,12 @@ general:
    # Warp panel - GUI for welcome warp signs. If set to false, old-style
    # text will be used
    usewarppanel: true
+
+   # Warp panel icons - show each warp as its owner's player head.
+   # Heads are fetched from Mojang, so they need internet access and can take a
+   # moment to appear; if the fetch fails the icon stays a plain skull.
+   # Set to false to always use a sign showing the warp description instead.
+   warpheads: false
    
    # Mute death messages
    mutedeathmessages: false
