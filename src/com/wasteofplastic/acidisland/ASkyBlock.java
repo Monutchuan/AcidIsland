@@ -17,21 +17,29 @@
 package com.wasteofplastic.acidisland;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
+import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -379,6 +387,21 @@ public class ASkyBlock extends JavaPlugin {
             getCommand("acid").setExecutor(adminCmd);
             getCommand("acid").setTabCompleter(adminCmd);
         }
+        // ASkyBlock and AcidIsland are the same codebase and both declare /is and /island.
+        // On a server that runs both, whoever registers last silently steals them. When
+        // ASkyBlock is installed, hand those two labels to it and keep /ai for ourselves.
+        yieldIslandCommandsToASkyBlock();
+        // ASkyBlock may not have been enabled yet (or may be enabled/reloaded later), so
+        // re-run the yield whenever it finishes enabling.
+        getServer().getPluginManager().registerEvents(new ASkyBlockEnableListener(), this);
+        // And once more after the server has finished starting, in case anything
+        // re-registered the labels in the meantime.
+        getServer().getScheduler().runTask(this, new Runnable() {
+            @Override
+            public void run() {
+                yieldIslandCommandsToASkyBlock();
+            }
+        });
         // Register events that this plugin uses
         // registerEvents();
         // Load messages
@@ -1008,5 +1031,111 @@ public class ASkyBlock extends JavaPlugin {
      */
     public TopTen getTopTen() {
         return topTen;
+    }
+
+    // ---------------------------------------------------------------------
+    // Co-existence with ASkyBlock
+    // ---------------------------------------------------------------------
+
+    /**
+     * Command labels this plugin gives up when ASkyBlock is installed alongside it.
+     * AcidIsland keeps /ai, /aic and /acid in every case.
+     */
+    private static final String[] YIELDED_LABELS = { "is", "island" };
+
+    /**
+     * Hands /is and /island over to ASkyBlock when that plugin is present on the same server.
+     *
+     * Nothing is unregistered: the labels are simply re-pointed at ASkyBlock's command, and
+     * only while this plugin is the one currently holding them. An entry that belongs to
+     * another plugin, or that comes from the server's commands.yml, is left untouched.
+     * Safe to call any number of times.
+     */
+    private void yieldIslandCommandsToASkyBlock() {
+        if (!Settings.GAMETYPE.equals(GameType.ACIDISLAND)) {
+            // This build *is* ASkyBlock - there is nothing to yield.
+            return;
+        }
+        final Plugin askyblock = getServer().getPluginManager().getPlugin("ASkyBlock");
+        if (askyblock == null) {
+            return;
+        }
+        final Command target = (askyblock instanceof JavaPlugin) ? ((JavaPlugin) askyblock).getCommand("island") : null;
+        if (target == null) {
+            getLogger().warning("ASkyBlock is installed but its /island command was not found - keeping /is and /island.");
+            return;
+        }
+        final Map<String, Command> known = getKnownCommands();
+        if (known == null) {
+            return;
+        }
+        int yielded = 0;
+        for (final String label : YIELDED_LABELS) {
+            final String key = label.toLowerCase();
+            final Command current = known.get(key);
+            // Only give up labels this plugin currently owns. Never overwrite an entry that
+            // belongs to another plugin or to a commands.yml alias.
+            if (!(current instanceof PluginCommand) || ((PluginCommand) current).getPlugin() != this) {
+                continue;
+            }
+            if (current == target) {
+                continue;
+            }
+            known.put(key, target);
+            yielded++;
+        }
+        if (yielded > 0) {
+            getLogger().info("ASkyBlock detected - /is and /island now belong to ASkyBlock. AcidIsland keeps /ai.");
+        }
+    }
+
+    /**
+     * @return the server's mutable label -> command map, or null if this server implementation
+     *         does not expose one, in which case the labels are simply left as they are.
+     */
+    @SuppressWarnings("unchecked")
+    private Map<String, Command> getKnownCommands() {
+        try {
+            final PluginManager pm = getServer().getPluginManager();
+            Object commandMap = null;
+            for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
+                try {
+                    final Field f = c.getDeclaredField("commandMap");
+                    f.setAccessible(true);
+                    commandMap = f.get(pm);
+                    break;
+                } catch (final NoSuchFieldException ignored) {
+                    // keep walking up the hierarchy
+                }
+            }
+            if (commandMap == null) {
+                return null;
+            }
+            for (Class<?> c = commandMap.getClass(); c != null; c = c.getSuperclass()) {
+                try {
+                    final Field f = c.getDeclaredField("knownCommands");
+                    f.setAccessible(true);
+                    return (Map<String, Command>) f.get(commandMap);
+                } catch (final NoSuchFieldException ignored) {
+                    // keep walking up the hierarchy
+                }
+            }
+        } catch (final Exception e) {
+            getLogger().warning("Could not inspect the server command map: " + e);
+        }
+        return null;
+    }
+
+    /**
+     * Re-runs the yield whenever ASkyBlock finishes enabling, so the plugin load order cannot
+     * decide who ends up with /is and /island.
+     */
+    public class ASkyBlockEnableListener implements Listener {
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onPluginEnable(final PluginEnableEvent event) {
+            if ("ASkyBlock".equals(event.getPlugin().getName())) {
+                yieldIslandCommandsToASkyBlock();
+            }
+        }
     }
 }
