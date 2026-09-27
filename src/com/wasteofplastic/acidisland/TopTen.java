@@ -41,8 +41,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -58,7 +60,7 @@ import com.wasteofplastic.acidisland.util.HeadGetter.HeadInfo;
  * @author tastybento
  * 
  */
-public class TopTen implements Listener, Requester {
+public class TopTen implements Listener, Requester, InventoryHolder {
     private final ASkyBlock plugin;
     // Top ten list of players
     private Map<UUID, Long> topTenList = new ConcurrentHashMap<>();
@@ -330,7 +332,9 @@ public class TopTen implements Listener, Requester {
             if (gui == null) {
                 // Must be a multiple of 9
                 int GUISIZE = 27;
-                gui = Bukkit.createInventory(null, GUISIZE, plugin.myLocale(player.getUniqueId()).topTenGuiTitle);
+                // Pass ourselves as the holder. The title alone cannot identify this
+                // panel: both island plugins resolve topTenGuiTitle to the same string.
+                gui = Bukkit.createInventory(this, GUISIZE, plugin.myLocale(player.getUniqueId()).topTenGuiTitle);
                 if (DEBUG)
                     plugin.getLogger().info("DEBUG: creating GUI for the first time");
             }
@@ -413,19 +417,59 @@ public class TopTen implements Listener, Requester {
         topTenList.remove(owner);
     }
 
+    /**
+     * Part of InventoryHolder. The panel is rebuilt every time it is opened, so handing out
+     * the live inventory would only invite someone to mutate the copy we are showing.
+     */
+    @Override
+    public Inventory getInventory() {
+        return null;
+    }
+
+    /**
+     * True if this plugin built the given inventory.
+     *
+     * The panel title cannot be used to decide this: ASkyBlock and AcidIsland both ship this
+     * class and both resolve topTenGuiTitle to the same string ("Top 10 Islands" by default),
+     * so whichever plugin answered first would also answer for the other plugin's panel -
+     * running the warp twice, once against each plugin's own player list.
+     *
+     * Object identity is no good either: opening a CHEST-sized custom inventory goes through
+     * ContainerChest.getBukkitView(), which wraps the NMS inventory in a NEW CraftInventory,
+     * so "inventory == gui" is false even for our own panel.
+     *
+     * The holder survives that re-wrapping, and naming our own TopTen class keeps it
+     * namespace-safe: the other plugin's panel carries its TopTen class, not ours.
+     *
+     * @param inventory the inventory that was clicked
+     * @return true if we built it
+     */
+    private boolean isOurPanel(Inventory inventory) {
+        if (inventory == null) {
+            return false;
+        }
+        return inventory.getHolder() instanceof TopTen;
+    }
+
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled=true)
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getInventory(); // The inventory that was clicked in
-        if (inventory.getName() == null) {
+        // Only act on a panel this plugin built. Anything else - the other island plugin's
+        // top ten, a real chest, the player's own bags - is left alone.
+        if (!isOurPanel(inventory)) {
             return;
         }
+        // Cancel before anything else can return. Every icon here is a button, not an item.
+        event.setCancelled(true);
         // The player that clicked the item
         Player player = (Player) event.getWhoClicked();
-        if (!inventory.getTitle().equals(plugin.myLocale().topTenGuiTitle)) {
+        // Below the panel is the player's own inventory; swallow those too so nothing can be
+        // shifted in or out while the menu is open.
+        if (event.getRawSlot() >= inventory.getSize()) {
+            player.updateInventory();
             return;
         }
-        event.setCancelled(true);
         player.updateInventory();
         if(event.getCurrentItem() != null && !event.getCurrentItem().getType().equals(Material.AIR) && event.getRawSlot() < 26) {
             event.getCurrentItem().setType(Material.AIR);
@@ -433,7 +477,9 @@ public class TopTen implements Listener, Requester {
             String playerName = getPlayer(event.getRawSlot());
             UUID uuid = plugin.getPlayers().getUUID(playerName);
             if (uuid != null && plugin.getWarpSignsListener().getWarp(uuid) != null) {
-                Util.runCommand(player, "is warp " + playerName);
+                // Was hard-coded to "/is warp"; with ASkyBlock installed that label belongs to
+                // ASkyBlock, so AcidIsland's top ten teleported people to the wrong world.
+                Util.runCommand(player, Settings.ISLANDCOMMAND + " warp " + playerName);
             }
         }
         if (event.getSlotType().equals(SlotType.OUTSIDE)) {
@@ -443,6 +489,17 @@ public class TopTen implements Listener, Requester {
         if (event.getClick().equals(ClickType.SHIFT_RIGHT)) {
             player.closeInventory();
             return;
+        }
+    }
+
+    /**
+     * Dragging is a separate event from clicking, so cancelling clicks alone still leaves the
+     * panel open to having items dropped into it.
+     */
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    public void onInventoryDrag(InventoryDragEvent event) {
+        if (isOurPanel(event.getInventory())) {
+            event.setCancelled(true);
         }
     }
 
