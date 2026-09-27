@@ -1,18 +1,18 @@
 /*******************************************************************************
- * This file is part of ASkyBlock.
+ * This file is part of AcidIsland.
  *
- *     ASkyBlock is free software: you can redistribute it and/or modify
+ *     AcidIsland is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     ASkyBlock is distributed in the hope that it will be useful,
+ *     AcidIsland is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with ASkyBlock.  If not, see <http://www.gnu.org/licenses/>.
+ *     along with AcidIsland.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 package com.wasteofplastic.acidisland.panels;
 
@@ -31,8 +31,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 import com.wasteofplastic.acidisland.ASkyBlock;
@@ -48,7 +50,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
  * @author tastybento
  *         Provides a handy control panel and minishop
  */
-public class ControlPanel implements Listener {
+public class ControlPanel implements Listener, InventoryHolder {
 
     private static YamlConfiguration miniShopFile;
     private static HashMap<Integer, MiniShopItem> store = new HashMap<Integer, MiniShopItem>();
@@ -56,16 +58,116 @@ public class ControlPanel implements Listener {
     private ASkyBlock plugin;
     private static boolean allowSelling;
     private static String defaultPanelName;
+    /**
+     * The MiniShop and the control panels are shared, static inventories, so they are created
+     * from static methods that have no "this". Keep the constructed listener around so those
+     * methods can still stamp the inventories with a holder that identifies this plugin.
+     */
+    private static ControlPanel instance;
+    /**
+     * Title the MiniShop was created with. Kept so a legacy holder-less inventory can still be
+     * recognised.
+     */
+    private static String miniShopTitle;
 
     /**
      * @param plugin - ASkyBlock plugin object
      */
     public ControlPanel(ASkyBlock plugin) {
         this.plugin = plugin;
+        instance = this;
         if (Settings.useEconomy) {
             loadShop();
         }
         loadControlPanel();
+    }
+
+    /**
+     * Owner handed to every inventory this class creates. It is what lets a click be matched to
+     * the plugin that really opened the panel.
+     * @return this listener, or null if it has not been constructed yet
+     */
+    private static InventoryHolder holder() {
+        return instance != null ? instance : null;
+    }
+
+    @Override
+    public Inventory getInventory() {
+        return null;
+    }
+
+    /**
+     * Is this the MiniShop inventory belonging to this plugin?
+     * <p>
+     * The title alone is not enough: ASkyBlock and AcidIsland can translate
+     * {@code minishop.title} to the same text, and whichever plugin registered first would then
+     * swallow the other's clicks. The holder decides it instead - each plugin holds a distinct
+     * ControlPanel class (different package, different class loader), so {@code instanceof}
+     * can only ever be true for the copy of this plugin.
+     * @param inventory inventory to test
+     * @return true if it is our MiniShop
+     */
+    private boolean isMiniShop(Inventory inventory) {
+        if (inventory == null || miniShop == null || miniShopTitle == null || inventory.getName() == null) {
+            return false;
+        }
+        if (!inventory.getName().equals(miniShopTitle)) {
+            return false;
+        }
+        InventoryHolder holder = inventory.getHolder();
+        return holder instanceof ControlPanel || holder == null;
+    }
+
+    /**
+     * Is this one of the control panel inventories belonging to this plugin?
+     * @param inventory inventory to test
+     * @return true if it is one of our control panels
+     */
+    private boolean isControlPanel(Inventory inventory) {
+        if (inventory == null || inventory.getName() == null) {
+            return false;
+        }
+        if (!controlPanel.containsKey(inventory.getName())) {
+            return false;
+        }
+        InventoryHolder holder = inventory.getHolder();
+        return holder instanceof ControlPanel || holder == null;
+    }
+
+    /**
+     * Is this the challenge GUI shown to this player?
+     * <p>
+     * Unlike the MiniShop, the challenge panel is built per player by
+     * {@link com.wasteofplastic.acidisland.commands.Challenges} and carries no holder, so the
+     * title is all there is to go on. The two plugins use different titles here, so that is safe.
+     * @param player player looking at the inventory
+     * @param inventory inventory to test
+     * @return true if it is our challenge GUI
+     */
+    private boolean isChallengePanel(Player player, Inventory inventory) {
+        return inventory != null && inventory.getName() != null
+                && inventory.getName().equals(plugin.myLocale(player.getUniqueId()).challengesguiTitle);
+    }
+
+    /**
+     * Does the item the player clicked stand a chance of being the icon in this slot?
+     * <p>
+     * The old code demanded the stacks be exactly equal. Any difference the client or another
+     * plugin introduced in lore, NBT or potion data made the comparison fail and the click was
+     * silently dropped - the classic symptom being one shop slot that never responds. Comparing
+     * the material is enough to reject empty slots and swapped icons.
+     * @param clicked item clicked, may be null
+     * @param icon icon configured for that slot, may be null
+     * @return true if the click should be acted on
+     */
+    private boolean sameIcon(ItemStack clicked, ItemStack icon) {
+        if (clicked == null || icon == null) {
+            return false;
+        }
+        if (clicked.getType() == Material.AIR || icon.getType() == Material.AIR) {
+            return false;
+        }
+        return clicked.getType() == icon.getType();
     }
 
     /**
@@ -103,7 +205,8 @@ public class ControlPanel implements Listener {
             // Get how many the store should be
             int size = items.getKeys(false).size() + 8;
             size -= (size % 9);
-            miniShop = Bukkit.createInventory(null, size, plugin.myLocale().islandMiniShopTitle);
+            miniShopTitle = plugin.myLocale().islandMiniShopTitle;
+            miniShop = Bukkit.createInventory(holder(), size, miniShopTitle);
             // Run through items
             int slot = 0;
             for (String item : items.getKeys(false)) {
@@ -164,7 +267,7 @@ public class ControlPanel implements Listener {
                     int size = buttons.getKeys(false).size() + 8;
                     size -= (size % 9);
                     // Add inventory to map of inventories
-                    controlPanel.put(panelName, Bukkit.createInventory(null, size, panelName));
+                    controlPanel.put(panelName, Bukkit.createInventory(holder(), size, panelName));
                     // Run through buttons
                     int slot = 0;
                     for (String item : buttons.getKeys(false)) {
@@ -245,13 +348,42 @@ public class ControlPanel implements Listener {
                     // Next section indicates the level of panel to open
                     if (item.getNextSection() != null) {
                         inventory.clear();
+                        Inventory newInventory = plugin.getChallenges().challengePanel(player, item.getNextSection());
+                        // Update inventory
+                        if(player.getOpenInventory().getTopInventory() != null) {                        	
+                        	if(inventory.equals(player.getOpenInventory().getTopInventory())) {
+                        		if(inventory.getSize() == newInventory.getSize()) {
+                        			inventory.setContents(newInventory.getContents());
+                        			return;
+                        		}
+                        	}
+                        }
+                        // Open new Inventory if update is not possible
                         player.closeInventory();
-                        player.openInventory(plugin.getChallenges().challengePanel(player, item.getNextSection()));
+                        player.openInventory(newInventory);
+                        
+                        
                     } else if (item.getCommand() != null) {
                         Util.runCommand(player, item.getCommand());
-                        inventory.clear();
+                        inventory.clear();                        
+                        
+                        // Update inventory
+                        if(player.getOpenInventory().getTopInventory() != null) {
+                        	if(inventory.equals(player.getOpenInventory().getTopInventory())) {
+                        		Inventory newInventory = plugin.getChallenges().challengePanel(player);
+                        		if(inventory.getSize() == newInventory.getSize()) {
+                        			inventory.setContents(newInventory.getContents());
+                        			return;
+                        		}
+                        	}
+                        }
+                        
+                        // Open new Inventory if update is not possible
                         player.closeInventory();
                         Bukkit.getScheduler().runTask(plugin, () -> player.openInventory(plugin.getChallenges().challengePanel(player)));
+                        
+                        
+                        
                     }
                 }
             }
@@ -275,7 +407,7 @@ public class ControlPanel implements Listener {
             if (store.containsKey(slot)) {
                 // We have a winner!
                 MiniShopItem item = store.get(slot);
-                if (clicked.equals(item.getItem())) {
+                if (sameIcon(clicked, item.getItem())) {
                     // Check what type of click - LEFT = BUY, RIGHT = sell
                     if (event.getClick().equals(ClickType.LEFT)) {
                         // Check if item is for sale
@@ -327,40 +459,67 @@ public class ControlPanel implements Listener {
             return;
         }
         // Check control panels
-        for (String panelName : controlPanel.keySet()) {
-            if (inventory.getName().equals(panelName)) {
-                event.setCancelled(true);
-                if (slot == -999) {
-                    player.closeInventory();
-                    return;
-                }
-                if (event.getClick().equals(ClickType.SHIFT_RIGHT)) {                    
-                    player.closeInventory();
-                    player.updateInventory();
-                    return;
-                }
-                HashMap<Integer, CPItem> thisPanel = panels.get(panelName);
-                if (slot >= 0 && slot < thisPanel.size()) {
-                    // Do something
-                    String command = thisPanel.get(slot).getCommand();
-                    String nextSection = ChatColor.translateAlternateColorCodes('&', thisPanel.get(slot).getNextSection());
-                    if (!command.isEmpty()) {
-                        player.closeInventory(); // Closes the inventory
-                        event.setCancelled(true);
-                        Util.runCommand(player, command);
-                        return;
-                    }
-                    if (!nextSection.isEmpty()) {
-                        player.closeInventory(); // Closes the inventory
-                        Inventory next = controlPanel.get(nextSection);
-                        player.openInventory(next);
-                        event.setCancelled(true);
-                        return;
-                    }
+        if (isControlPanel(inventory)) {
+            event.setCancelled(true);
+            if (slot == -999) {
+                player.closeInventory();
+                return;
+            }
+            if (event.getClick().equals(ClickType.SHIFT_RIGHT)) {
+                player.closeInventory();
+                player.updateInventory();
+                return;
+            }
+            HashMap<Integer, CPItem> thisPanel = panels.get(inventory.getName());
+            if (thisPanel != null && slot >= 0 && slot < thisPanel.size()) {
+                // Do something
+                String command = thisPanel.get(slot).getCommand();
+                String nextSection = ChatColor.translateAlternateColorCodes('&', thisPanel.get(slot).getNextSection());
+                if (!command.isEmpty()) {
                     player.closeInventory(); // Closes the inventory
+                    event.setCancelled(true);
+                    Util.runCommand(player, command);
+                    return;
+                }
+                if (!nextSection.isEmpty()) {
+                    player.closeInventory(); // Closes the inventory
+                    Inventory next = controlPanel.get(nextSection);
+                    player.openInventory(next);
                     event.setCancelled(true);
                     return;
                 }
+                player.closeInventory(); // Closes the inventory
+                event.setCancelled(true);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Stop players from dragging icons out of the panels.
+     * <p>
+     * Cancelling InventoryClickEvent does not cover dragging: a drag never fires a click, so an
+     * icon could be pulled into a player's own bag. The MiniShop and the control panels are one
+     * shared inventory for the whole server, so a single dragged icon left every other player
+     * looking at a hole until the next restart.
+     * @param event drag event
+     */
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    public void onInventoryDrag(InventoryDragEvent event) {
+        Inventory inventory = event.getInventory();
+        if (inventory == null || inventory.getName() == null) {
+            return;
+        }
+        Player player = (Player) event.getWhoClicked();
+        if (!isChallengePanel(player, inventory) && !isMiniShop(inventory) && !isControlPanel(inventory)) {
+            return;
+        }
+        // Only block drags that touch the panel itself. A drag confined to the player's own
+        // bag is none of our business.
+        for (int rawSlot : event.getRawSlots()) {
+            if (rawSlot < inventory.getSize()) {
+                event.setCancelled(true);
+                return;
             }
         }
     }
