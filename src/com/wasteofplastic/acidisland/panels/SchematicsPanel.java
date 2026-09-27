@@ -1,18 +1,18 @@
 /*******************************************************************************
- * This file is part of ASkyBlock.
+ * This file is part of AcidIsland.
  *
- *     ASkyBlock is free software: you can redistribute it and/or modify
+ *     AcidIsland is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     ASkyBlock is distributed in the hope that it will be useful,
+ *     AcidIsland is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with ASkyBlock.  If not, see <http://www.gnu.org/licenses/>.
+ *     along with AcidIsland.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
 package com.wasteofplastic.acidisland.panels;
@@ -31,6 +31,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 
 import com.wasteofplastic.acidisland.ASkyBlock;
 import com.wasteofplastic.acidisland.Settings;
@@ -38,7 +39,7 @@ import com.wasteofplastic.acidisland.schematics.Schematic;
 import com.wasteofplastic.acidisland.util.Util;
 import com.wasteofplastic.acidisland.util.VaultHelper;
 
-public class SchematicsPanel implements Listener {
+public class SchematicsPanel implements Listener, InventoryHolder {
     private ASkyBlock plugin;
     private HashMap<UUID, List<SPItem>> schematicItems = new HashMap<UUID, List<SPItem>>();
 
@@ -76,7 +77,9 @@ public class SchematicsPanel implements Listener {
             // Make sure size is a multiple of 9
             int size = items.size() + 8;
             size -= (size % 9);
-            Inventory newPanel = Bukkit.createInventory(null, size, plugin.myLocale(player.getUniqueId()).schematicsTitle);
+            // The holder is what identifies this panel later. The title cannot do it:
+            // ASkyBlock and AcidIsland both resolve schematics.title to "Select island...".
+            Inventory newPanel = Bukkit.createInventory(this, size, plugin.myLocale(player.getUniqueId()).schematicsTitle);
             // Fill the inventory and return
             for (SPItem i : items) {
                 newPanel.setItem(i.getSlot(), i.getItem());
@@ -92,17 +95,14 @@ public class SchematicsPanel implements Listener {
      * Handles when the schematics panel is actually clicked
      * @param event
      */
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked(); // The player that
         // clicked the item
         Inventory inventory = event.getInventory(); // The inventory that was clicked in
-        if (inventory.getName() == null) {
-            return;
-        }
         int slot = event.getRawSlot();
         // Check this is the right panel
-        if (!inventory.getName().equals(plugin.myLocale(player.getUniqueId()).schematicsTitle)) {
+        if (!isOurPanel(inventory)) {
             return;
         }
         if (slot == -999) {
@@ -155,5 +155,36 @@ public class SchematicsPanel implements Listener {
             thisPanel.clear();   
         }
         return;
+    }
+
+    /**
+     * True if this plugin built the given inventory.
+     *
+     * The panel title cannot be used to decide this: ASkyBlock and AcidIsland ship the same
+     * class and both resolve schematics.title to "Select island...", so the handler of both
+     * plugins ran for the same panel. Both were registered at LOWEST and neither used
+     * ignoreCancelled, so the island could be created twice, or created in the other
+     * plugin's world by whichever plugin happened to be registered first.
+     *
+     * Object identity cannot be used either: opening a CHEST-sized custom inventory hands
+     * InventoryClickEvent a brand new CraftInventory wrapper built by
+     * ContainerChest.getBukkitView(). The holder is the only thing that survives that.
+     */
+    private boolean isOurPanel(Inventory inventory) {
+        if (inventory == null) {
+            return false;
+        }
+        InventoryHolder holder = inventory.getHolder();
+        return holder instanceof SchematicsPanel;
+    }
+
+    /**
+     * Required by InventoryHolder. The panel is built per player, so there is no single
+     * inventory this object is the holder of - we only need the interface so that the
+     * inventory remembers who created it.
+     */
+    @Override
+    public Inventory getInventory() {
+        return null;
     }
 }
