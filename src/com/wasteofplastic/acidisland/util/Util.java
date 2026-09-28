@@ -247,7 +247,11 @@ public final class Util {
                 Thread.currentThread().interrupt();
             }
         }
+        final int queued = pendingSaves.size();
         drainSaves();
+        if (queued > 0) {
+            plugin.getLogger().info("Wrote " + queued + " queued save(s) while shutting down");
+        }
     }
 
     /**
