@@ -153,6 +153,8 @@ public class Settings {
     public static boolean clearInventory;
     // Use control panel for /island
     public static boolean useControlPanel;
+    // Write YAML files off the main thread
+    public static boolean useAsyncSaving;
     // Prevent /island when falling
     public static boolean allowTeleportWhenFalling;
     // Biomes

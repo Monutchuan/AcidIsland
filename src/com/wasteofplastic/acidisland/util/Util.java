@@ -23,15 +23,17 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -43,7 +45,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitTask;
 
 import com.wasteofplastic.acidisland.ASkyBlock;
 import com.wasteofplastic.acidisland.Settings;
@@ -60,12 +61,20 @@ public final class Util {
     private Util() { }
 
     private static final ASkyBlock plugin = ASkyBlock.getPlugin();
-    private static final long TIMEOUT = 3000; // 3 seconds
     private static Long x = System.nanoTime();
-    private static Queue<PendingItem> saveQueue = new ConcurrentLinkedQueue<>();
-    private static boolean midSave = false;
-    private static BukkitTask queueSaver;
-    private static boolean midLoad = false;
+    // Files waiting to be written, keyed by destination. A newer snapshot of the
+    // same file replaces an older one that has not gone out yet, which is safe
+    // because every save is a complete copy of the file's contents.
+    private static final Map<Path, String> pendingSaves = new ConcurrentHashMap<>();
+    private static final Object SAVE_LOCK = new Object();
+    private static volatile Thread saveThread;
+    private static volatile boolean saveThreadRunning;
+    private static volatile boolean atomicMoveSupported = true;
+    // Windows refuses to move over a file that somebody else is reading, so an
+    // ACCESS_DENIED here is expected under load and not a sign of a broken disk.
+    private static final int MOVE_ATTEMPTS = 20;
+    private static final int LOAD_ATTEMPTS = 10;
+    private static final long MOVE_RETRY_PAUSE_MS = 5;
 
     /**
      * Loads a YAML file and if it does not exist it is looked for in the JAR
@@ -79,18 +88,32 @@ public final class Util {
 
         YamlConfiguration config = null;
         if (yamlFile.exists()) {
-            // Set midLoad flag to pause any saving
-            midLoad = true;
-            // Block until saving is paused or until a timeout, just to prevent infinite loop
-            long watchdog = System.currentTimeMillis();
-            while(midSave && System.currentTimeMillis() < watchdog + TIMEOUT ) {};
-            try {
-                config = new YamlConfiguration();
-                config.load(yamlFile);
-            } catch (Exception e) {
-                e.printStackTrace();
+            // On Windows a file that has just been swapped in is briefly
+            // unopenable while the replaced copy is pending deletion. Giving up
+            // on the first failure is what used to hand out an empty config,
+            // which the caller then saved straight back over good data.
+            String problem = null;
+            for (int attempt = 0; attempt < LOAD_ATTEMPTS; attempt++) {
+                try {
+                    YamlConfiguration loaded = new YamlConfiguration();
+                    loaded.load(yamlFile);
+                    config = loaded;
+                    break;
+                } catch (Exception e) {
+                    problem = e.getMessage();
+                    try {
+                        Thread.sleep(MOVE_RETRY_PAUSE_MS);
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                }
             }
-            midLoad = false;
+            if (config == null) {
+                plugin.getLogger().severe("Could not load " + file + " after " + LOAD_ATTEMPTS
+                        + " attempts: " + problem);
+                config = new YamlConfiguration();
+            }
         } else {
             // Create the missing file
             config = new YamlConfiguration();
@@ -121,52 +144,188 @@ public final class Util {
      * @param async
      */
     public static void saveYamlFile(YamlConfiguration yamlFile, String fileLocation, boolean async) {
-        async = false; // disable async for now. If you are programmer you can remove this in you own branch if you think it's okay.
-        if (async) {
-            if (queueSaver == null) {
-                queueSaver = Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
-                    if (!plugin.isEnabled()) {
-                        // Stop task if plugin is disabled
-                        queueSaver.cancel();
-                    } else if (!midLoad && !midSave && !saveQueue.isEmpty()) {
-                        PendingItem item = saveQueue.poll();
-                        if (item != null) {
-                            // Set semaphore
-                            midSave = true;
-                            try {
-                                Files.copy(item.getSource(), item.getDest(), StandardCopyOption.REPLACE_EXISTING);
-                                Files.delete(item.getSource());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            // Clear semaphore
-                            midSave = false;
-                        }
-                    }
-                }, 0L, 1L);
-            }
+        // YamlConfiguration is not thread safe, so turning it into text has to
+        // happen here, on the thread that owns it. Everything after this point
+        // only touches an immutable String and can safely leave this thread.
+        String data;
+        try {
+            data = yamlFile.saveToString();
+        } catch (Exception e) {
+            plugin.getLogger().severe(() -> "Could not save YAML file " + fileLocation + ": " + e.getMessage());
+            return;
         }
-        save(yamlFile, fileLocation, async);
-    }
-
-    private static void save(YamlConfiguration yamlFile, String fileLocation, boolean async) {
         File dataFolder = plugin.getDataFolder();
         File file = new File(dataFolder, fileLocation);
-        try {
-            File tmpFile = File.createTempFile("yaml", null, dataFolder);
-            tmpFile.deleteOnExit();
-            yamlFile.save(tmpFile);
-            if (tmpFile.exists()) {
-                if (async) {
-                    saveQueue.add(new PendingItem(tmpFile.toPath(), file.toPath()));
-                } else {
-                    Files.copy(tmpFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                    Files.delete(tmpFile.toPath());
+        File folder = file.getParentFile();
+        if (folder != null && !folder.exists() && !folder.mkdirs()) {
+            plugin.getLogger().severe(() -> "Could not create the folder for " + fileLocation);
+            return;
+        }
+        if (async && Settings.useAsyncSaving) {
+            queueSave(file.toPath(), data);
+        } else {
+            writeFile(file.toPath(), data);
+        }
+    }
+
+    /**
+     * Hands a file's contents to the background writer.
+     *
+     * @param dest where the file belongs
+     * @param data the complete new contents
+     */
+    private static void queueSave(Path dest, String data) {
+        pendingSaves.put(dest, data);
+        startSaveThread();
+        synchronized (SAVE_LOCK) {
+            SAVE_LOCK.notifyAll();
+        }
+    }
+
+    private static void startSaveThread() {
+        if (saveThread != null && saveThread.isAlive()) {
+            return;
+        }
+        synchronized (SAVE_LOCK) {
+            if (saveThread != null && saveThread.isAlive()) {
+                return;
+            }
+            saveThreadRunning = true;
+            Thread thread = new Thread(() -> saveLoop(), "ASkyBlock-file-save");
+            thread.setDaemon(true);
+            saveThread = thread;
+            thread.start();
+        }
+    }
+
+    private static void saveLoop() {
+        while (saveThreadRunning) {
+            drainSaves();
+            synchronized (SAVE_LOCK) {
+                if (pendingSaves.isEmpty()) {
+                    try {
+                        SAVE_LOCK.wait(1000L);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                 }
             }
-        } catch (Exception e) {
-            plugin.getLogger().severe(() -> "Could not save YAML file: " + e.getMessage());
-            e.printStackTrace();
+        }
+        drainSaves();
+    }
+
+    private static void drainSaves() {
+        Iterator<Map.Entry<Path, String>> it = pendingSaves.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Path, String> entry = it.next();
+            final Path dest = entry.getKey();
+            final String data = entry.getValue();
+            it.remove();
+            if (!writeFile(dest, data) && plugin.isEnabled()) {
+                // The background writer could not replace the file. Push the
+                // write back onto the main thread rather than drop the data.
+                Bukkit.getScheduler().runTask(plugin, () -> writeFile(dest, data));
+            }
+        }
+    }
+
+    /**
+     * Writes anything still queued and stops the background writer. Call this
+     * when the plugin is disabled, otherwise a queued save is simply lost.
+     */
+    public static void flushSaves() {
+        Thread thread = saveThread;
+        saveThread = null;
+        saveThreadRunning = false;
+        if (thread != null) {
+            synchronized (SAVE_LOCK) {
+                SAVE_LOCK.notifyAll();
+            }
+            try {
+                thread.join(5000L);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        drainSaves();
+    }
+
+    /**
+     * Writes text to a temporary file and then swaps it into place. The
+     * destination is never truncated in place, so anything reading it sees
+     * either the previous version or the new one, never something in between.
+     * That is what makes it safe to do the writing off the main thread.
+     *
+     * @param dest file to write
+     * @param data complete new contents
+     * @return true if the file was replaced
+     */
+    private static boolean writeFile(Path dest, String data) {
+        Path tmp = null;
+        try {
+            tmp = Files.createTempFile(dest.getParent(), "askyblock", ".tmp");
+            Files.write(tmp, data.getBytes(StandardCharsets.UTF_8));
+            return replaceFile(tmp, dest);
+        } catch (IOException e) {
+            plugin.getLogger().severe(() -> "Could not save YAML file " + dest.getFileName() + ": " + e.getMessage());
+            return false;
+        } finally {
+            if (tmp != null) {
+                try {
+                    Files.deleteIfExists(tmp);
+                } catch (IOException e) {
+                    // Left behind, which is harmless
+                }
+            }
+        }
+    }
+
+    /**
+     * Swaps a finished temporary file over the real one.
+     *
+     * @param tmp the complete temporary file
+     * @param dest the file it replaces
+     * @return true if the destination now holds the new contents
+     * @throws IOException if even the last resort copy failed
+     */
+    private static boolean replaceFile(Path tmp, Path dest) throws IOException {
+        IOException last = null;
+        for (int attempt = 0; attempt < MOVE_ATTEMPTS; attempt++) {
+            if (attempt > 0) {
+                try {
+                    Thread.sleep(MOVE_RETRY_PAUSE_MS);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+            try {
+                if (atomicMoveSupported) {
+                    try {
+                        Files.move(tmp, dest, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+                        return true;
+                    } catch (AtomicMoveNotSupportedException e) {
+                        // Some file systems cannot do this. A plain move is still
+                        // a rename and does not truncate the destination first.
+                        atomicMoveSupported = false;
+                    }
+                }
+                Files.move(tmp, dest, StandardCopyOption.REPLACE_EXISTING);
+                return true;
+            } catch (IOException e) {
+                last = e;
+            }
+        }
+        // Last resort: the copy this plugin used before. It can expose a half
+        // written file to a reader, but it never loses the save outright.
+        final IOException failure = last;
+        try {
+            Files.copy(tmp, dest, StandardCopyOption.REPLACE_EXISTING);
+            plugin.getLogger().warning(() -> "Had to copy " + dest.getFileName() + " instead of moving it: "
+                    + (failure == null ? "unknown error" : failure.getMessage()));
+            return true;
+        } catch (IOException e) {
+            throw failure != null ? failure : e;
         }
     }
 

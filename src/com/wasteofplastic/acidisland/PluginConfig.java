@@ -356,6 +356,12 @@ public class PluginConfig {
         // Use control panel
         Settings.useControlPanel = plugin.getConfig().getBoolean("general.usecontrolpanel", false);
 
+        // Write YAML files off the main thread
+        Settings.useAsyncSaving = plugin.getConfig().getBoolean("general.asyncsaving", false);
+        if (Settings.useAsyncSaving) {
+            plugin.getLogger().info("Async saving is enabled");
+        }
+
         // Create nether or not
         Settings.createNether = plugin.getConfig().getBoolean("general.createnether", true);
         if (!Settings.createNether) {

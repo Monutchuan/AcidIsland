@@ -270,6 +270,10 @@ public class ASkyBlock extends JavaPlugin {
         } catch (final Exception e) {
             getLogger().severe("Something went wrong saving files!");
             e.printStackTrace();
+        } finally {
+            // Anything still queued for the background writer has to go out now,
+            // otherwise the shutdown loses it.
+            Util.flushSaves();
         }
 
         metrics = null;

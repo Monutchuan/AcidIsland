@@ -193,6 +193,13 @@ general:
    # Players can change this setting using /island cp on or /island cp off
    usecontrolpanel: false
 
+   # Write YAML files (islands.yml, warps.yml, etc.) on a background thread
+   # instead of on the main thread. This keeps the server responsive when a
+   # large file is written. Files are swapped into place atomically, so a
+   # reader always sees a whole file. Off by default - turn it on and watch
+   # the log before trusting it with a live server.
+   asyncsaving: false
+
    # Create Nether - if this is false, the nether world will not be made and access to
    # the nether will not occur. Other plugins may still enable
    # portal usage.
