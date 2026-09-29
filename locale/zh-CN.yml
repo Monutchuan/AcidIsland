@@ -406,7 +406,6 @@ leave:
   errorLeadersCannotLeave: "空岛主人无法离开岛屿.请输入 /[label] makeleader <玩家ID> 来转让岛屿"
   errorYouAreTheLeader: "因为你是岛屿主人所以不能离开, 使用 /[label] makeleader <玩家> 来改变岛屿主人."
   errorYouCannotLeaveIsland: "你无法离开岛屿当只剩下你一个人的时候.如果你想重新开始,请输入 /[label] restart!"
-  errorYouMustBeInWorld: 你只能够在你的岛屿上这样做!
   errorYouMustBeInWorld: "你只能在岛屿世界离开你的队伍!"
   nameHasLeftYourIsland: "[name] 离开了你的岛屿!"
   warning: "你确定要离开队伍吗? 再次键入 '/[label] leave' 以确认."

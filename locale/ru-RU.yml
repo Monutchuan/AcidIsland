@@ -82,7 +82,7 @@ adminRegister:
   noIsland: "В данной области нет известных островов!"
   notSpawn: "Вы не можете стать владельцем спавна!"
   taking: "Взять право на остров от [name]"
-adminResetSign: 
+adminResetChallengeForAll: 
   error: "Формат для времени повторения должен быть [целым числом] [m / h / d] (минуты, часы, дни), например. 5h"
   repeating: "Повторение через [duration]"
   reset: "Сброс [date]"

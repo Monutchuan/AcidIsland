@@ -407,7 +407,6 @@ leave:
   errorYouAreTheLeader: "因為你是島嶼主人所以不能離開, 使用&b&l /[label] makeleader <玩家> &e來改變島嶼主人."
   errorYouCannotLeaveIsland: "你無法離開島嶼當只剩下你一個人的時候.如果你想重新開始,請輸入 &e&l/[label] restart!"
   errorYouMustBeInWorld: 你只能夠在你的島嶼上這樣做!
-  errorYouMustBeInWorld: "You must be in the island world to leave your team!"
   nameHasLeftYourIsland: "&b&l[name] &c離開了你的島嶼!"
   warning: "你確定要離開隊伍嗎? 再次輸入 '[label] leave' 以確認."
   youHaveLeftTheIsland: "你離開了島嶼, 並返回到了玩家出生地."
@@ -540,7 +539,6 @@ warps:
   playerWarped: "[name] &2傳送到你的島嶼!"
   previous: 上一頁
   removed: "&c&l傳送點已經移除!"
-  removed: "Welcome sign removed!"
   signRemoved: "&c&l你的島嶼傳送點已經移除!"
   success: "&b&l空島傳送點成功創建!"
   title: "島嶼傳送點"

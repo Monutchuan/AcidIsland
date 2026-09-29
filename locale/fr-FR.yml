@@ -82,7 +82,7 @@ adminRegister:
   noIsland: "Aucune île trouvée dans la zone."
   notSpawn: "Impossible de changer le propriétaire du spawn!"
   taking: "[name] n'est plus propriétaire."
-adminResetSign: 
+adminResetChallengeForAll: 
   error: "Le format pour la répétion doit correspondre à [nombre entier][m/h/d] (minutes, heures, jours), par exemple: 5h"
   repeating: "Répétition toutes les [duration]"
   reset: "Réinitialise le [date]"
@@ -177,7 +177,7 @@ challenges:
   erroryouaremissing: "Il vous manque"
   expReward: "Récompense en XP"
   firstTimeRewards: "Récompense(s):"
-  guititle: "AcidIsland Challenges"
+  guititle: "Défis AcidIsland"
   help1: "Utilisez /c <name> pour obtenir les informations de ce challenge."
   help2: "Utilisez /c complete <name> pour compléter ce challenge.."
   incomplete: "Non réussis"

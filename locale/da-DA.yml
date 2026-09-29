@@ -17,14 +17,20 @@ adminDeleteIsland:
   use: "Brug &ldelete [name] &r&cfor at slette spilleren i stedet."
 adminHelp: 
   add: "tilføjer spiller til leders hold"
+  addrange: tilføjer eller fjerner fra Ø'ens beskyttelsesrækkevidde
   clearreset: "nulstiller reset begrænsning for spiller"
+  clearresetall: nulstiller reset begrænsning for alle spillere
+  cobblestats: viser statistik for magisk cobblestone
   completeChallenge: "sætter en udfordring til fuldført"
   delete: "sletter en Ø (fjerner blokke)."
   help: "Admin kommandoer:"
   info: "info på en given spiller"
   infoisland: "viser info på den nærmeste Ø"
   kick: "fjerner spiller fra et hold"
+  level: detaljeret rapport om spillerens Ø niveau
+  listChallengeResets: lister tidsplaner for nulstilling af udfordringer, hvis der er nogen
   lock: "låser/åbner for spillers Ø"
+  name: sæt navn på spillerens Ø
   purge: "slet inaktive Ø'er der er ældre end [TimeInDays]."
   purgeallowdisallow: "tillad/forbyd Ø at blive fjernet hvis den opfylder udrensningskriterier"
   purgeholes: "frigør Ø områder til genbrug"
@@ -33,10 +39,15 @@ adminHelp:
   reload: "genindlæs konfiguration fra fil."
   resetAllChallenges: "nulstil alle spillerens udfordringer"
   resetChallenge: "marker en udfordring ikke fuldført"
+  resetChallengeForAll: nulstiller en udfordring for alle spillere, valgfrit med gentagelse
+  resetname: nulstil navnet på spillerens Ø
   resetsign: "Nulstil det skilt du kigger på til Ø'ens ejer"
   setbiome: "sætter lederens Ø biome"
+  setdeaths: sætter spillerens dødstæller
+  setlanguage: sætter standardsproget og nulstiller alle spillere til det sprog
   setrange: "ændrer Ø'ens beskyttelsesrækkevidde"
   setspawn: "sætter Ø'ens verdens spawn til en position tæt på dig"
+  settingsreset: nulstiller alle Ø'er til standard beskyttelsesindstillinger
   teamChatSpy: "Spionér på holdchat(til/fra)"
   topTen: "opdater Top 10 listen manuelt"
   topbreeders: "lister de mest befolkede Ø'er der er indlæst lige nu"
@@ -45,7 +56,10 @@ adminHelp:
   unregister: "slet en spiller uden at slette spillerens Ø"
 adminInfo: 
   bannedPlayers: "Bannede spillere"
+  errorNullTeamLeader: Holdleder burde være null!
+  errorTeamMembersExist: Spilleren har holdmedlemmer, men burde ikke have!
   hoppers: "Ø'en har [number] tragte"
+  islandLocation: Ø placering
   isLocked: "Ø'en er låst"
   isProtected: "Ø'en er beskyttet mod fjernelse"
   isSpawn: "Ø'en er spawn"
@@ -68,6 +82,12 @@ adminRegister:
   noIsland: "Der er ikke nogen kendt Ø i dette område!"
   notSpawn: "Du kan ikke overtage ejerskabet af spawn!"
   taking: "Tager ejerskab fra [name]"
+adminReserve: 
+  islandExists: Der er allerede en Ø her! Registrer spilleren i stedet!
+adminResetChallengeForAll: 
+  error: Format for gentagelsestid skal være [heltal][m/h/d] (minutter, timer, dage), f.eks. 5h
+  repeating: Gentager [duration]
+  reset: Nulstil [date]
 adminResetSign: 
   errorExists: "Det warp skilt er allerede aktivt og ejet af [name]"
   found: "Warp skilt fundet!"
@@ -82,6 +102,7 @@ adminSetRange:
   invalid: "Ugyldig rækkevidde!"
   set: "Sæt ny rækkevidde til [number]"
   tip: "Brug 10 til [max]"
+  updated: Ø'ens rækkevidde opdateret til [number]
   warning: "Advarsel - rækkevidde er større end Ø rækkevidde [max]"
   warning2: "Overlappende Ø'er vil opføre sig som spawn!"
 adminSetSpawn: 
@@ -95,9 +116,9 @@ adminSetSpawn:
   set: "Sæt Ø-spawn til din nuværende position."
   setting: "Sætter Ø-spawn til din nuværende position [location]"
 adminSwitch:
-  op: "Ops can always bypass protection. Deop to use command."
-  adding: "Adding protection bypass..."
-  removing: "Removing protection bypass..."
+  op: "Ops kan altid omgå beskyttelse. Fjern OP for at bruge kommandoen."
+  adding: "Tilføjer omgåelse af beskyttelse..."
+  removing: "Fjerner omgåelse af beskyttelse..."
 adminTeam: 
   addLeaderNoIsland: "Holdleder har ikke sin egen Ø, så han kan ikke have et hold!"
   addLeaderToOwn: "Kan ikke tilføje lederen til sit eget hold."
@@ -124,9 +145,11 @@ ban:
   banned: "Du er bannet fra [name]'s ø!"
   fail: "[name] kan ikke bannes!"
   helpBan: "ban en spiller fra din ø."
+  helpBanList: list bandlyste spillere.
   helpUnban: "un-ban en spiller fra din ø"
   lifted: "Ban fjernet fra [name]'s ø!"
   liftedsuccess: "Ban fjernet for [name]!"
+  none: Ingen
   notbanned: "[name] er ikke bannet!"
   notteammember: "Du kan ikke banne et holdmedlem!"
   notyourself: "Det kan du ikke gøre mod dig selv!"
@@ -165,10 +188,11 @@ challenges:
   moneyReward: "Pengebelønning"
   name: "Udfordringsnavn"
   nameHasCompleted: "[name] har færdiggjort [challenge] udfordringen!"
+  navigation: Klik for at se [level] udfordringer!
   notRepeatable: "Denne udfordring kan ikke gentages!"
   repeatRewards: "Belønning ved gentagelse"
   rewards: "Belønning"
-  toComplete: "Complete [challengesToDo] more [thisLevel] challenges to unlock this level!"
+  toComplete: "Fuldfør [challengesToDo] [thisLevel] udfordringer mere for at låse dette niveau op!"
   toCompleteUse: "For at færdiggøre denne udfordring, brug"
   unknownChallenge: "Ukendt udfordringsnavn (tjek stavning?)!"
   youHaveCompleted: "Du har færdiggjort [challenge] udfordringen!"
@@ -183,8 +207,10 @@ completechallenge:
 confirm: 
   errorTimeLimitExpired: "Tidsbegrænsning er nået! Kør kommandoen igen."
 coop: 
+  cannotcoop: Kun Ø'ens leder kan gøre en spiller til coop.
   help: "giv en spiller midlertidig fuld adgang til din Ø"
   invited: "[name] gjorde [player] til en partner!"
+  listcoops: list coop spillere
   madeyoucoopy: "[name] gjorde dig til partner!"
   notincoop: "[name] er ikke din partner!"
   onyourteam: "Spilleren er allerede på dit hold!"
@@ -193,19 +219,28 @@ coop:
   success: "[name] er nu en partner indtil de logger ud eller du smider dem ud."
   uncoop: "fjern fuld adgang til Ø'en fra spiller"
   useexpel: "Brug expel eller uncoop for at fjerne."
+deaths: 
+  deaths: Dødsfald
+  died: døde!
+  leveldeaths: "&c[[number] dødsfald]"
 delete: 
   removing: "Fjerner [name]'s Ø."
-drankAcid: "drank acid."
-drankAcidAndDied: "just drank acid and died."
+drankAcid: "drak syre."
+drankAcidAndDied: "drak lige syre og døde."
 error: 
+  blockedbyapi: Et plugin der bruger API'en blokerede denne handling.
   commandNotReady: "Du kan ikke bruge den kommando lige nu."
+  minishopDisabled: Minishop er deaktiveret.
   noIsland: "Du har ikke nogen Ø!"
   noIslandOther: "Den spiller har ikke nogen Ø!"
   noPermission: "Du har ikke adgang til at bruge den kommando!"
+  notABlock: Det er ikke en blok
   noTeam: "Spilleren er ikke på et hold."
   notOnIsland: "Du er ikke i et Ø område!"
   maxIslands: "Verden er fuld af Ø'er! Prøv igen senere!"
   offlinePlayer: "Spilleren er offline eller findes ikke."
+  tooLong: For lang. Maksimum størrelse er [length].
+  tooShort: For kort. Minimum størrelse er [length].
   unknownCommand: "Ukendt kommando."
   unknownPlayer: "Den spiller er ukendt."
   useInGame: "Denne kommando skal bruges inden i spillet."
@@ -216,6 +251,8 @@ expel:
   notonisland: "Spilleren er ikke på din Ø!"
   notyourself: "Du kan ikke smide dig selv ud!"
   success: "Du smed [name] ud!"
+general: 
+  success: Succes!
 invite: 
   errorCantJoinIsland: "Du kan ikke gå til Ø'en, måske er den fuld."
   errorCoolDown: "Du kan invitere den spiller igen om [time] minutter"
@@ -235,6 +272,8 @@ invite:
   youCannotInvite: "Du kan ikke invitere flere spillere."
   youHaveJoinedAnIsland: "Du er blevet medlem af en Ø! Brug /[label] team for at se andre medlemmer."
 island: 
+  blockValue: "[name] placeret her kan være [value] værd"
+  blockWorthless: "[name] er intet værd"
   cannotTeleport: "Du kan ikke teleportere når du falder!"
   donate: "Velkommen til AcidIsland af tastybento"
   donatecolor: "aqua"
@@ -247,6 +286,7 @@ island:
   helpColor: "&e"
   helpControlPanel: "åben Ø menuen."
   helpExpel: "tving en spiller væk fra din Ø."
+  helpHeader: "[plugin] v[version] hjælp:"
   helpInvite: "inviter en spiller til din Ø."
   helpIsland: "start en Ø eller teleporter til din Ø."
   helpIslandSpawn: "gå til spawn."
@@ -256,22 +296,28 @@ island:
   helpLevelPlayer: "se en anden spillers Ø niveau."
   helpLock: "Lås din Ø så folk ikke kan besøge den."
   helpMakeLeader: "overfør din ø til <spiller>."
+  helpName: Sæt et navn på din Ø
+  helpResetName: nulstil din Ø's navn.
   helpRestart: "genstart din Ø og slet den gamle."
+  helpSelectLanguage: Vælg sprog
   helpSetHome: "sæt dit teleport sted for /[label]."
   helpSettings: "se Ø beskyttelse og indstillinger."
   helpTeam: "se holdinformation."
   helpTeleport: "teleport til din Ø."
   helpTop: "se Top Ø'erne."
+  helpValue: se Ø niveau værdi af blokken i hånden
   helpWarp: "Warp til <spiller>'s velkommen skilt."
   helpWarps: "Vis liste med alle velkommen Warps."
   islandDeletedLifeboats: "Ø slettet!"
   islandLevelis: "Dit Ø niveau er"
   new: "Laver lige en ny Ø til dig..."
+  requiredPointsToNextLevel: Du skal bruge [points] point mere for at nå niveau [next]!
   resetConfirm: "Skriv /[label] confirm indenfor [seconds] sekunder for at slette din Ø og genstarte!"
   resetMustRemovePlayers: "Du skal fjerne alle spillere fra din Ø før du kan genstarte den (/[label] kick <spiller>). Se en liste ved at skrive /[label] team."
   resetNoMore: "Du kan ikke genstarte din Ø flere gange! Bed en administrator om at nulstille dine genstart."
   resetOnlyOwner: "Kun ejeren kan genstarte denne Ø. Forlad denne Ø for at lave din egen. (/[label] leave)."
   resetPleaseWait: "Vent venligst, din Ø er ved at blive lavet."
+  resetsLeft: Resets tilbage
   resetTo: "Reset begrænsning er nulstillet"
   resetWait: "Du skal vente [time] før du kan gøre det igen."
   resetYouHave: "Du har [number] genstart tilbage."
@@ -280,9 +326,22 @@ island:
   teleport: "Teleporterer dig til din Ø. (/[label] help for mere info)"
   title: "AcidIsland"
   titlecolor: "gold"
+  unlimited: Ubegrænset
   url: ""
 islandProtected: "Ø'en er beskyttet."
 islandguardsettings: 
+  aciddamage: Syre skade
+  animalspawning: Tillad eller forbyd dyr at spawne
+  chorusfruit: Besøgende bruger chorus frugt
+  collectlava: Besøgende samler lava
+  collectwater: Besøgende samler vand
+  creeperpain: Creeper eksplosioner skader
+  eggs: Besøgende kaster æg
+  fireextinguish: Besøgende slukker ild
+  firespread: Ild spreder sig
+  joinleaveislandmessages: Besked ved ind og udgang af Ø
+  milking: Besøgende malker køer
+  monsterspawning: Tillad eller forbyd monstre at spawne
   TNTdamage: "TNT skade"
   allowed: "Tilladt"
   anvil: "Brug ambolt"
@@ -296,7 +355,7 @@ islandguardsettings:
   chest: "Brug kister"
   chestdamage: "Kisteskade ved TNT"
   creeperdamage: "Creeper skade"
-  creepergriefing: "Creeper griefing"
+  creepergriefing: "Creeper ødelæggelse"
   croptrample: "Høst nedtrampning"
   disallowed: Ikke tilladt
   door: "Brug døre"
@@ -312,7 +371,7 @@ islandguardsettings:
   jukebox: "Brug jukebox"
   leash: "Brug snor"
   lever: "Brug håndtag og knapper"
-  netherpvp: "Nether PvP"
+  netherpvp: "PvP i Nether"
   placeblocks: "Placer blokke"
   portaluse: "Brug portal"
   pressureplate: "Besøgende aktiverer trykplader"
@@ -328,10 +387,11 @@ islandguardsettings:
   spawnegg: "Brug spawn æg"
   teleportwhenfalling: "Teleporter ved fald"
   title: "Ø beskyttelses indstillinger"
+  villagertrading: Besøgende handler med landsbyboere
   visitordrop: "Beøgende må smide ting"
   visitorkeepitems: "Besøgende beholder ting ved død"
   visitorpickup: "Besøgende må samle ting op"
-  withergriefing: "Wither griefing"
+  withergriefing: "Wither ødelæggelse"
   workbench: "Brug arbejdsbord"
 kick: 
   errorNoTeam: "Du har ikke noget hold!"
@@ -342,11 +402,13 @@ kick:
   nameRemovedYou: "[name] har fjernet dig fra sin Ø!"
 lavaTip: "Tip: Hvis det ikke var meningen at lave Obsidian, kan du samle den op med en spand og få Lava igen."
 leave: 
+  canceled: Forlad annulleret
   errorLeadersCannotLeave: "Ledere kan ikke forlade en Ø. Gør en anden til leder først."
   errorYouAreTheLeader: "Du kan ikke forlade Ø'en fordi du er leder. Gør en anden til leder først."
   errorYouCannotLeaveIsland: "Du kan ikke forlade din Ø hvis du er den eneste person. Prøv restart, hvis du vil have en ny Ø!"
   errorYouMustBeInWorld: "Du skal være i Ø verdenen for at forlade dit hold!"
   nameHasLeftYourIsland: "[name] har forladt din Ø!"
+  warning: Er du sikker på at du vil forlade holdet? Skriv '[label] leave' igen for at bekræfte.
   youHaveLeftTheIsland: "Du har forladt Ø'en og er blevet sendt tilbage til spawn."
 level: 
   calculating: "Udregner Ø niveau. Det kan tage lidt tid..."
@@ -381,9 +443,11 @@ minishop:
   youcannotafford: "Du har ikke råd til [description]!"
   yousold: "Du har solgt [number] [description] for [price]"
 moblimits: 
+  entity: Ø'ens [entity] grænse på [number] nået!
   error: "Max antal dyr for Ø'en [number] er nået!"
   hopper: "Max antal tragte for Ø'en [number] er nået!"
   villager: "Max antal landsbyboere for Ø'en [number] er nået!"
+needRelog: Du skal logge ind igen for at se ændringerne.
 nether: 
   spawnisprotected: "Nether spawn området er beskyttet."
 news: 
@@ -394,7 +458,9 @@ purge:
   alreadyRunning: "Udrensning kører allerede, vent venligst til den er kørt færdig!"
   calculating: "Udregner hvilke Ø'er der har været inaktive i [time] dage."
   countingUnowned: "Tæller Ø'er uden ejer og tjekker spiller filer. Det kan tage lidt tid..."
+  estimatedRunTime: "Anslået køretid er: [time]."
   finished: "Færdi med udrensning af inaktive Ø'er."
+  maxPurge: Maks udrensning er [number] Ø'er. Kør purge igen bagefter for at fjerne flere.
   noneFound: "Ingen inaktive Ø'er at fjerne."
   nowWaiting: "Så venter vi..."
   preventPurge: "Ø'en er beskyttet fra udrensning"
@@ -428,6 +494,9 @@ sethome:
   errorNotOnIsland: "Du skal være indenfor dit Ø område for at kunne sætte dit hjem!"
   errorNumHomes: "Du kan have fra 1 til [max] hjem"
   homeSet: "Dit Ø-hjem er blevet sat til din nuværende position."
+settingsReset: 
+  done: Færdig.
+  inprogress: Beskyttelsesindstillinger nulstilles, vent venligst...
 sign: 
   line1: "&1[A Skyblock]"
   line2: "[player]"
@@ -445,11 +514,16 @@ teamchat:
   helpChat: "slå hold chat til/fra"
   noTeam: "Du er ikke på et hold!"
   noTeamAround: "Ingen fra dit hold er online!"
-  prefix: "[Team Chat]<{ISLAND_PLAYER}> "
+  prefix: "[Holdchat]<{ISLAND_PLAYER}>"
+  spyoff: Holdchat spionage fra
+  spyon: Holdchat spionage til
   statusOff: "Holdchat er slået fra"
   statusOn: "Holdchat er slået til"
 topTen: 
+  errorExcluded: "Til info: Du er udelukket fra top ti, da du ikke har [perm]"
   errorNotReady: "Top to liste er ikke genereret endnu!"
+  guiHeading: "&E&L<!> Ø: &6&N[name]&7 (#[rank])"
+  guiTitle: Top 10 Ø'er
   header: "Her er Top 10 Ø'erne:"
 warps: 
   deactivate: "Deaktiverer gammelt skilt!"
@@ -458,6 +532,7 @@ warps:
   errorNoPerm: "Du har ikke adgang til at placere Velkomme skilte!"
   errorNoPlace: "Du skal være på din egen Ø for at placere et Velkommen skilt!"
   errorNoRemove: "Du kan kun fjerne dit eget Velkommen skilt!"
+  errorNotEnoughLevel: Du har ikke nok Ø niveauer til at lave et velkomstskilt!
   errorNoWarpsYet: "Der er ikke nogen warps tilgængelige!"
   errorNotReadyYet: "Det warp er ikke tilgængeligt endnu. Prøv igen senere."
   errorNotSafe: "Det warp er ikke sikker lige nu. Prøv igen senere."

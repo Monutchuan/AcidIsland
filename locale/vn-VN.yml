@@ -5,39 +5,50 @@
 #Locale Vietsubs by Locale
  
 ---
-acidBottle: "Acid Bottle"
-acidBucket: "Acid Bucket"
+acidBottle: "Bình axit"
+acidBucket: "Xô axit"
 acidLore: |
-    Do
-    not drink!
-    Beware!
+  Không
+  được uống!
+  Cẩn thận!
+
 adminDeleteIsland:
   error: "Sử dụng &lddeleteisland confirm &r&cđể xóa đảo bên trên."
   noid: "Không thể xác định đảo."
   use: "Sử dụng &ldelete [tên] &r&cđể xóa player thay vì đảo."
 adminHelp:
   add: "cho player làm chủ đảo"
+  addrange: thêm hoặc bớt phạm vi bảo vệ của đảo
   clearreset: "Reset giới hạn reset đảo cho player"
+  clearresetall: reset giới hạn reset đảo cho tất cả player
+  cobblestats: hiển thị thống kê tạo đá cuội ma thuật
   completeChallenge: "Thử thách hoàn thành"
   delete: "Xóa đảo (xóa khối)."
   help: "Lệnh cho Admin:"
   info: "thông tin player"
   infoisland: "cung cấp thông tin về các hòn đảo gần nhất"
   kick: "loại bỏ player từ bất kỳ nhóm"
+  level: cung cấp báo cáo chi tiết về cấp độ đảo của player
+  listChallengeResets: liệt kê lịch reset thử thách, nếu có
   lock: "khóa/mở khóa đảo của player"
+  name: đặt tên đảo của player
   purge: "xóa các đảo không hoạt động lớn hơn [TimeInDays]."
   purgeallowdisallow: "công nhận/không công nhận đảo để được thanh lọc nếu nó đáp ứng các tiêu chí thanh trừng"
-  purgeholes: "free up island holes for reuse"
+  purgeholes: "giải phóng các hố đảo để tái sử dụng"
   purgeunowned: "loại bỏ đảo không chủ"
   register: "Thiết lập đảo của player đến vị trí của bạn"
   reload: "Khởi động lại plugins."
-  register: "giữ vị trí này cho hòn đảo tiếp theo của player"
   resetAllChallenges: "Reset lại thử thách cho all member ( xài cái này Tùng chém )"
   resetChallenge: "Đánh dấu thử thách không đầy đủ"
+  resetChallengeForAll: reset một thử thách cho tất cả player, có thể lặp lại
+  resetname: reset tên đảo của player
   resetsign: "Cấu hình lại các dấu hiệu bạn đang tìm kiếm ở cho chủ sở hữu đảo"
   setbiome: "set biome cho chủ đảo"
+  setdeaths: đặt số lần chết của player
+  setlanguage: đặt ngôn ngữ mặc định và chuyển tất cả player sang ngôn ngữ đó
   setrange: "thay đỗi phạm vi bảo vệ đảo"
   setspawn: "đặt spawn đảo thế giới đến một địa điểm gần bạn"
+  settingsreset: reset tất cả đảo về cài đặt bảo vệ mặc định
   teamChatSpy: "Team chat nhóm (bật/tắt)"
   topTen: "tự cập nhật top 10 đảo"
   topbreeders: "liệt kê các đảo ngươi nhất hiện nay tải"
@@ -45,8 +56,11 @@ adminHelp:
   tpnether: "dịch chuyển đến nether player"
   unregister: "xóa player mà không xóa đảo"
 adminInfo:
-  bannedPlayers: "Banned players"
+  bannedPlayers: "Player bị cấm"
+  errorNullTeamLeader: Đội trưởng phải là null!
+  errorTeamMembersExist: Player có thành viên nhóm, nhưng không nên có!
   hoppers: "Đảo có [number] máy nhảy"
+  islandLocation: Vị trí đảo
   isLocked: "Đảo đã khóa"
   isProtected: "Đảo được bảo vệ"
   isSpawn: "Đảo spawn"
@@ -54,7 +68,7 @@ adminInfo:
   isUnprotected: "Đảo không có được bảo vệ"
   lastLogin: "Đăng nhập lân cuối"
   maxSize: "kích thước tối đa của đảo (distance)"
-  player: "Player"
+  player: "Người chơi"
   teamLeader: "Đội trưởng"
   teamMembers: "Đội viên"
   title: "Đây là nơi đảo spawn"
@@ -69,6 +83,10 @@ adminRegister:
   noIsland: "Không có đảo được xác định trong khu vực này!"
   notSpawn: "Bạn không thể lấy quyền sở hữu của spawn!"
   taking: "nắm quyền sở hữu [name]"
+adminResetChallengeForAll: 
+  error: Định dạng thời gian lặp phải là [số nguyên][m/h/d] (phút, giờ, ngày), ví dụ 5h
+  repeating: Lặp lại [duration]
+  reset: Đặt lại [date]
 adminResetSign:
   errorExists: "bảng dịch chuyển thuộc sở thủ của [name]"
   found: "bảng dịch chuyển không tôn tại!"
@@ -85,6 +103,7 @@ adminSetRange:
   invalid: "phạm vi không hợp lệ!"
   set: "thiết lập phạm vi mới [number]"
   tip: "sử dụng 10 đến [max]"
+  updated: Phạm vi đảo đã cập nhật thành [number]
   warning: "Cảnh báo - phạm vi lớn hơn phạm vi đảo [max]"
   warning2: "đảo chồng chéo sẽ hành động như đẻ trứng!"
 adminSetSpawn:
@@ -96,11 +115,11 @@ adminSetSpawn:
   ownedBy: "Đảo này thuộc sở hữu của [name]"
   range: "Phạm vi bảo vệ = [number]"
   set: "Đặt đảo spawn vị trí của bạn."
-  settings: "Thiết đảo spawn vị trí của bạn [location]"
+  setting: Đang đặt điểm hồi sinh của đảo tại vị trí của bạn [location]
 adminSwitch:
-  op: "Ops can always bypass protection. Deop to use command."
-  adding: "Adding protection bypass..."
-  removing: "Removing protection bypass..."
+  op: "Op luôn có thể bỏ qua bảo vệ. Hãy bỏ op để dùng lệnh này."
+  adding: "Đang thêm bỏ qua bảo vệ..."
+  removing: "Đang xóa bỏ qua bảo vệ..."
 adminTeam:
   addLeaderNoIsland: "Đội trưởng không có hòn đảo riêng của họ vì vậy không thể có một đội ngũ!"
   addLeaderToOwn: "Không thể thêm một nhà lãnh đạo đội bóng của riêng mình."
@@ -111,12 +130,12 @@ adminTeam:
   nowUnowned: "[Tên] có một hòn đảo tại [vị trí] sẽ trở thành không có chủ Bây giờ bạn có thể muốn xóa nó bằng tay.."
   settingHome: "Thiết lập nhà máy của vị trí nhà của nhà lãnh đạo"
 adminTopBreeders:
-  kiểm tra: "Kiểm tra [number] hải đảo ..."
-  Phát hiện: "Tìm được các nhà lai tạo hàng đầu ..."
-  không có gì: "Không có sinh vật được tìm thấy."
+  checking: Đang kiểm tra [number] đảo...
+  finding: Đang tìm đảo nuôi nhiều sinh vật nhất...
+  nothing: Không tìm thấy sinh vật nào.
 adminTopTen:
-  hoàn thành: "Hoàn tất hệ của Top Ten danh sách"
-  tạo: "Tạo Top Ten danh sách"
+  finished: Đã tạo xong danh sách Top Ten
+  generating: Đang tạo danh sách Top Ten
 adminTp:
   manualWarp: "Không có chỗ an toàn tìm thấy thủ dọc để ở đâu đó gần [vị trí].."
 adminUnregister:
@@ -128,9 +147,11 @@ ban:
   banned: "Bạn bị khóa tài khoản từ [name]!"
   fail: "[name] không thể khóa"
   helpBan: "cấm một player từ hòn đảo của bạn."
+  helpBanList: liệt kê player bị cấm.
   helpUnban: "mở cầm player từ đảo của bạn"
   lifted: "vé Ban đến từ đảo của [name]!"
   liftedsuccess: "Vé Ban đến từ [name]!"
+  none: Không có
   notbanned: "[name] không có bị cấm!"
   notteammember: "bạn không thể cấm một thành viên trong nhóm!"
   notyourself: "Bạn không thể làm điều đó cho chính mình!"
@@ -170,6 +191,7 @@ challenges:
   moneyReward: "Phần thưởng tiền"
   name: "Thử thách tên"
   nameHasCompleted: "[name] đã hoàn thành thử thách [challenge]!"
+  navigation: Nhấn để xem các thử thách [level]!
   notRepeatable: "Thử thách không thể lập lại!"
   repeatRewards: "lập lại phần thưởng"
   rewards: "Phần thưởng(s)"
@@ -188,8 +210,10 @@ completechallenge:
 confirm:
   errorTimeLimitExpired: "Thời hạn hết hạn! Ban hành lệnh một lần nữa."
 coop:
+  cannotcoop: Chỉ chủ đảo mới có thể cho player làm người hợp tác.
   help: "tạm thời cho một player truy cập vào hòn đảo của bạn, có thể đập và mở rương"
   invited: "[name] cho [player] một người chơi coo!"
+  listcoops: liệt kê player hợp tác
   madeyoucoopy: "[name] làm cho bạn một người chơi coop!"
   notincoop: "[name] không có trong chuồng của bạn!"
   onyourteam: "Player là đã vào nhóm của bạn!"
@@ -198,19 +222,28 @@ coop:
   success: "[name] bây giờ là một người chơi coop cho đến khi họ đăng xuất hoặc bạn uncoop hoặc trục xuất họ."
   uncoop: "loại bỏ quyền truy cập hòn đảo đầy từ máy nghe nhạc"
   useexpel: "sử dụng expel hoặc uncoop để không cho người khác coop nữa."
+deaths: 
+  deaths: Số lần chết
+  died: đã chết!
+  leveldeaths: "&c[[number] lần chết]"
 delete:
   removing: "Loại bỏ [name]'s khỏi is."
 drankAcid: "đã uống axit."
 drankAcidAndDied: "chỉ cần uống axit và chết."
 error:
+  blockedbyapi: Một plugin dùng API đã chặn hành động này.
   commandNotReady: "Bạn không thể sử dụng lệnh đó ngay bây giờ."
+  minishopDisabled: Minishop đã bị tắt.
   noIsland: "Bạn không có đảo!"
   noIslandOther: "player không có một hòn đảo!"
   noPermission: "Bạn không có quyền sử dụng lệnh!"
+  notABlock: Đó không phải là một khối
   noTeam: "Player không có team."
   notOnIsland: "Bạn đang không ở trong một không gian đảo!"
   maxIslands: "Thế giới đầy những hòn đảo! Thử lại sau!"
   offlinePlayer: "player đó là ẩn hoặc không tồn tại."
+  tooLong: Quá dài. Kích thước tối đa là [length].
+  tooShort: Quá ngắn. Kích thước tối thiểu là [length].
   unknownCommand: "Không có lệnh."
   unknownPlayer: "Player không tồn tại."
   useInGame: "Lệnh này phải được sử dụng trong game."
@@ -242,6 +275,8 @@ invite:
   youCannotInvite: "Bạn không thể mời bất kỳ người chơi nào hơn."
   youHaveJoinedAnIsland: "Bạn đã tham gia một hòn đảo! sử dụng /[label] team để xem các thành viên khác."
 island:
+  blockValue: "[name] đặt ở đây có thể có giá trị [value]"
+  blockWorthless: "[name] không có giá trị"
   cannotTeleport: "Bạn không thể dịch chuyển khi rơi!"
   donate: "Chào mừng đến AcidIsland by tastybento"
   donatecolor: "aqua"
@@ -254,6 +289,7 @@ island:
   helpColor: "&e"
   helpControlPanel: "mở GUI đảo."
   helpExpel: "buộc một  từ hòn đảo của mình"
+  helpHeader: "Trợ giúp [plugin] v[version]:"
   helpInvite: "mời một người chơi tham gia vào hòn đảo của mình."
   helpIsland: "bắt đầu một hòn đảo, hoặc dịch chuyển đến hòn đảo của bạn."
   helpIslandSpawn: "đi đến spawn đảo."
@@ -263,34 +299,53 @@ island:
   helpLevelPlayer: "thấy mức độ đảo của người chơi khác."
   helpLock: "Khóa đảo để người khác không thể vào nó"
   helpMakeLeader: "chuyển đảo để <player>."
+  helpName: Đặt tên cho đảo của bạn
+  helpResetName: reset tên đảo của bạn.
   helpRestart: "khởi động lại hòn đảo của mình và loại bỏ những cái cũ."
+  helpSelectLanguage: Chọn ngôn ngữ
   helpSetHome: "đặt điểm dịch chuyển của bạn cho /[label]."
   helpSettings: "xem các thiết lập bảo vệ hòn đảo và trò chơi"
   helpTeam: "xem thông tin team của bạn."
   helpTeleport: "dịch chuyển đến hòn đảo của bạn."
   helpTop: "thấy các hòn đảo đầu xếp hạng."
+  helpValue: xem giá trị cấp độ đảo của khối đang cầm
   helpWarp: "Warp đến <player> từ bảng welcome."
   helpWarps: "Xem danh sách welcome"
   islandDeletedLifeboats: "Đảo xóa! Đi đến các xuồng cứu sinh!"
   islandLevelis: "Island Level : [level]"
   new: "Tạo một hòn đảo mới cho bạn..."
+  requiredPointsToNextLevel: Bạn cần thêm [points] điểm để đạt cấp độ [next]!
   resetConfirm: "Sử dụng /[label] confirm trong [seconds] giây để xóa đảo và reset!"
   resetMustRemovePlayers: "Bạn phải kick tất cả player từ hòn đảo của mình trước khi bạn có thể khởi động lại nó (/[label] kick <player>). Xem danh sách các player hiện một phần của hòn đảo của bạn bằng cách sử /[label] team."
   resetNoMore: "Không reset được phép cho hòn đảo của mình!"
   resetOnlyOwner: "Chỉ có chủ sở hữu có thể khởi động lại hòn đảo này. Rời khỏi hòn đảo này để bắt đầu của riêng bạn (/[label] leave)."
   resetPleaseWait: "Hãy đợi, tạo đảo mới"
+  resetsLeft: Số lượt reset còn lại
   resetTo: "giới hạn reset xóa"
   resetWait: "Ybạn phải đợi [time] giây trước khi bạn có thể làm điều đó một lần nữa."
   resetYouHave: "you have [number] reset lại."
-  subtitle: "by tastybento"
+  subtitle: "bởi tastybento"
   subtitlecolor: "blue"
   teleport: "Dịch chuyển bạn đến hòn đảo của bạn. (/[label] help để xem thông tin)"
   title: "AcidIsland"
   titlecolor: "gold"
+  unlimited: Không giới hạn
   url: ""
 islandProtected: "Đảo được bảo vệ."
 islandguardsettings:
-  TNTdamage: "TNT Damage"
+  aciddamage: Sát thương axit
+  animalspawning: Cho phép/Không cho phép động vật xuất hiện
+  chorusfruit: Khách dùng quả chorus
+  collectlava: Khách hút dung nham
+  collectwater: Khách hút nước
+  creeperpain: Vụ nổ Creeper gây sát thương
+  eggs: Khách ném trứng
+  fireextinguish: Khách dập lửa
+  firespread: Lửa lan
+  joinleaveislandmessages: Thông báo vào/rời đảo
+  milking: Khách vắt sữa bò
+  monsterspawning: Cho phép/Không cho phép quái vật xuất hiện
+  TNTdamage: "Sát thương TNT"
   allowed: "Được phép"
   anvil: "Sử dụng cái de"
   armorstand: "sử dụng giá để giáp"
@@ -301,9 +356,9 @@ islandguardsettings:
   brewingstand: "Potion Brewing"
   bucket: "sử dụng dung nham"
   chest: "sử dụng rương"
-  chestdamage: "Chest damage by TNT"
-  creeperdamage: "Creeper damage"
-  creepergriefing: "Creeper griefing"
+  chestdamage: "Rương bị hư hại bởi TNT"
+  creeperdamage: "Sát thương Creeper"
+  creepergriefing: "Creeper phá hoại"
   croptrample: "Crop trampling"
   disallowed: Không được cho phép
   door: "Sử dụng cửa"
@@ -319,7 +374,7 @@ islandguardsettings:
   jukebox: "Sử dụng máy hát"
   leash: "Sử dụng dây dẫn"
   lever: "Sử dụng cần gạt và nút bấm"
-  netherpvp: "Nether PvP"
+  netherpvp: "PvP ở Nether"
   placeblocks: "nơi khối"
   portaluse: "Portal use"
   pressureplate: "Thăm kích hoạt tấm áp"
@@ -329,17 +384,18 @@ islandguardsettings:
   settingsgeneraldesc: "Đảo chung thế giới Settings"
   settingsislandtitle: "Cài đặt Island"
   settingsislanddesc: "Những quy định này áp dụng đối với khách tham quan trên đảo này"
-  settingsspawntitle: "Spawn Settings"
+  settingsspawntitle: "Cài đặt điểm hồi sinh"
   settingsspawndesc: "Những quy định này được áp dụng tại spawn"
   shears: "Sử dụng kéo"
   spawnegg: "Sử dụng spawn trứng"
   teleportwhenfalling: "Teleport khi rơi xuống"
   title: "Cài đặt Đảo Guard"
+  villagertrading: Khách giao dịch với dân làng
   visitordrop: "mục khách thả"
   visitorkeepitems: "khách giữ mục về cái chết"
   visitorpickup: "khách hàng đón"
-  withergriefing: "Wither griefing"
-  bàn làm việc: "Workbench sử dụng"
+  withergriefing: "Wither phá hoại"
+  workbench: Khách dùng bàn làm việc
 kick:
   errorNoTeam: "Bạn không có một đội!"
   errorNotPartOfTeam: "player này không phải là một phần của nhóm đảo của bạn!"
@@ -349,11 +405,13 @@ kick:
   nameRemovedYou: "[name] đã loại bỏ bạn khỏi hòn đảo của họ!"
 lavaTip: "Mẹo: Nếu nước và dung nham bị biến thành hắc diện thạch, hãy lấy xô và click chuột phải vào Hắc Diện Thạch"
 leave:
+  canceled: Đã hủy rời đảo
   errorLeadersCannotLeave: "Chủ đảo không có thể để lại một hòn đảo. Hãy thay thể người khác làm chủ đảo."
   errorYouAreTheLeader: "Bạn không có thể để lại bởi vì bạn là chủ đảo. Làm ai đó lãnh đạo đầu tiên."
   errorYouCannotLeaveIsland: "Bạn không thể rời khỏi hòn đảo của bạn nếu bạn là người duy nhất. Hãy thử khởi động lại nếu bạn muốn có một cái mới!"
   errorYouMustBeInWorld: "Bạn phải ở trong thế giới đảo rời khỏi nhóm của bạn!"
   nameHasLeftYourIsland: "[name] đã thoát hòn đảo của bạn!"
+  warning: Bạn có chắc muốn rời nhóm? Gõ '[label] leave' lần nữa để xác nhận.
   youHaveLeftTheIsland: "Bạn đã rời đảo và trở về với bầy người chơi."
 level:
   calculating: "Tính toán mức độ đảo. Mất vài giây thực hiện..."
@@ -388,6 +446,7 @@ minishop:
   youcannotafford: "Không đủ [description]!"
   yousold: "Đã bán [number] [description] với giá [price]"
 moblimits:
+  entity: Đã đạt giới hạn [entity] của đảo là [number]!
   error: "Gia súc của đảo [number] đã đạt giới hạn!"
   hopper: "Máy nhảy của đảo [number] đã đạt giới hạn!"
   villager: "Dân làng của đảo [number] đã đạt giới hạn!"
@@ -401,7 +460,9 @@ purge:
   alreadyRunning: "thanh trừng đang chạy, xin vui lòng chờ đợi cho nó để kết thúc!"
   calculating: "Tính toán mà hòn đảo này đã được kích hoạt trong hơn [time] ngày."
   countingUnowned: "Đếm đảo không có chủ và kiểm tra các tập tin . Điều này có thể mất một thời gian..."
+  estimatedRunTime: "Thời gian chạy dự kiến: [time]."
   finished: "xong tẩy các đảo không hoạt động"
+  maxPurge: Tối đa [number] đảo mỗi lần thanh lọc. Chạy purge lại để thanh lọc thêm.
   noneFound: "0 đảo không hoạt động để loại bỏ."
   nowWaiting: "Đợi chờ..."
   preventPurge: "Hòn đảo được bảo vệ từ tẩy"
@@ -435,6 +496,9 @@ sethome:
   errorNotOnIsland: "Bạn phải nằm trong ranh giới đảo của bạn để thiết lập nhà!"
   errorNumHomes: "Nhà có thể từ 1 tới [max]"
   homeSet: "Bạn đã sethome tại đây.."
+settingsReset: 
+  done: Xong.
+  inprogress: Đang reset cài đặt bảo vệ, vui lòng chờ...
 sign:
   line1: "&1[Skyblock]"
   line2: "[player]"
@@ -443,8 +507,8 @@ sign:
 sign-acidisland:
    line1: "&1[AcidIsland]"
    line2: "[player]"
-   line3: "Water is acid!"
-   line4: "Beware!"
+   line3: "Nước là axit!"
+   line4: "Cẩn thận!"
 targetInPVPArea: "Không thể pvp trong khu vực này!"
 team:
   listingMembers: "Bảng liệt kê thành viên hòn đảo của bạn"
@@ -452,7 +516,9 @@ teamchat:
   helpChat: "bật/tắt chat đội"
   noTeam: "Bạn đang không ở trong một nhóm!"
   noTeamAround: "Không ai trong nhóm của bạn đang online!"
-  prefix: "[Team Chat]<{ISLAND_PLAYER}> "
+  prefix: "[Chat nhóm]<{ISLAND_PLAYER}>"
+  spyoff: Tắt theo dõi chat nhóm
+  spyon: Bật theo dõi chat nhóm
   statusOff: "Chat Đội đã tắt"
   statusOn: "Chat Đội đã bật"
 topTen:
@@ -470,6 +536,7 @@ warps:
   errorNoPerm: "Ybạn không có quyền đặt dấu hiệu WELCOME bạn chưa!"
   errorNoPlace: "Bạn phải trên hòn đảo của bạn để đặt một Welcome Sign!"
   errorNoRemove: "Bạn chỉ có thể loại bỏ riêng của bạn Xin chào Đăng nhập!"
+  errorNotEnoughLevel: Bạn chưa đủ cấp độ đảo để tạo biển Chào mừng!
   errorNoWarpsYet: "Không có warps sẵn chưa!"
   errorNotReadyYet: "dọc Đó là chưa sẵn sàng. Thử lại sau."
   errorNotSafe: "warp Đó không phải là an toàn ngay bây giờ. Thử lại sau."
@@ -483,5 +550,5 @@ warps:
   warpTip: "Tạo một warp bằng cách đặt dấu với [WELCOME] ở đầu."
   warpToPlayersSign: "Warp đến đảo <player>"
   warpsAvailable: "Các warps sau đây có sẵn"
-  welcomeLine: "[WELCOME]"
+  welcomeLine: "[CHÀO MỪNG]"
 needRelog: "Bạn phải đăng nhập lại để có thể thấy sự thay đổi."

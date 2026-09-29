@@ -81,9 +81,9 @@ adminRegister:
   noIsland: "No se conoce ninguna isla en esta zona!"
   notSpawn: "No te puedes adueñar este spawn!"
   taking: "El dueño de este spawn es [name]."
-adminResetSign:
+adminResetChallengeForAll:
   error: "El formato para repetir el tiempo debe ser [integer number][m/h/d] (minutos, horas, dias), por ejemplo 5h"
-  repeating: "Repeating [duration]"
+  repeating: "Repetición [duration]"
   reset: "Resetear [date]"
 adminResetSign:
   errorExists: "Este warp ya esta activo y pertenece a [name]."
@@ -151,8 +151,6 @@ ban:
   none: Ninguno
   notbanned: "[name] no está baneado!"
   notteammember: "No se puede prohibir a un miembro del equipo!"
-  notyourself: "No se puede hacer eso a ti mismo!"
-  success: "[name] está baneado de la isla!"
   notyourself: "No puedes hacerte eso a ti mismo!"
   success: "[name] esta baneado de la isla!"
 biome:
@@ -407,7 +405,6 @@ leave:
   errorLeadersCannotLeave: "Los líderes no pueden dejar una isla. Haz líder a otra persona usando /[label] makeleader <jugador>"
   errorYouAreTheLeader: "No puedes salir porque eres el lider. Usa /[label] makeleader <jugador> para transferir la isla primero."
   errorYouCannotLeaveIsland: "No puedes dejar la isla porque eres la única persona. Usa /[label] restart si quieres una nueva!"
-  errorYouMustBeInWorld: "Debes estar en el mundo AcidIsland para dejar tu equipo!"
   errorYouMustBeInWorld: "Debes estar en el mundo de las islas para abandonar tu equipo!"
   nameHasLeftYourIsland: "[name] ha dejado tu isla!"
   warning: "Estas seguro de que quieres abandonar el equipo? Escribe '[label] leave' otra vez para confirmar."

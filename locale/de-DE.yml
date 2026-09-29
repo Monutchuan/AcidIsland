@@ -82,7 +82,7 @@ adminRegister:
   noIsland: "In diesem Bereich ist keine bekannte Insel!"
   notSpawn: "Du kannst die Herrschaft über den Spawn nicht übernehmen!"
   taking: "Entferne die Herrschaft von [name]"
-adminResetSign: 
+adminResetChallengeForAll: 
   error: "Format für die Zeit zum Wiederholen ist: [Integer Zahl][m/h/d] (Minuten, Stunden, Tage), z. B. 5h"
   repeating: "Wiederholen [duration]"
   reset: "Zurücksetzen [date]"
@@ -152,8 +152,6 @@ ban:
   none: Keine
   notbanned: "[name] ist nicht von deiner Insel gebannt!"
   notteammember: "Ein Inselmitglied kannst du nicht bannen!"
-  notyourself: "Das ist keine Lösung!"
-  success: "[name] wurde von der Insel gebannt!"
   notyourself: "Das kannst du dir nicht antun!"
   success: "[name] ist von der Insel gebannt!"
 biome: 
@@ -442,7 +440,6 @@ minishop:
   sellproblem: "Du hast nicht genügend von [description] um es zu verkaufen!"
   title: MiniShop
   youbought: "&aDu hast &c[number] &b[description] &afür &c[price] §aEuro gekauft!"
-  youcannnotafford: "Du hast nicht genügend Geld für [description]!"
   youcannotafford: Du kannst dir [description] nicht leisten!
   yousold: "Du hast [number] [description] für [price] Euro verkauft!"
 moblimits: 
