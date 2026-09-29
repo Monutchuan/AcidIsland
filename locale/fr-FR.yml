@@ -116,9 +116,9 @@ adminSetSpawn:
   set: "Définit le spawn de l'île là où vous êtes."
   setting: "Spawn définit en [location]"
 adminSwitch:
-  op: "Ops can always bypass protection. Deop to use command."
-  adding: "Adding protection bypass..."
-  removing: "Removing protection bypass..."
+  op: "Les OP contournent toujours la protection. Retirez le OP pour utiliser cette commande."
+  adding: "Ajout du contournement de protection..."
+  removing: "Retrait du contournement de protection..."
 adminTeam: 
   addLeaderNoIsland: "Ce chef d'île n'a pas sa propre île et ne peut pas avoir d'équipe!"
   addLeaderToOwn: "Impossible d'ajouter le chef à sa propre île."
@@ -145,9 +145,11 @@ ban:
   banned: "Vous êtes banni de l'île de [name]!"
   fail: "[name] ne peut pas être banni!"
   helpBan: "banni un joueur de l'île."
+  helpBanList: liste les joueurs bannis.
   helpUnban: "pardonne un joueur de l'île (unban)"
   lifted: "Vous n'êtes plus banni de l'île de [name]!"
   liftedsuccess: "[name] n'est plus banni!"
+  none: Aucun
   notbanned: "[name] n'est pas banni!"
   notteammember: "Vous ne pouvez pas bannir un membre de l'équipe!"
   notyourself: "Euh, vous ne pouvez pas vous bannir vous-même..."
@@ -186,7 +188,7 @@ challenges:
   moneyReward: "Récompense en $"
   name: "Nom du challenge"
   nameHasCompleted: "[name] a complété le challenge [challenge] !"
-  navigation: "Click to see [level] challenges!"
+  navigation: "Cliquez pour voir les défis de niveau [level] !"
   notRepeatable: "Vous ne pouvez pas recommencer ce challenge !"
   repeatRewards: "Récompense(s) de répétition:"
   rewards: "Récompense(s)"
@@ -218,7 +220,7 @@ coop:
   uncoop: "retire le COOP à un joueur."
   useexpel: "Utilisez /is expel pour l'éjecter."
 deaths: 
-  deaths: "Deaths"
+  deaths: "Morts"
   died: "est mort!"
   leveldeaths: "&c[[number] morts]"
 delete: 
@@ -400,6 +402,7 @@ kick:
   nameRemovedYou: "[name] vous a supprimé de l'île !"
 lavaTip: "Astuce: Si vous ne vouliez pas d'obsidienne, vous pouvez récupérer de la lave avec un sceau en cliquant sur le bloc."
 leave: 
+  canceled: Départ annulé
   errorLeadersCannotLeave: "Les propriétaires ne peuvent pas quitter l'île. Transférez l'île à un membre de l'équipe avec /[label] makeleader <joueur>"
   errorYouAreTheLeader: "Vous êtes le propriétaire. Utilisez /[label] makeleader <joueur> pour transférer l'île à un membre de l'équipe."
   errorYouCannotLeaveIsland: "Vous êtes seul. Impossible de quitter l'île. Utilisez /[label] restart pour en commencer une nouvelle !"
@@ -435,7 +438,7 @@ minishop:
   outofstock: "Rupture de Stock"
   sell: "Vendre (Clic droit)"
   sellproblem: "Vous n'avez pas assez de [description] à vendre."
-  title: "&eMiniShop"
+  title: "&EMiniBoutique"
   youbought: "Vous avez acheté [number] [description] pour [price]"
   youcannotafford: "Vous ne pouvez pas acquérir [description]!"
   yousold: "Vous avez vendu [number] [description] pour [price]"
@@ -544,5 +547,5 @@ warps:
   warpTip: "Créez un panneau [WELCOME] sur la première ligne pour créer un warp. Placez du texte en dessous pour une description."
   warpToPlayersSign: "Vous téléporte au panneau de bienvenue du joueur."
   warpsAvailable: "Les warps suivants sont disponibles"
-  welcomeLine: "[WELCOME]"
+  welcomeLine: "[BIENVENUE]"
 needRelog: "Vous devez vous reconnecter pour voir les changements."

@@ -116,9 +116,9 @@ adminSetSpawn:
   set: "Setze Insel Spawn an deine Position."
   setting: "Setze Insel Spawn zu [location]"
 adminSwitch:
-  op: "Ops can always bypass protection. Deop to use command."
-  adding: "Adding protection bypass..."
-  removing: "Removing protection bypass..."
+  op: "Operatoren können den Schutz immer umgehen. Benutze /deop um den Befehl zu benutzen."
+  adding: "Fügt Schutzumgehung hinzu..."
+  removing: "Entfernt Schutzumgehung..."
 adminTeam: 
   addLeaderNoIsland: "Teamleiter hat keine eigene Insel und kann deswegen kein Team haben!"
   addLeaderToOwn: "Kann Leiter nicht seinem eigenen Team hinzufügen."
@@ -145,9 +145,11 @@ ban:
   banned: "Du wurdest von [name]s Insel gebannt!"
   fail: "[name] kann nicht gebannt werden!"
   helpBan: "banne einen Spieler von deiner Insel."
+  helpBanList: listet gesperrte Spieler auf.
   helpUnban: "entbanne einen Spieler von deiner Insel."
   lifted: "Bann aufgehoben von [name]s Insel!"
   liftedsuccess: "Bann aufgehoben für [name]!"
+  none: Keine
   notbanned: "[name] ist nicht von deiner Insel gebannt!"
   notteammember: "Ein Inselmitglied kannst du nicht bannen!"
   notyourself: "Das ist keine Lösung!"
@@ -188,7 +190,7 @@ challenges:
   moneyReward: "Geld"
   name: "Herausforderung Name"
   nameHasCompleted: "[name] hat die Herausforderung [challenge] erfolgreich abgeschlossen!"
-  navigation: "Click to see [level] challenges!"
+  navigation: "Klicke um [level] Challenges zu sehen!"
   notRepeatable: "Diese Challenge ist nicht wiederholbar!"
   repeatRewards: "Belohnung"
   rewards: "Belohnung(en)"
@@ -286,6 +288,7 @@ island:
   helpColor: "&e"
   helpControlPanel: "öffnet das Insel GUI."
   helpExpel: "Beendet die Partnerschaft mit einem Spieler."
+  helpHeader: "[plugin] v[version] Hilfe:"
   helpInvite: "Lade Spieler auf deine Insel ein."
   helpIsland: "teleportiert dich zu deiner Insel, oder erstellt eine für Dich."
   helpIslandSpawn: "teleportiert dich zum Spawn!"
@@ -347,7 +350,7 @@ islandguardsettings:
   chestdamage: "Kistenschaden durch TNT"
   chorusfruit: "Chorus benutzen"
   creeperdamage: "Creeper Schaden"
-  creepergriefing: "Creeper griefing"
+  creepergriefing: "Creeper-Zerstörung"
   creeperpain: "Creeper Explosionsschaden"
   croptrample: "Felder zertrampeln"
   disallowed: "Verboten"
@@ -390,7 +393,7 @@ islandguardsettings:
   visitordrop: "Besucher Item-drop"
   visitorkeepitems: "Items beim Tod auf fremden Inseln behalten"
   visitorpickup: "Besucher Item-Aufnahme"
-  withergriefing: "Wither griefing"
+  withergriefing: "Wither-Zerstörung"
   workbench: "Werkbank Benutzung"
 kick: 
   errorNoTeam: "Du hast kein Team!"
@@ -401,6 +404,7 @@ kick:
   nameRemovedYou: "[name] hat dich von der Insel entfernt!"
 lavaTip: "Tipp: Falls du kein Obsidian wolltest, führe einen Rechtsklick mit einem Eimer auf das Obsidian aus. Du hast danach Lava im Eimer!"
 leave: 
+  canceled: Verlassen abgebrochen
   errorLeadersCannotLeave: "Teamleiter können eine Insel nicht verlassen. Ernenne erst jemand anderen zum Teamleiter mit /[label] makeleader <player>"
   errorYouAreTheLeader: "Du bist der Teamleiter, benutze stattdessen /[label] remove <player>."
   errorYouCannotLeaveIsland: "Du kannst deine Insel nicht verlassen, wenn du die einzige Person bist. Versuche /[label] restart wenn du eine neue willst!"
@@ -439,9 +443,10 @@ minishop:
   title: MiniShop
   youbought: "&aDu hast &c[number] &b[description] &afür &c[price] §aEuro gekauft!"
   youcannnotafford: "Du hast nicht genügend Geld für [description]!"
+  youcannotafford: Du kannst dir [description] nicht leisten!
   yousold: "Du hast [number] [description] für [price] Euro verkauft!"
 moblimits: 
-  entity: "Island [entity] limit of [number] reached!"
+  entity: "Insel [entity] Limit von [number] erreicht!"
   error: "Insel Paarungslimit von [number] erreicht!"
   hopper: "Insel Trichter limit von [number] erreicht!"
   villager: "Insel Dorfbewohner Paarungslimit von [number] erreicht!"
@@ -455,8 +460,9 @@ purge:
   alreadyRunning: "Löschung läuft bereits! Bitte warten!"
   calculating: "Berechne welche Inseln inaktiv waren für mehr als [time] Tage."
   countingUnowned: "Zähle unbewohnte Inseln und prüfe Spielerdateien. Das kann ein wenig dauern..."
+  estimatedRunTime: "Geschätzte Laufzeit: [time]."
   finished: "Löschen von inaktiven Inseln abgeschlossen."
-  maxPurge: "Max purge is [number] islands. Run purge again afterwards to purge more."
+  maxPurge: "Maximal [number] Inseln werden gelöscht. Führe den Befehl erneut aus, um mehr zu löschen."
   noneFound: "Keine inaktiven Inseln zu löschen."
   nowWaiting: "Warte nun..."
   preventPurge: "Insel ist vor dem Löschen geschützt"
@@ -491,7 +497,7 @@ sethome:
   errorNumHomes: "Die Anzahl deiner homes kann 1 bis [max] betragen."
   homeSet: "Dein Insel-Home wurde auf deine aktuelle Position gesetzt."
 settingsReset:
-  done: "Done."
+  done: "Fertig."
   inprogress: "Schutzbereich Einstellungen werden zurückgesetzt. Bitte warte..."
 sign: 
   line1: "&1[A Skyblock]"
@@ -510,7 +516,7 @@ teamchat:
   helpChat: "aktiviere/deaktiviere den Team chat"
   noTeam: "Du bist in keinem Team!"
   noTeamAround: "Keines deiner Teammitglieder ist online!"
-  prefix: "[Team Chat]<{ISLAND_PLAYER}> "
+  prefix: "[Team-Chat]<{ISLAND_PLAYER}> "
   spyoff: "Team Chat Spionage aktiviert"
   spyon: "Team Chat Spionage deaktviert"
   statusOff: "Team Chat deaktiviert"
@@ -518,7 +524,7 @@ teamchat:
 topTen: 
   errorExcluded: "Info: Du bist von den Top 10 ausgeschlossen, da dir die Permission [perm] fehlt."
   errorNotReady: "Die Top 10 Liste wurde noch nicht generiert!"
-  guiHeading: "&E&L<!> Island: &6&N[name]&7 (#[rank])"
+  guiHeading: "&E&L<!> Insel: &6&N[name]&7 (#[rank])"
   guiTitle: "Top 10 Inseln"
   header: "Das sind die Top 10 Inseln:"
 warps: 
@@ -542,5 +548,5 @@ warps:
   warpTip: "&aErstelle ein Warp-Schild mit &c[WELCOME] &ain der obersten Zeile."
   warpToPlayersSign: "Teleportiert dich zum Insel-Warp von: <player>."
   warpsAvailable: "Folgende Insel-Warps sind verfügbar"
-  welcomeLine: "[WELCOME]"
+  welcomeLine: "[WILLKOMMEN]"
 needRelog: "Du musst reconnecten, damit du die Änderungen sehen kannst."

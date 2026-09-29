@@ -57,7 +57,7 @@ adminHelp:
 adminInfo: 
   bannedPlayers: "已封禁的玩家"
   errorNullTeamLeader: 隊長不能為空!
-  errorTeamMembersExist: "玩家擁有團隊成員, 但不應該!"
+  errorTeamMembersExist: "玩家擁有隊伍成員, 但不應該!"
   hoppers: "島上有 [number] 個漏斗"
   islandLocation: 島嶼位置
   isLocked: "島嶼已鎖定"
@@ -200,19 +200,19 @@ challenges:
   youRepeated: "&6你重複完成了&e&l [challenge] &6挑戰!"
 changingObsidiantoLava: "成功將黑曜石變為岩漿,請當心!"
 checkteam: 
-  checkingTeam: "檢查 [name] 的團隊"
+  checkingTeam: "檢查 [name] 的隊伍"
 completechallenge: 
   challangeCompleted: "挑戰: [name] 的 [challengename] 已被設置為已完成"
   errorChallengeDoesNotExist: 挑戰不存在或已經完成了
 confirm: 
   errorTimeLimitExpired: "超過時間限制! 請重新執行指令"
 coop: 
-  cannotcoop: "只有島嶼領袖能將玩家加入協作."
+  cannotcoop: "只有島嶼領袖能將玩家加入合作."
   help: 暫時給予一位玩家完整的權限訪問你的島嶼
   invited: "[name] 使 [player] 成為了合作玩家! 使用驅逐功能可結束關係."
-  listcoops: "列出協作玩家"
+  listcoops: "列出合作玩家"
   madeyoucoopy: "[name] 使你成為了合作玩家直到你登出或被驅逐."
-  notincoop: "[name] 不在你的協作名單中!"
+  notincoop: "[name] 不在你的合作名單中!"
   onyourteam: 玩家已經在隊伍內了!
   removed: "[name] 移除了你的合作狀態!"
   removesuccess: "[name] 不再是你的合作玩家了."
@@ -235,7 +235,7 @@ error:
   noIslandOther: 玩家未擁有島嶼!
   noPermission: "&c&l你沒有權限那樣做!"
   notABlock: "那不是方塊"
-  noTeam: 玩家不再團隊中.
+  noTeam: 玩家不再隊伍中.
   notOnIsland: "你不在島嶼範圍內!"
   offlinePlayer: 玩家不線上或不存在.
   tooLong: "過長. 最大長度為 [length]."
@@ -272,7 +272,7 @@ invite:
   youCannotInvite: "&l你無法邀請更多的玩家了."
   youHaveJoinedAnIsland: "你加入了一個島嶼! 使用 &e&l/[label] team &a來查看其他成員."
 island: 
-  blockValue: "[name]放在這裡可能值得[value]"
+  blockValue: "[name]放在這裏可能值得[value]"
   blockWorthless: "[name]是毫無價值的" 
   cannotTeleport: "&c&l你不能在掉落時傳送!"
   donate: "§a本汉化由§e§ltastybento§a提供"
@@ -302,7 +302,7 @@ island:
   helpSelectLanguage: "選擇語言"
   helpSetHome: "&6設置島嶼指令&e/[label]&6的傳送坐標."
   helpSettings: 查看島嶼保護設定和遊戲設定
-  helpTeam: "&a顯示你團隊的資訊."
+  helpTeam: "&a顯示你隊伍的資訊."
   helpTeleport: 傳送到你的島嶼.
   helpTop: "&5查詢島嶼等級排行榜."
   helpValue: "查看手中方塊的島嶼價值"
@@ -315,7 +315,7 @@ island:
   resetConfirm: "請在&e10&c秒內輸入&e/[label] confirm &c來確認你的操作,然後重新開始!"
   resetMustRemovePlayers: "&c你只有將島嶼&4所有成員&e踢出&c才能重新開始 &b(/[label] kick &c<玩家ID>&b). &a輸入&e/[label] team &a可以查詢成員列表."
   resetNoMore: "&c&l你無法再重新開始了!"
-  resetOnlyOwner: "&c&l只有島嶼的主人才能那樣做. 請輸入&e&l/[label] leave&c&l離開當前團隊,然後重新你的島嶼生涯."
+  resetOnlyOwner: "&c&l只有島嶼的主人才能那樣做. 請輸入&e&l/[label] leave&c&l離開當前隊伍,然後重新你的島嶼生涯."
   resetPleaseWait: "&b&l請稍等,正在創建新的島嶼"
   resetsLeft: "剩餘重置次數"
   resetTo: "&c&l清除重新開始限制"
@@ -394,10 +394,10 @@ islandguardsettings:
   withergriefing: "凋零破壞"
   workbench: 使用工作檯
 kick: 
-  errorNoTeam: 你沒有加入任何島嶼的團隊!
+  errorNoTeam: 你沒有加入任何島嶼的隊伍!
   errorNotPartOfTeam: 這個玩家不是你的島嶼成員之一!
   errorOnlyLeaderCan: 只有島嶼主人才能踢人!
-  errorPlayerNotInTeam: 這個玩家不在你的島嶼團隊中!
+  errorPlayerNotInTeam: 這個玩家不在你的島嶼隊伍中!
   nameRemoved: "&b&l[name] &才已被&4&l驅逐&c出島."
   nameRemovedYou: "&b&l[name] &c將你&4&l驅逐&c出了他的島嶼!"
 lavaTip: "溫馨提示: 如果岩漿變成了黑曜石,可以使用鐵桶右鍵變回岩漿."
@@ -427,9 +427,9 @@ makeleader:
   errorGeneralError: 不能改變島嶼主人.
   errorNotYourIsland: "這不是你的島嶼, 所以你沒有權限!"
   errorPlayerMustBeOnline: 玩家只有線上才能接受你的島嶼.
-  errorRemoveAllPlayersFirst: "將所有玩家踢出團隊,才能進行團隊轉讓."
+  errorRemoveAllPlayersFirst: "將所有玩家踢出隊伍,才能進行隊伍轉讓."
   errorThatPlayerIsNotInTeam: 這個玩家不是你的島嶼成員之一!
-  errorYouMustBeInTeam: 你必須在一個團隊中才能轉讓島嶼.
+  errorYouMustBeInTeam: 你必須在一個隊伍中才能轉讓島嶼.
   nameIsNowTheOwner: "&b&l[name] &a現在是你的島嶼主人了!"
   youAreNowTheOwner: 你現在是島嶼主人了.
 minishop: 

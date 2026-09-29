@@ -116,9 +116,9 @@ adminSetSpawn:
   set: "设定岛屿出生点到你的位置."
   setting: "设定岛屿出生点到你的位置 [location]."
 adminSwitch:
-  op: "Ops can always bypass protection. Deop to use command."
-  adding: "Adding protection bypass..."
-  removing: "Removing protection bypass..."
+  op: "OP 已默认无视岛屿保护. 解除 OP 来使用该命令."
+  adding: "启用岛屿保护绕过..."
+  removing: "禁用岛屿保护绕过..."
 adminTeam: 
   addLeaderNoIsland: "团队领袖没有自己的岛屿所以不能拥有队员!"
   addLeaderToOwn: "无法让领袖再次加入同一团队."
@@ -145,6 +145,7 @@ ban:
   banned: "你被列入 [name] 的岛屿的黑名单!"
   fail: "[name] 无法被列入黑名单!"
   helpBan: 将一个玩家列入岛屿黑名单.
+  helpBanList: 列出被封禁的玩家.
   helpUnban: 将一个玩家从岛屿黑名单中移除
   lifted: "被从 [name] 的岛屿黑名单中解除!"
   liftedsuccess: "被 [name] 解除黑名单!"
@@ -187,7 +188,7 @@ challenges:
   moneyReward: 经济奖励
   name: 挑战名称
   nameHasCompleted: "恭喜玩家 [name] 完成了 [challenge] 挑战!"
-  navigation: "Click to see [level] challenges!"
+  navigation: "点击查看等级 [level] 的挑战!"
   notRepeatable: 这个挑战不可重复!
   repeatRewards: 重复奖励
   rewards: 奖励
@@ -243,7 +244,7 @@ error:
   unknownPlayer: 未知玩家.
   useInGame: "这个指令必须在游戏内使用."
   wrongWorld: "你无法在当前世界这样操作,请返回你的岛屿."
-  minishopDisabled: "Minishop is disabled."
+  minishopDisabled: "迷你商店已禁用."
 expel: 
   expelled: 你被驱逐出了岛屿!
   fail: "[name] 无法被驱逐!"
@@ -285,6 +286,7 @@ island:
   helpColor: "&a"
   helpControlPanel: 打开岛屿帮助界面.
   helpExpel: 强制从你的岛屿上请走一个玩家.
+  helpHeader: "[plugin] v[version] 帮助:"
   helpInvite: 邀请玩家加入你的岛屿.
   helpIsland: "开始岛屿生涯,或者回到你的岛屿."
   helpIslandSpawn: 回到岛屿出生点.
@@ -400,6 +402,7 @@ kick:
   nameRemovedYou: "[name] 将你驱逐出了他的岛屿!"
 lavaTip: "温馨提示: 如果岩浆变成了黑曜石,可以使用铁桶右键变回岩浆."
 leave: 
+  canceled: 已取消离开
   errorLeadersCannotLeave: "空岛主人无法离开岛屿.请输入 /[label] makeleader <玩家ID> 来转让岛屿"
   errorYouAreTheLeader: "因为你是岛屿主人所以不能离开, 使用 /[label] makeleader <玩家> 来改变岛屿主人."
   errorYouCannotLeaveIsland: "你无法离开岛屿当只剩下你一个人的时候.如果你想重新开始,请输入 /[label] restart!"
@@ -455,6 +458,7 @@ purge:
   alreadyRunning: "正在清理中,请等待清理完毕!"
   calculating: "计算不活跃天数超过 [time] 天的岛屿."
   countingUnowned: "正在计数无主岛屿并检查玩家文件. 可能会花一点时间..."
+  estimatedRunTime: 预计运行时间为：[time].
   maxPurge: "一次最大清理数为 [number] 个岛屿. 再次运行purge命令以清理更多."
   finished: 清理不活跃岛屿完成.
   noneFound: 没有不活跃的岛屿被移除.

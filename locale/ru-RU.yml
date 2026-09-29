@@ -116,9 +116,9 @@ adminSetSpawn:
   set: "Установить спавн на острове в Ваше местоположение."
   setting: "Установка спавна в Ваше местоположение [location]"
 adminSwitch:
-  op: "Ops can always bypass protection. Deop to use command."
-  adding: "Adding protection bypass..."
-  removing: "Removing protection bypass..."
+  op: "Операторы всегда могут обходить защиту. Снимите OP, чтобы использовать команду."
+  adding: "Добавление обхода защиты..."
+  removing: "Удаление обхода защиты..."
 adminTeam: 
   addLeaderNoIsland: "У главы команды нет своего острова поэтому он не может иметь команду!"
   addLeaderToOwn: "Нельзя добавить лидера в его команду."
@@ -286,6 +286,7 @@ island:
   helpColor: "&e"
   helpControlPanel: "открыть панель управления островом."
   helpExpel: "изгнать игрока с вашего острова."
+  helpHeader: "[plugin] v[version] справка:"
   helpInvite: "пригласить игрока на ваш остров."
   helpIsland: "создание острова или телепорт на ваш остров."
   helpIslandSpawn: “на спавн."
@@ -320,12 +321,12 @@ island:
   resetTo: "Количество сбросов острова обновлено"
   resetWait: "Вам нужно подождать [time] перед тем как вы сможете поторить."
   resetYouHave: "У вас осталось [number] сбросов острова."
-  subtitle: "by tastybento"
+  subtitle: "от tastybento"
   subtitlecolor: "blue"
   teleport: "Телепортируем Вас на Ваш остров. (/[label] help для большей информации)"
   title: "AcidIsland"
   titlecolor: "gold"
-  unlimited: "Unlimited"
+  unlimited: "Безлимитно"
   url: ""
 islandProtected: "Остров защищен."
 islandguardsettings: 
@@ -350,7 +351,7 @@ islandguardsettings:
   creepergriefing: "Криперы ломают блоки"
   creeperpain: "Криперы причиняют урон"
   croptrample: "Затаптывание посевов"
-  disallowed: Disallowed
+  disallowed: Запрещено
   door: "Использование двери"
   eggs: "Бросание Яиц"
   enchantingtable: "Использование стола зачарований"
@@ -401,6 +402,7 @@ kick:
   nameRemovedYou: "[name] удалил вас со своего острова!"
 lavaTip: "Подсказка: Если вы случайно сделали обсидиан, вы можете превратить его в лаву ведром."
 leave: 
+  canceled: Выход отменён
   errorLeadersCannotLeave: "Вы не можете покинуть остров, так как вы лидер. Сначала - передайте лидера."
   errorYouAreTheLeader: "Вы не можете покинуть остров, так как вы лидер. Сначала - передайте лидера."
   errorYouCannotLeaveIsland: "Вы не можете покинуть остров, если вы последний игрок на нем. Попробуйте рестарт!"
@@ -436,7 +438,7 @@ minishop:
   outofstock: "Нет на складе"
   sell: "Продать(Правый щелчок мыши)"
   sellproblem: "У вас нет достаточного количества [description] для продажи."
-  title: "&EMiniShop"
+  title: "&EМиниМагазин"
   youbought: "Вы купили [number] [description] за [price]"
   youcannotafford: "Вы не можете позволить себе [description]!"
   yousold: "Вы продали [number] [description] за [price]"
@@ -455,6 +457,7 @@ purge:
   alreadyRunning: "Очистка уже начата, подождите, пока она не закончится!"
   calculating: "Рассчитываем количество островов которые были неактивны более [time] дней."
   countingUnowned: "Рассчитываем количество неактивных островов. Это может занять время..."
+  estimatedRunTime: "Расчётное время выполнения: [time]."
   finished: "Очистка неактивных островов окончена."
   maxPurge: "Максимум удалено [number] островов. Используйте еще раз, чтобы удалить больше островов."
   noneFound: "Нет неактивных островов для удаления."
@@ -518,7 +521,7 @@ teamchat:
 topTen:
   errorExcluded: "Вы исклчены из Топ-10 по причине: [perm]"
   errorNotReady: "Топ-10 островов еще не сгенерирован!"
-  guiHeading: "&E&L<!> Island: &6&N[name]&7 (#[rank])"
+  guiHeading: "&E&L<!> Остров: &6&N[name]&7 (#[rank])"
   guiTitle: "Топ-10 островов"
   header: "Это Топ-10 островов:"
 warps: 
@@ -542,5 +545,5 @@ warps:
   warpTip: "Создайте варп, поставив табличку со строчкой [WELCOME] сверху"
   warpToPlayersSign: "Телепортация к табличке игрока <player>."
   warpsAvailable: "Следующие варпы доступны"
-  welcomeLine: "[WELCOME]"
+  welcomeLine: "[ПРИВЕТСТВИЕ]"
 needRelog: "Чтобы увидеть изменения, вам нужно перезайти."
