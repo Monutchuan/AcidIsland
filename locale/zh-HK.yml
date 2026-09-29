@@ -5,547 +5,547 @@
 
 --- 
 acidBottle: 受到輻射的水瓶
-acidBucket: 污染的水桶
+acidBucket: 受污染的水桶
 acidLore: |-
-    &b&l海水受到了&c&l核污染!
+    &b&l海水受到了&c&l核污染！
     !
-    &c&l一切水源無法飲用!
+    &c&l一切水源無法飲用！
 
 adminDeleteIsland: 
-  error: "使用&ldeleteisland confirm &r&c刪除您所在的島嶼."
-  noid: "無法識別島。"
-  use: "或者使用 &ldelete [name] &r&c來刪除一位玩家."
+  error: "使用 &ldeleteisland confirm &r&c刪除你所在的島嶼。"
+  noid: "無法識別島嶼。"
+  use: "或者使用 &ldelete [name] &r&c刪除一位玩家。"
 adminHelp: 
   add: "將玩家加入領隊的隊伍"
-  addrange: "增加或減少島嶼的保護範圍大小."
+  addrange: "增加或減少島嶼的保護範圍大小。"
   clearreset: 重置一位玩家的島嶼重置次數
-  clearresetall: "為所有玩家重設島嶼的重置次數."
-  cobblestats: "顯示魔法鵝卵石的生成統計數據."
-  completeChallenge: 設置挑戰為已完成
-  delete: "移除一個島嶼 (移除所有方塊)."
-  help: "管理員指令:"
+  clearresetall: "為所有玩家重置島嶼的重置次數。"
+  cobblestats: "顯示魔法鵝卵石的生成統計數據。"
+  completeChallenge: 將挑戰設為已完成
+  delete: "移除一個島嶼（連同所有方塊）。"
+  help: "管理員指令："
   info: 玩家資訊
-  infoisland: 離你最近島嶼的資訊
-  kick: "從任何隊伍中移除玩家."
-  level: "提供玩家的島嶼等級詳細報告."
-  listChallengeResets: "列出挑戰重設時間表（若有）"
-  lock: "鎖定/解鎖玩家的島嶼."
-  purge: "刪除閒置島嶼 [天數]."
-  purgeallowdisallow: "允許/禁止島嶼在符合清除條件時被清除."
-  purgeholes: "free up island holes for reuse."
-  purgeunowned: "移除無主島嶼."
+  infoisland: 顯示最接近的島嶼的資訊
+  kick: "從任何隊伍中移除玩家。"
+  level: "提供玩家島嶼等級的詳細報告。"
+  listChallengeResets: "列出挑戰重置時間表（如有）"
+  lock: "鎖定／解鎖玩家的島嶼。"
+  purge: "刪除閒置島嶼 [天數]。"
+  purgeallowdisallow: "允許／禁止島嶼在符合清除條件時被清除。"
+  purgeholes: "釋放島嶼空位以供重用"
+  purgeunowned: "移除無主島嶼。"
   name: "設定玩家島嶼的名稱"
-  register: 設置玩家的島嶼到你的位置
-  reload: 重新載入設定檔案
-  resetAllChallenges: 重製一位玩家所有的挑戰
-  resetChallenge: 設置挑戰為未完成
-  resetChallengeForAll: "為全體玩家重設指定挑戰（可選擇重複）"
-  resetname: "重設玩家島嶼的名稱"
-  resetsign: "將你注視的告示牌重設給島嶼擁有者"
-  setbiome: "設定領隊島嶼的生物群系."
-  setdeaths: "設定玩家的死亡次數."
-  setrange: 改變島嶼保護的範圍
-  setlanguage: "設定預設語言並套用至所有玩家."
-  setspawn: 設置島嶼世界的重生點
-  settingsreset: "將所有島嶼重設為預設保護設定"
-  teamChatSpy: "監聽隊伍聊天（開啟/關閉）"
-  topTen: 強制更新前十名島嶼列表
+  register: 將玩家的島嶼登記到你所在的位置
+  reload: 重新載入設定檔
+  resetAllChallenges: 重置一位玩家的所有挑戰
+  resetChallenge: 將挑戰設為未完成
+  resetChallengeForAll: "為全體玩家重置指定挑戰（可選重複）"
+  resetname: "重置玩家島嶼的名稱"
+  resetsign: "將你望向的告示牌重新指派給島嶼擁有者"
+  setbiome: "設定領隊島嶼的生物群系。"
+  setdeaths: "設定玩家的死亡次數。"
+  setrange: 更改島嶼的保護範圍
+  setlanguage: "設定預設語言並套用至所有玩家。"
+  setspawn: 設定島嶼世界的重生點
+  settingsreset: "將所有島嶼的保護設定重置為預設值"
+  teamChatSpy: "監聽隊伍聊天（開啟／關閉）"
+  topTen: 強制更新十大島嶼排行榜
   topbreeders: "列出目前已載入且生物最多的島嶼"
   tp: "傳送到玩家的島嶼"
   tpnether: "傳送到玩家的地獄島嶼"
-  unregister: 移除一位玩家但是不移除島嶼
+  unregister: 移除一位玩家，但不移除島嶼
 adminInfo: 
-  bannedPlayers: "已封禁的玩家"
-  errorNullTeamLeader: 隊長不能為空!
-  errorTeamMembersExist: "玩家擁有隊伍成員, 但不應該!"
+  bannedPlayers: "已被封禁的玩家"
+  errorNullTeamLeader: 隊長不能為空！
+  errorTeamMembersExist: "玩家擁有隊伍成員，但不應該有！"
   hoppers: "島上有 [number] 個漏斗"
   islandLocation: 島嶼位置
   isLocked: "島嶼已鎖定"
-  isProtected: "島嶼受保護免於清除"
+  isProtected: "島嶼受保護，免於清除"
   isSpawn: "島嶼是出生地"
   isUnlocked: "島嶼已解鎖"
-  isUnprotected: "島嶼未受保護免於清除"
+  isUnprotected: "島嶼未受保護，可被清除"
   lastLogin: "最後登入"
   maxSize: "島嶼最大大小（距離）"
   player: "玩家"
   teamLeader: "隊伍領袖"
   teamMembers: "隊伍成員"
   title: "這是出生地島嶼"
-  unowned: "此島嶼目前無主."
+  unowned: "此島嶼目前無主。"
 adminLock: 
-  adminLockedIsland: "管理員鎖定了你的島嶼"
-  adminUnlockedIsland: "管理員解鎖了你的島嶼"
-  errorInGame: "必須在遊戲內且身在島嶼上使用此指令!"
+  adminLockedIsland: "管理員已鎖定你的島嶼"
+  adminUnlockedIsland: "管理員已解鎖你的島嶼"
+  errorInGame: "必須在遊戲內並身處島嶼上，才能使用此指令！"
 adminRegister: 
-  hadIsland: "[name] 在 [location] 處擁有島嶼"
-  leadsTeam: "[name] 是一支隊伍的領袖. 請先將隊員移出."
-  noIsland: "此區域沒有已知的島嶼!"
-  notSpawn: "你無法取得出生地的擁有權!"
-  taking: "正從 [name] 手中收回擁有權"
+  hadIsland: "[name] 在 [location] 擁有島嶼"
+  leadsTeam: "[name] 是一支隊伍的領袖，請先將隊員移出。"
+  noIsland: "此區域沒有已知的島嶼！"
+  notSpawn: "你無法取得出生地的擁有權！"
+  taking: "正在從 [name] 手中收回擁有權"
 adminResetChallengeForAll:
   error: "重複時間格式必須為 [integer number][m/h/d]（分鐘、小時、天），例如 5h"
-  repeating: "重複 [duration]"
-  reset: "重設 [date]"
+  repeating: "每 [duration] 重複"
+  reset: "於 [date] 重置"
 adminResetSign: 
-  errorExists: "該傳送牌已啟用並屬於 [name]"
-  found: "發現傳送牌!"
-  noSign: "執行此指令時必須看向一個告示牌."
+  errorExists: "該傳送牌已啟用，並屬於 [name]"
+  found: "發現傳送牌！"
+  noSign: "執行此指令時必須望向一個告示牌。"
   rescued: "已收回傳送牌並指派給 [name]"
 adminReserve:
-  islandExists: "此處已有島嶼! 請改為註冊該玩家!"
+  islandExists: "此處已有島嶼！請改為登記該玩家！"
 adminSetHome: 
   homeSet: "已將家設定於 [location]"
-  noneFound: "找不到安全地點!"
+  noneFound: "找不到安全地點！"
   notOnPlayersIsland: "你不在該玩家的島嶼上"
   notSafe: "該地點不安全"
 adminSetRange: 
-  invalid: "範圍無效!"
+  invalid: "範圍無效！"
   set: "已將範圍設定為 [number]"
-  tip: "範圍必須介於 10 到 [max] 之間"
+  tip: "範圍必須介乎 10 至 [max] 之間"
   updated: "島嶼範圍已更新為 [number]"
-  warning: "警告 - 範圍大於島嶼範圍 [max]"
-  warning2: "重疊的島嶼將如同出生地般運作!"
+  warning: "警告——範圍大於島嶼範圍 [max]"
+  warning2: "重疊的島嶼將如出生地般運作！"
 adminSetSpawn: 
   center: "島嶼中心 [location]"
-  coords: "保護座標從 [min] 到 [max]"
-  limits: "島嶼界限從 [min] 到 [max]"
-  locked: "出生地已鎖定!"
-  move: "請移動到更遠處，或解除擁有者的註冊."
+  coords: "保護座標由 [min] 至 [max]"
+  limits: "島嶼界線由 [min] 至 [max]"
+  locked: "出生地已鎖定！"
+  move: "請移到更遠的地方，或解除擁有者的登記。"
   ownedBy: "此島嶼空間由 [name] 擁有"
   range: "保護範圍 = [number]"
-  set: "將島嶼出生點設定為你的位置."
-  setting: "正將島嶼出生點設定為你的位置 [location]."
+  set: "將島嶼出生點設定為你的位置。"
+  setting: "正在將島嶼出生點設定為你的位置 [location]。"
 adminSwitch:
-  op: "OP 始終可繞過保護. 請解除 OP 後再使用此指令."
-  adding: "正在加入保護繞過..."
-  removing: "正在移除保護繞過..."
+  op: "OP 始終可繞過保護，請先解除 OP 再使用此指令。"
+  adding: "正在加入保護繞過……"
+  removing: "正在移除保護繞過……"
 adminTeam: 
-  addLeaderNoIsland: "隊伍領袖沒有自己的島嶼，因此無法擁有隊伍!"
-  addLeaderToOwn: "無法將領袖加入自己的隊伍."
-  addedLeader: "已將領袖加入此隊伍!"
-  addingPlayer: "正在將玩家加入隊伍."
-  alreadyOnTeam: "玩家已在此隊伍中!"
-  kickLeader: "該玩家是隊伍領袖. 請先移除隊員. 使用 '/[label] info [name]' 查找隊員."
-  nowUnowned: "[name] 在 [location] 的島嶼將成為無主狀態. 你可能需要手動刪除它."
-  settingHome: "將玩家的家設定為領袖的家的位置"
+  addLeaderNoIsland: "隊伍領袖沒有自己的島嶼，因此無法擁有隊伍！"
+  addLeaderToOwn: "無法將領袖加入自己的隊伍。"
+  addedLeader: "已將領袖加入此隊伍！"
+  addingPlayer: "正在將玩家加入隊伍。"
+  alreadyOnTeam: "玩家已在此隊伍中！"
+  kickLeader: "該玩家是隊伍領袖，請先移除隊員。使用 '/[label] info [name]' 查找隊員。"
+  nowUnowned: "[name] 在 [location] 的島嶼將成為無主狀態，你可能需要手動刪除它。"
+  settingHome: "正在將玩家的家設定為領袖的家的位置"
 adminTopBreeders: 
-  checking: "正在檢查 [number] 座島嶼..."
-  finding: "正在尋找頂尖的繁殖者..."
-  nothing: "沒有找到生物."
+  checking: "正在檢查 [number] 座島嶼……"
+  finding: "正在尋找頂尖的繁殖者……"
+  nothing: "找不到任何生物。"
 adminTopTen: 
-  finished: 完成生成島嶼前十名單
-  generating: 生成島嶼前十名中
+  finished: 十大島嶼排行榜已生成
+  generating: 正在生成十大島嶼排行榜
 adminTp: 
-  manualWarp: "找不到安全地點. 請手動傳送到 [location] 附近."
+  manualWarp: "找不到安全地點，請手動傳送到 [location] 附近。"
 adminUnregister: 
-  keepBlocks: "正在從世界移除玩家，但保留 [location] 處的島嶼."
-  onTeam: "該玩家隸屬於某隊伍 - 請先解散該隊伍."
+  keepBlocks: "正在從世界移除玩家，但保留 [location] 的島嶼。"
+  onTeam: "該玩家隸屬於某隊伍，請先解散該隊伍。"
 ban: 
-  alreadybanned: "[name] 已被封禁!"
-  banned: "你已被 [name] 的島嶼封禁!"
-  fail: "[name] 無法被封禁!"
-  helpBan: "將玩家從你的島嶼封禁."
-  helpBanList: "列出被封禁的玩家."
-  helpUnban: "將玩家從你的島嶼解除封禁."
-  lifted: "已解除對 [name] 的島嶼的封禁!"
-  liftedsuccess: "已為 [name] 解除封禁!"
+  alreadybanned: "[name] 已被封禁！"
+  banned: "你已被 [name] 的島嶼封禁！"
+  fail: "無法封禁 [name]！"
+  helpBan: "將玩家從你的島嶼封禁。"
+  helpBanList: "列出已被封禁的玩家。"
+  helpUnban: "將玩家從你的島嶼解除封禁。"
+  lifted: "已解除 [name] 島嶼的封禁！"
+  liftedsuccess: "已為 [name] 解除封禁！"
   none: "無"
-  notbanned: "[name] 未被封禁!"
-  notteammember: "你無法封禁隊伍成員!"
-  notyourself: "你不能對自己做這件事!"
-  success: "[name] 已被島嶼封禁!"
+  notbanned: "[name] 未被封禁！"
+  notteammember: "你無法封禁隊伍成員！"
+  notyourself: "你不能對自己這樣做！"
+  success: "[name] 已被島嶼封禁！"
 biome: 
-  help: 打開生態系介面.
-  paneltitle: "&5&l購買生態系&e-&d&l一次性購買"
-  set: "島嶼生態系設置為:[biome]!"
-  unknown: 未知生態系!
-  youbought: "購買花費:[cost]!"
+  help: 開啟生物群系介面。
+  paneltitle: "&5&l購買生物群系&e-&d&l一次性購買"
+  set: "島嶼生物群系已設定為：[biome]！"
+  unknown: 未知的生物群系！
+  youbought: "購買花費：[cost]！"
 boats: 
-  warning: 現在離開船是不安全的
+  warning: 現在離開船隻並不安全
 challenges: 
-  colors: "任務將分為不同的類型級,分別顯示的顏色為:"
+  colors: "挑戰分為不同類型等級，分別以以下顏色顯示："
   complete: "&l已完成"
-  completeNotRepeatable: 已完成&4(不可重複)
-  completeRepeatable: 已完成&a(可重複)
-  completedtimes: "完成 [donetimes] / [maxtimes]"
-  errorIslandLevel: "你的島嶼等級必須達到 &e[level]級&c才能夠完成這個任務!"
-  errorItemsNotThere: 所有任務所需物品必須在你的島上!
-  errorNotCloseEnough: 任務所需物品必須在你[number]格範圍內.
-  errorNotEnoughItems: 你沒有足夠的所需物品
-  errorNotOnIsland: 你只能夠在你的島嶼上那樣做!
-  errorRewardProblem: "在獲得獎勵時出現問題. 請聯繫管理員檢查紀錄!"
-  erroryouaremissing: "你還缺少"
+  completeNotRepeatable: 已完成&4（不可重複）
+  completeRepeatable: 已完成&a（可重複）
+  completedtimes: "已完成 [donetimes] ／ [maxtimes]"
+  errorIslandLevel: "你的島嶼等級必須達到 &e[level]級&c才能完成這個挑戰！"
+  errorItemsNotThere: 所有挑戰所需物品都必須在你的島上！
+  errorNotCloseEnough: 挑戰所需物品必須在你 [number] 格範圍內。
+  errorNotEnoughItems: 你沒有足夠的所需物品。
+  errorNotOnIsland: 你只能在自己的島嶼上這樣做！
+  errorRewardProblem: "派發獎勵時出現問題，請聯絡管理員檢查記錄！"
+  erroryouaremissing: "你還缺少："
   expReward: "&b經驗獎勵"
   firstTimeRewards: "&b首次完成獎勵"
   guititle: "AcidIsland 挑戰"
-  help1: "&6輸入&e /c &b<挑戰名字> &6來查詢一個挑戰的資訊."
-  help2: "&6輸入&e /c complete &b<挑戰名字> &6完成一個挑戰."
+  help1: "&6輸入&e /c &b<挑戰名稱> &6查閱挑戰資訊。"
+  help2: "&6輸入&e /c complete &b<挑戰名稱> &6完成挑戰。"
   incomplete: "&l未完成"
-  invalidChallengeName: "未知挑戰名! 輸入 &e/c help &c獲取更多資訊"
-  itemTakeWarning: 當你完成挑戰的時候所有挑戰所需物品將會&e消失!
+  invalidChallengeName: "未知的挑戰名稱！輸入 &e/c help &c取得更多資訊"
+  itemTakeWarning: 完成挑戰時，所有挑戰所需物品將會&e消失！
   level: "&6等級&d"
-  maxreached: "達到最高值 [donetimes] / [maxtimes]"
+  maxreached: "已達上限 [donetimes] ／ [maxtimes]"
   moneyReward: "&b經濟獎勵"
   name: 挑戰名稱
-  nameHasCompleted: "&6恭喜玩家&2 [name] &6完成了 &e&l[challenge] &6挑戰!"
-  navigation: "點擊查看 [level] 級挑戰!"
-  notRepeatable: "&l這個挑戰不可重複!"
+  nameHasCompleted: "&6恭喜玩家&2 [name] &6完成了 &e&l[challenge] &6挑戰！"
+  navigation: "點擊查閱 [level] 級挑戰！"
+  notRepeatable: "&l此挑戰不可重複！"
   repeatRewards: "&b重複獎勵"
   rewards: 獎勵
-  toComplete: "&c&l請至少完成&b&l [challengesToDo] &c&l個等級為&e&l [thisLevel] &c&l的挑戰來解鎖當前挑戰!"
-  toCompleteUse: "&b完成這個挑戰,輸入"
-  unknownChallenge: "未知挑戰名 &b(請檢查拼寫)!"
-  youHaveCompleted: "&6你完成了&e&l [challenge] &6挑戰!"
-  youHaveNotUnlocked: 你還沒有解鎖當前挑戰!
-  youRepeated: "&6你重複完成了&e&l [challenge] &6挑戰!"
-changingObsidiantoLava: "成功將黑曜石變為岩漿,請當心!"
+  toComplete: "&c&l請先完成&b&l [challengesToDo] &c&l個&e&l [thisLevel] &c&l級挑戰，才可解鎖目前的挑戰！"
+  toCompleteUse: "&b完成此挑戰，輸入"
+  unknownChallenge: "未知的挑戰名稱 &b（請檢查拼寫）！"
+  youHaveCompleted: "&6你已完成&e&l [challenge] &6挑戰！"
+  youHaveNotUnlocked: 你尚未解鎖此挑戰！
+  youRepeated: "&6你已重複完成&e&l [challenge] &6挑戰！"
+changingObsidiantoLava: "已成功將黑曜石變回岩漿，請小心！"
 checkteam: 
-  checkingTeam: "檢查 [name] 的隊伍"
+  checkingTeam: "正在檢查 [name] 的隊伍"
 completechallenge: 
-  challangeCompleted: "挑戰: [name] 的 [challengename] 已被設置為已完成"
-  errorChallengeDoesNotExist: 挑戰不存在或已經完成了
+  challangeCompleted: "挑戰：[name] 的 [challengename] 已設為已完成"
+  errorChallengeDoesNotExist: 挑戰不存在或已完成
 confirm: 
-  errorTimeLimitExpired: "超過時間限制! 請重新執行指令"
+  errorTimeLimitExpired: "已超過時限！請重新執行指令。"
 coop: 
-  cannotcoop: "只有島嶼領袖能將玩家加入合作."
-  help: 暫時給予一位玩家完整的權限訪問你的島嶼
-  invited: "[name] 使 [player] 成為了合作玩家! 使用驅逐功能可結束關係."
+  cannotcoop: "只有島嶼領袖能將玩家加入合作。"
+  help: 暫時給予一位玩家完整權限，讓他存取你的島嶼
+  invited: "[name] 已將 [player] 設為合作玩家！使用驅逐功能即可結束關係。"
   listcoops: "列出合作玩家"
-  madeyoucoopy: "[name] 使你成為了合作玩家直到你登出或被驅逐."
-  notincoop: "[name] 不在你的合作名單中!"
-  onyourteam: 玩家已經在隊伍內了!
-  removed: "[name] 移除了你的合作狀態!"
-  removesuccess: "[name] 不再是你的合作玩家了."
-  success: "[name] 現在為一位合作玩家直到他登出或被驅逐."
-  uncoop: "移除玩家的島嶼完全存取權"
-  useexpel: 使用驅逐功能結束關係.
+  madeyoucoopy: "[name] 已把你設為合作玩家，直到你登出或被驅逐。"
+  notincoop: "[name] 不在你的合作名單中！"
+  onyourteam: 玩家已經在你的隊伍中！
+  removed: "[name] 已移除你的合作狀態！"
+  removesuccess: "[name] 已不再是你的合作玩家。"
+  success: "[name] 現已成為合作玩家，直到他登出或被驅逐。"
+  uncoop: "移除玩家對島嶼的完整存取權"
+  useexpel: 使用驅逐功能結束關係。
 deaths: 
   deaths: "死亡次數"
-  died: "死亡了!"
+  died: "已死亡！"
   leveldeaths: "&c[[number] 次死亡]"
 delete: 
-  removing: "移除了 [name] 的島嶼"
-drankAcid: 飲用輻射水源.
-drankAcidAndDied: 飲用受到輻射的水而死亡.
+  removing: "已移除 [name] 的島嶼"
+drankAcid: 飲用了受輻射的水。
+drankAcidAndDied: 因飲用受輻射的水而死亡。
 error: 
-  blockedbyapi: "某個使用 API 的插件阻止了此動作."
-  commandNotReady: 你現在不能使用此命令.
-  maxIslands: "世界的島嶼已滿! 請稍後再試!"
-  noIsland: 你還沒有獲得一個島嶼!
-  noIslandOther: 玩家未擁有島嶼!
-  noPermission: "&c&l你沒有權限那樣做!"
+  blockedbyapi: "某個使用 API 的插件阻止了此動作。"
+  commandNotReady: 你暫時不能使用此指令。
+  maxIslands: "世界的島嶼已滿！請稍後再試！"
+  noIsland: 你還沒有島嶼！
+  noIslandOther: 該玩家並沒有擁有島嶼！
+  noPermission: "&c&l你沒有權限這樣做！"
   notABlock: "那不是方塊"
-  noTeam: 玩家不再隊伍中.
-  notOnIsland: "你不在島嶼範圍內!"
-  offlinePlayer: 玩家不線上或不存在.
-  tooLong: "過長. 最大長度為 [length]."
-  tooShort: "過短. 最小長度為 [length]."
-  unknownCommand: 未知指令.
-  unknownPlayer: "&c&l未知玩家."
-  useInGame: "此指令必須在遊戲內使用."
-  wrongWorld: 你不能在這個世界這麼做.
-  minishopDisabled: "迷你商店已停用."
+  noTeam: 玩家不在隊伍中。
+  notOnIsland: "你不在島嶼範圍內！"
+  offlinePlayer: 該玩家不在線或不存在。
+  tooLong: "過長，最大長度為 [length]。"
+  tooShort: "過短，最小長度為 [length]。"
+  unknownCommand: 未知的指令。
+  unknownPlayer: "&c&l未知的玩家。"
+  useInGame: "此指令必須在遊戲內使用。"
+  wrongWorld: 你不能在這個世界這樣做。
+  minishopDisabled: "迷你商店已停用。"
 expel: 
-  expelled: 你被驅逐出了島嶼!
-  fail: "[name] 無法被驅逐!"
-  notonisland: 玩家沒有入侵你的島嶼!
-  notyourself: 你不能驅除你自己!
-  success: "你驅逐了玩家:[name]!"
+  expelled: 你已被驅逐出該島嶼！
+  fail: "無法驅逐 [name]！"
+  notonisland: 該玩家並沒有侵入你的島嶼！
+  notyourself: 你不能驅逐自己！
+  success: "你已驅逐玩家：[name]！"
 general:
-  success: "成功!"
+  success: "成功！"
 invite: 
-  errorCantJoinIsland: "你不能加入這個島嶼, 也許島上住滿了人."
-  errorCoolDown: "在 [time] 分鐘內你不能邀請此位玩家"
-  errorThatPlayerIsAlreadyInATeam: "這個玩家已經被被其他島嶼邀請了, 或者已經擁有自己的島嶼."
-  errorYouCannotInviteYourself: "&l你不能邀請你自己入住!"
-  errorYouMustHaveIslandToInvite: "你必須擁有一個島嶼, 才能邀請其他玩家入住!"
-  errorYourIslandIsFull: "你的島嶼住滿了人, 你沒辦法再邀請其他玩家了."
-  hasJoinedYourIsland: "&b&l[name] &a加入了你的島嶼!"
-  help: "&6輸入&e/[label] invite &b<玩家ID> &6邀請玩家加入你的島嶼."
+  errorCantJoinIsland: "你不能加入這個島嶼，也許島上已經住滿了人。"
+  errorCoolDown: "你在 [time] 分鐘內不能邀請這位玩家"
+  errorThatPlayerIsAlreadyInATeam: "這位玩家已被其他島嶼邀請，或者已經擁有自己的島嶼。"
+  errorYouCannotInviteYourself: "&l你不能邀請自己入住！"
+  errorYouMustHaveIslandToInvite: "你必須擁有島嶼，才能邀請其他玩家入住！"
+  errorYourIslandIsFull: "你的島嶼已經住滿了人，無法再邀請其他玩家。"
+  hasJoinedYourIsland: "&b&l[name] &a已加入你的島嶼！"
+  help: "&6輸入&e/[label] invite &b<玩家名稱> &6邀請玩家加入你的島嶼。"
   inviteSentTo: "邀請已發送給&b&l [name]"
-  nameHasInvitedYou: "&b&l[name] &2&l邀請&a你入住他的島嶼!"
-  onlyIslandOwnerCanInvite: 只有島嶼主人才能邀請其他玩家!
-  removingInvite: 移除了你之前邀請的玩家.
-  toAcceptOrReject: "&e來&2&l接受&e或&4&l拒絕&e島嶼入住邀請."
-  warningYouWillLoseIsland: "&4&l警告: &c如果你&2&l接受&c, 你將&4&l失去&c當前這個島嶼!"
-  youCanInvite: "&b你還能邀請 &e&l[number] &b個玩家."
-  youCannotInvite: "&l你無法邀請更多的玩家了."
-  youHaveJoinedAnIsland: "你加入了一個島嶼! 使用 &e&l/[label] team &a來查看其他成員."
+  nameHasInvitedYou: "&b&l[name] &2&l邀請&a你入住他的島嶼！"
+  onlyIslandOwnerCanInvite: 只有島嶼主人才能邀請其他玩家！
+  removingInvite: 已移除你之前的邀請。
+  toAcceptOrReject: "&e以&2&l接受&e或&4&l拒絕&e島嶼入住邀請。"
+  warningYouWillLoseIsland: "&4&l警告：&c如果你&2&l接受&c，你將會&4&l失去&c目前的島嶼！"
+  youCanInvite: "&b你還可以邀請 &e&l[number] &b位玩家。"
+  youCannotInvite: "&l你無法邀請更多玩家了。"
+  youHaveJoinedAnIsland: "你已加入一個島嶼！使用 &e&l/[label] team &a查看其他成員。"
 island: 
   blockValue: "[name]放在這裏可能值得[value]"
-  blockWorthless: "[name]是毫無價值的" 
-  cannotTeleport: "&c&l你不能在掉落時傳送!"
-  donate: "§a本汉化由§e§ltastybento§a提供"
+  blockWorthless: "[name]毫無價值"
+  cannotTeleport: "&c&l你不能在掉落時傳送！"
+  donate: "§a本中文化由§e§ltastybento§a提供"
   donatecolor: "aqua"
-  errorCouldNotCreateIsland: "無法為你創建島嶼. 請聯繫管理員."
-  errorInvalidPlayer: 玩家不存在或者他不曾擁有一個島嶼!
-  errorLevelNotReady: 請稍等數秒後再輸入此指令!
-  errorYouDoNotHavePermission: "&l你沒有權限那樣做!"
-  helpAcceptReject: "&b接受或者拒絕別人的邀請."
-  helpChallenges: "/challenges: &f查詢挑戰"
+  errorCouldNotCreateIsland: "無法為你建立島嶼，請聯絡管理員。"
+  errorInvalidPlayer: 該玩家不存在，或者他未曾擁有島嶼！
+  errorLevelNotReady: 請稍候數秒後再輸入此指令！
+  errorYouDoNotHavePermission: "&l你沒有權限這樣做！"
+  helpAcceptReject: "&b接受或拒絕別人的邀請。"
+  helpChallenges: "/challenges：&f查閱挑戰"
   helpColor: "&e"
-  helpControlPanel: "&6打開島嶼幫助介面."
-  helpExpel: 強制從你的島嶼上請走一個玩家.
-  helpHeader: "[plugin] v[version] 說明:"
-  helpInvite: "&6邀請玩家加入你的島嶼."
-  helpIsland: "&b開始島嶼生涯,&e或者回到你的島嶼."
-  helpIslandSpawn: 回到島嶼出生點.
-  helpKick: "&4將玩家從你的島嶼移除."
-  helpLeave: "&c離開了當前島嶼."
+  helpControlPanel: "&6開啟島嶼說明介面。"
+  helpExpel: 強制將一位玩家從你的島嶼帶走。
+  helpHeader: "[plugin] v[version] 說明："
+  helpInvite: "&6邀請玩家加入你的島嶼。"
+  helpIsland: "&b開始你的島嶼生涯，&e或者回到你的島嶼。"
+  helpIslandSpawn: 返回島嶼出生點。
+  helpKick: "&4將玩家從你的島嶼移除。"
+  helpLeave: "&c離開目前的島嶼。"
   helpLevel: "&e計算你的島嶼等級"
-  helpLevelPlayer: "&d查詢玩家的島嶼等級."
-  helpLock: 鎖住島嶼讓訪客無法訪問
-  helpMakeLeader: 將島嶼贈送給玩家.
+  helpLevelPlayer: "&d查閱玩家的島嶼等級。"
+  helpLock: 鎖住島嶼，讓訪客無法進入
+  helpMakeLeader: 將島嶼轉讓給玩家。
   helpName: "為你的島嶼命名"
-  helpResetName: "重設你的島嶼名稱."
-  helpRestart: "&c&l重新開始&6的你島嶼生涯."
+  helpResetName: "重置你的島嶼名稱。"
+  helpRestart: "&c&l重新開始&6你的島嶼生涯。"
   helpSelectLanguage: "選擇語言"
-  helpSetHome: "&6設置島嶼指令&e/[label]&6的傳送坐標."
-  helpSettings: 查看島嶼保護設定和遊戲設定
-  helpTeam: "&a顯示你隊伍的資訊."
-  helpTeleport: 傳送到你的島嶼.
-  helpTop: "&5查詢島嶼等級排行榜."
+  helpSetHome: "&6設定島嶼指令&e/[label]&6的傳送座標。"
+  helpSettings: 查看島嶼保護設定及遊戲設定
+  helpTeam: "&a顯示你隊伍的資訊。"
+  helpTeleport: 傳送到你的島嶼。
+  helpTop: "&5查閱島嶼等級排行榜。"
   helpValue: "查看手中方塊的島嶼價值"
-  helpWarp: "&e傳送到玩家的傳送點."
-  helpWarps: "&b列出所有可用的傳送點."
-  islandDeletedLifeboats: "&c島嶼已&4&l刪除!"
-  islandLevelis: "&6島嶼等級為&b&l : [level]"
-  new: "&b&l正在為你創建一個新的島嶼..."
-  requiredPointsToNextLevel: "你還需要 [points] 點才能達到 [next] 級!"
-  resetConfirm: "請在&e10&c秒內輸入&e/[label] confirm &c來確認你的操作,然後重新開始!"
-  resetMustRemovePlayers: "&c你只有將島嶼&4所有成員&e踢出&c才能重新開始 &b(/[label] kick &c<玩家ID>&b). &a輸入&e/[label] team &a可以查詢成員列表."
-  resetNoMore: "&c&l你無法再重新開始了!"
-  resetOnlyOwner: "&c&l只有島嶼的主人才能那樣做. 請輸入&e&l/[label] leave&c&l離開當前隊伍,然後重新你的島嶼生涯."
-  resetPleaseWait: "&b&l請稍等,正在創建新的島嶼"
+  helpWarp: "&e傳送到玩家的傳送點。"
+  helpWarps: "&b列出所有可用的傳送點。"
+  islandDeletedLifeboats: "&c島嶼已&4&l刪除！"
+  islandLevelis: "&6島嶼等級為&b&l：[level]"
+  new: "&b&l正在為你建立一個新的島嶼……"
+  requiredPointsToNextLevel: "你還需要 [points] 點才能達到 [next] 級！"
+  resetConfirm: "請在&e10&c秒內輸入&e/[label] confirm &c確認，然後重新開始！"
+  resetMustRemovePlayers: "&c你必須將島嶼上&4所有成員&e踢出&c才能重新開始 &b(/[label] kick &c<玩家名稱>&b)。&a輸入&e/[label] team &a可查看成員名單。"
+  resetNoMore: "&c&l你已經無法再重新開始了！"
+  resetOnlyOwner: "&c&l只有島嶼的主人才能這樣做。請輸入&e&l/[label] leave&c&l離開目前的隊伍，然後重新開始你的島嶼生涯。"
+  resetPleaseWait: "&b&l請稍候，正在建立新的島嶼"
   resetsLeft: "剩餘重置次數"
   resetTo: "&c&l清除重新開始限制"
-  resetWait: "&c你需要等待 &e[time] 秒&c才能那樣做."
-  resetYouHave: "&6你還有&b&l [number] &6次重新開始的機會."
+  resetWait: "&c你需要等待 &e[time] 秒&c才能這樣做。"
+  resetYouHave: "&6你還有&b&l [number] &6次重新開始的機會。"
   subtitle: "請務必努力生存下去"
   subtitlecolor: "aqua"
-  teleport: "&b&l[島嶼娘]:&6歡迎回來~我的主人. &e(輸入&c/[label] help &e獲取更多幫助)"
+  teleport: "&b&l[島嶼娘]：&6歡迎回來~我的主人。&e（輸入&c/[label] help &e取得更多協助）"
   title: "AcidIsland"
   titlecolor: "gold"
   unlimited: "無限"
   url: ""
-islandProtected: 島嶼保護.
+islandProtected: 島嶼保護。
 islandguardsettings: 
   TNTdamage: "TNT 傷害"
   allowed: 允許
   aciddamage: "酸雨傷害"
-  animalspawning: "允許/禁止動物生成"
+  animalspawning: "允許／禁止動物生成"
   anvil: 使用鐵砧
   armorstand: 使用盔甲架
   beacon: 使用烽火台
   bed: 使用床
   breakblocks: 破壞方塊
   breeding: 繁殖動物
-  brewingstand: 藥水釀造
+  brewingstand: 釀造藥水
   bucket: 使用鐵桶
-  collectlava: "Lava collection"
-  collectwater: "Water collection"
+  collectlava: "訪客收集岩漿"
+  collectwater: "訪客收集水"
   chest: 使用箱子
-  chestdamage: 使用TNT損壞箱子
-  chorusfruit: "Chorus Fruit Use"
+  chestdamage: 使用 TNT 破壞箱子
+  chorusfruit: "訪客使用紫頌果"
   creeperdamage: "苦力怕傷害"
   creepergriefing: "苦力怕破壞"
   creeperpain: "苦力怕爆炸傷害"
   croptrample: 踐踏農作物
   disallowed: 不允許
   door: 使用門
-  eggs: "Egg throwing"
+  eggs: "訪客投擲雞蛋"
   enchantingtable: 使用附魔台
   enderpearl: 使用終界珍珠
   fire: 火
-  fireextinguish: "Fire extinguish"
+  fireextinguish: "訪客滅火"
   firespread: "火焰蔓延"
   furnace: 使用熔爐
   gate: 使用柵欄門
-  horseinventoryaccess: "取用馬的物品欄"
+  horseinventoryaccess: "取用馬匹的物品欄"
   horseriding: "騎乘馬匹"
   hurtanimals: 傷害動物
   hurtmonsters: 傷害怪物
-  joinleaveislandmessages: "Enable Join & Leave Island Messages"
+  joinleaveislandmessages: "進出島嶼提示訊息"
   jukebox: 使用唱片機
-  leash: 使用栓繩
+  leash: 使用拴繩
   lever: 使用拉桿或按鈕
-  milking: "Milking"
-  monsterspawning: "允許/禁止怪物生成"
+  milking: "訪客擠牛奶"
+  monsterspawning: "允許／禁止怪物生成"
   netherpvp: "地獄 PvP"
   placeblocks: 放置方塊
   portaluse: 使用傳送門
   pressureplate: "觸發壓力板"
   pvp: PvP
   redstone: 使用紅石
-  settingsgeneraltitle: "General Island World Settings"
+  settingsgeneraltitle: "世界設定"
   settingsgeneraldesc: "一般島嶼世界設定"
   settingsislandtitle: "島嶼設定"
-  settingsislanddesc: "These rules apply to visitors on this island"
+  settingsislanddesc: "此島嶼的設定"
   settingsspawntitle: "出生地設定"
   settingsspawndesc: "這些規則適用於出生地"
   shears: 使用剪刀
-  spawnegg: 使用怪物蛋
+  spawnegg: 使用生怪蛋
   teleportwhenfalling: 掉落時傳送
   title: 島嶼保護設定
-  villagertrading: "Villager trading"
+  villagertrading: "訪客與村民交易"
   visitordrop: 訪客丟棄物品
-  visitorkeepitems: 訪客死亡時保持物品欄
-  visitorpickup: 訪客撿取物品
+  visitorkeepitems: 訪客死亡時保留物品欄
+  visitorpickup: 訪客拾取物品
   withergriefing: "凋零破壞"
-  workbench: 使用工作檯
+  workbench: 使用工作台
 kick: 
-  errorNoTeam: 你沒有加入任何島嶼的隊伍!
-  errorNotPartOfTeam: 這個玩家不是你的島嶼成員之一!
-  errorOnlyLeaderCan: 只有島嶼主人才能踢人!
-  errorPlayerNotInTeam: 這個玩家不在你的島嶼隊伍中!
-  nameRemoved: "&b&l[name] &才已被&4&l驅逐&c出島."
-  nameRemovedYou: "&b&l[name] &c將你&4&l驅逐&c出了他的島嶼!"
-lavaTip: "溫馨提示: 如果岩漿變成了黑曜石,可以使用鐵桶右鍵變回岩漿."
+  errorNoTeam: 你沒有加入任何島嶼的隊伍！
+  errorNotPartOfTeam: 這位玩家不是你的島嶼成員！
+  errorOnlyLeaderCan: 只有島嶼主人才能踢人！
+  errorPlayerNotInTeam: 這位玩家不在你的島嶼隊伍中！
+  nameRemoved: "&b&l[name] &c已被&4&l驅逐&c出島。"
+  nameRemovedYou: "&b&l[name] &c已將你&4&l驅逐&c出他的島嶼！"
+lavaTip: "提示：如果岩漿變成黑曜石，可用鐵桶右鍵點擊變回岩漿。"
 leave: 
   canceled: 已取消離開
-  errorLeadersCannotLeave: "空島主人無法離開島嶼.請輸入 &b/[label] makeleader <玩家ID> 來轉讓島嶼"
-  errorYouAreTheLeader: "因為你是島嶼主人所以不能離開, 使用&b&l /[label] makeleader <玩家> &e來改變島嶼主人."
-  errorYouCannotLeaveIsland: "你無法離開島嶼當只剩下你一個人的時候.如果你想重新開始,請輸入 &e&l/[label] restart!"
-  errorYouMustBeInWorld: 你只能夠在你的島嶼上這樣做!
-  errorYouMustBeInWorld: "You must be in the island world to leave your team!"
-  nameHasLeftYourIsland: "&b&l[name] &c離開了你的島嶼!"
-  warning: "你確定要離開隊伍嗎? 再次輸入 '[label] leave' 以確認."
-  youHaveLeftTheIsland: "你離開了島嶼, 並返回到了玩家出生地."
+  errorLeadersCannotLeave: "島嶼主人無法離開島嶼，請輸入 &b/[label] makeleader <玩家名稱> 轉讓島嶼。"
+  errorYouAreTheLeader: "因為你是島嶼主人，所以不能離開。使用&b&l /[label] makeleader <玩家名稱> &e更改島嶼主人。"
+  errorYouCannotLeaveIsland: "如果島上只剩下你一個人，你就無法離開。如想重新開始，請輸入 &e&l/[label] restart！"
+  errorYouMustBeInWorld: 你只能在自己的島嶼上這樣做！
+  errorYouMustBeInWorld: "你必須身處島嶼世界，才能離開你的隊伍！"
+  nameHasLeftYourIsland: "&b&l[name] &c已離開你的島嶼！"
+  warning: "你確定要離開隊伍嗎？再次輸入 '[label] leave' 以確認。"
+  youHaveLeftTheIsland: "你已離開島嶼，並返回玩家出生地。"
 level: 
-  calculating: "計算島嶼等級中. 請稍後..."
-  errornotYourIsland: 只有島嶼主人才能使用.
+  calculating: "正在計算島嶼等級，請稍候……"
+  errornotYourIsland: 只有島嶼主人才能使用。
   islandLevel: 島嶼等級
 lock: 
   enteringspawn: 進入重生點
-  islandlocked: 島嶼對訪客鎖住
+  islandlocked: 島嶼已對訪客鎖定
   leavingspawn: 離開重生點
-  locking: 鎖住島嶼
-  nowentering: "進入了 [name] 的島嶼"
-  nowleaving: "離開了 [name] 的島嶼"
-  unlocking: 解鎖島嶼
+  locking: 正在鎖定島嶼
+  nowentering: "正在進入 [name] 的島嶼"
+  nowleaving: "正在離開 [name] 的島嶼"
+  unlocking: 正在解鎖島嶼
 makeleader: 
-  errorGeneralError: 不能改變島嶼主人.
-  errorNotYourIsland: "這不是你的島嶼, 所以你沒有權限!"
-  errorPlayerMustBeOnline: 玩家只有線上才能接受你的島嶼.
-  errorRemoveAllPlayersFirst: "將所有玩家踢出隊伍,才能進行隊伍轉讓."
-  errorThatPlayerIsNotInTeam: 這個玩家不是你的島嶼成員之一!
-  errorYouMustBeInTeam: 你必須在一個隊伍中才能轉讓島嶼.
-  nameIsNowTheOwner: "&b&l[name] &a現在是你的島嶼主人了!"
-  youAreNowTheOwner: 你現在是島嶼主人了.
+  errorGeneralError: 無法更改島嶼主人。
+  errorNotYourIsland: "這不是你的島嶼，你沒有權限！"
+  errorPlayerMustBeOnline: 玩家必須在線，才能接收你的島嶼。
+  errorRemoveAllPlayersFirst: "請先將所有玩家踢出隊伍，才能轉讓隊伍。"
+  errorThatPlayerIsNotInTeam: 這位玩家不是你的島嶼成員！
+  errorYouMustBeInTeam: 你必須身處隊伍中，才能轉讓島嶼。
+  nameIsNowTheOwner: "&b&l[name] &a現已是你的島嶼主人！"
+  youAreNowTheOwner: 你現已是島嶼主人。
 minishop: 
   buy: "&b&l購買&e&l"
-  buyproblem: 購買出錯
-  islandhelpMiniShop: 打開迷你商店
-  outofstock: 物品賣完了喲
+  buyproblem: 購買時出錯
+  islandhelpMiniShop: 開啟迷你商店
+  outofstock: 物品已售罄！
   sell: "&c&l出售&e&l"
-  sellproblem: 你沒有足夠的物品.
+  sellproblem: 你沒有足夠的物品。
   title: "&5&l迷你商店&e-&d&l左鍵購買&c&l右鍵出售"
-  youbought: "&a你購買了&e[number]&a個&6[description]&a花費了&b[price]"
-  youcannotafford: "&c餘額不足!"
-  yousold: "&a你出售了&e[number]&a個[description]&a獲得了&b[price]"
+  youbought: "&a你已購買&e[number]&a個&6[description]&a，花費了&b[price]"
+  youcannotafford: "&c餘額不足！"
+  yousold: "&a你已出售&e[number]&a個[description]&a，獲得了&b[price]"
 moblimits: 
-  entity: "島嶼 [entity] 數量已達上限 [number]!"
-  error: "島嶼生物達到上限! [number]"
-  hopper: "島嶼漏斗數量已達上限 [number]!"
-  villager: "島嶼村民繁殖數量已達上限 [number]!"
+  entity: "島嶼的 [entity] 數量已達上限 [number]！"
+  error: "島嶼的生物已達上限！[number]"
+  hopper: "島嶼的漏斗數量已達上限 [number]！"
+  villager: "島嶼的村民繁殖數量已達上限 [number]！"
 nether: 
-  spawnisprotected: 地獄重生點保護
+  spawnisprotected: 地獄重生點受保護
 news: 
-  headline: "[AcidIsland News] 當你離線時..."
+  headline: "[AcidIsland News] 當你不在線時……"
 purge: 
-  acidFound: "共有 [number] 座無主島嶼. 在 20 秒內輸入 '/acid purge unowned confirm' 以刪除它們."
+  acidFound: "共有 [number] 座無主島嶼，請在 20 秒內輸入 '/acid purge unowned confirm' 刪除它們。"
   allowPurge: "已移除清除保護"
-  alreadyRunning: "清除已在運行中, 請稍後至它完成!"
-  calculating: "計算島嶼閒置時間超過 [time] 天者"
-  countingUnowned: "正在統計無主島嶼並檢查玩家檔案. 這可能需要一些時間..."
-  estimatedRunTime: 預估執行時間為：[time].
-  maxPurge: "單次最多清除 [number] 座島嶼. 請再次執行清除以移除更多."
-  finished: 成功清除了閒置島嶼
-  noneFound: 沒有找到閒置的島嶼
-  nowWaiting: "正在等待..."
-  preventPurge: "島嶼受保護免於清除"
-  purgeCancelled: 清除取消
+  alreadyRunning: "清除程序正在執行，請稍候直至完成！"
+  calculating: "正在計算閒置超過 [time] 天的島嶼"
+  countingUnowned: "正在統計無主島嶼並檢查玩家檔案，這可能需要一些時間……"
+  estimatedRunTime: 預計執行時間為：[time]。
+  maxPurge: "單次最多清除 [number] 座島嶼，請再次執行清除以移除更多。"
+  finished: 已成功清除閒置島嶼
+  noneFound: 找不到閒置的島嶼
+  nowWaiting: "正在等待……"
+  preventPurge: "島嶼受保護，免於清除"
+  purgeCancelled: 已取消清除
   removingAt: "正在移除位於 [location] 的島嶼"
-  removingName: "閒置島嶼清除: 移除了 [name] 的島嶼"
-  skyblockFound: "共有 [number] 座無主島嶼. 在 20 秒內輸入 '/asadmin purge unowned confirm' 以刪除它們."
-  stillChecking: "仍在檢查玩家檔案..."
-  thisWillRemove: "這將會移除 [number] 座島嶼!"
-  typeConfirm: "請在10秒內輸入 /[label] confirm 來確認"
-  usage: "用法: /[label] purge [TimeInDays]"
-  warning: "警告! 不要在伺服器有玩家時運行清除動作! 請備份島嶼地圖!"
+  removingName: "清除閒置島嶼：已移除 [name] 的島嶼"
+  skyblockFound: "共有 [number] 座無主島嶼，請在 20 秒內輸入 '/asadmin purge unowned confirm' 刪除它們。"
+  stillChecking: "仍在檢查玩家檔案……"
+  thisWillRemove: "發現 [number] 座閒置島嶼，等級低於 [level] 的島嶼將被移除。"
+  typeConfirm: "請在 10 秒內輸入 /[label] confirm 確認"
+  usage: "用法：/[label] purge [TimeInDays]"
+  warning: "警告！切勿在伺服器有玩家時執行清除動作！請先備份島嶼地圖！"
 register: 
-  errorBedrockNotFound: 無法設置!
-  settingIsland: "設置 [name] 的島嶼至最近的島嶼"
+  errorBedrockNotFound: 無法設定！
+  settingIsland: "正在將 [name] 的島嶼設定至最接近的島嶼"
 reject: 
-  nameHasRejectedInvite: "&b&l[name] &4&l拒絕了&c你的島嶼入駐邀請!"
-  youHaveNotBeenInvited: 你沒有收到任何島嶼入住邀請.
-  youHaveRejectedInvitation: "&c你&4&l拒絕&c了島嶼入住邀請."
+  nameHasRejectedInvite: "&b&l[name] &4&l已拒絕&c你的島嶼入住邀請！"
+  youHaveNotBeenInvited: 你沒有收到任何島嶼入住邀請。
+  youHaveRejectedInvitation: "&c你&4&l已拒絕&c島嶼入住邀請。"
 reload: 
-  configReloaded: 設定檔案重讀成功
+  configReloaded: 設定檔已重新載入
 resetallchallenges: 
-  success: "[name] 被重置了所有挑戰"
+  success: "已重置 [name] 的所有挑戰"
 resetchallenge: 
-  challengeReset: "挑戰: [name] 的 [challengename] 已被設置為未完成"
+  challengeReset: "挑戰：[name] 的 [challengename] 已設為未完成"
   errorChallengeDoesNotExist: 挑戰不存在或未完成
 schematics: 
   title: 選擇島嶼
 sethome: 
-  errorNoIsland: "你不是島嶼的一員. 請返回你的島嶼!"
-  errorNotOnIsland: 你只能在你的島嶼範圍內設置!
-  errorNumHomes: "家可設定 1 到 [max] 個"
-  homeSet: 已經設置家在你當前位置.
+  errorNoIsland: "你不是島嶼的成員，請返回你的島嶼！"
+  errorNotOnIsland: 你只能在自己的島嶼範圍內設定！
+  errorNumHomes: "可設定 1 至 [max] 個家"
+  homeSet: 已將家設定在你目前的位置。
 settingsReset:
-  done: "完成."
-  inprogress: "正在重設保護設定，請稍候..."
+  done: "完成。"
+  inprogress: "正在重置保護設定，請稍候……"
 sign: 
   line1: "&1&l[島嶼生存]"
   line2: "&a[player]"
-  line3: "千萬要當心!"
-  line4: "不要掉下去!"
+  line3: "千萬要小心！"
+  line4: "小心不要掉下去！"
 sign-acidisland:
    line1: "&1&l[島嶼生存]"
    line2: "&a[player]"
-   line3: "千萬要當心!"
-   line4: "不要喝！"
-targetInPVPArea: 目標在非PVP區域中!
+   line3: "千萬要小心！"
+   line4: "千萬不要喝！"
+targetInPVPArea: 目標身處非 PvP 區域！
 team: 
   listingMembers: 顯示你島嶼的成員
 teamchat: 
-  helpChat: "開啟/關閉隊伍聊天"
-  noTeam: "你不在隊伍中!"
-  noTeamAround: "你的隊伍沒有任何人線上!"
+  helpChat: "開啟／關閉隊伍聊天"
+  noTeam: "你不在隊伍中！"
+  noTeamAround: "你的隊伍沒有任何人在線！"
   prefix: "[隊伍聊天]<{ISLAND_PLAYER}> "
-  spyoff: "關閉隊伍聊天監聽"
-  spyon: "開啟隊伍聊天監聽"
+  spyoff: "已關閉隊伍聊天監聽"
+  spyon: "已開啟隊伍聊天監聽"
   statusOff: "隊伍聊天已關閉"
   statusOn: "隊伍聊天已開啟"
 topTen: 
-  errorExcluded: "提示：你因缺少 [perm] 權限而未列入前十名"
-  errorNotReady: 前十名單未生成!
-  guiHeading: "&E&L<!> 島嶼: &6&N[name]&7 (#[rank])"
-  guiTitle: "前 10 名島嶼"
-  header: "排名前10的島嶼:"
+  errorExcluded: "提示：你因為缺少 [perm] 權限而未列入十大排名"
+  errorNotReady: 十大排行榜尚未生成！
+  guiHeading: "&E&L<!> 島嶼：&6&N[name]&7 (#[rank])"
+  guiTitle: "十大島嶼"
+  header: "十大島嶼排名："
 warps: 
-  deactivate: 舊的傳送點被替換!
-  errorDoesNotExist: "&c&l傳送點不存在!"
-  errorDuplicate: 當前位置已經存在傳送點!
-  errorNoPerm: 你沒有權限創建島嶼傳送點!
-  errorNoPlace: 你只能夠在你的島嶼上創建傳送點!
-  errorNoRemove: 你只能移除你自己的傳送點!
-  errorNoWarpsYet: 沒有任何傳送點!
-  errorNotReadyYet: "&c&l傳送點未準備好.請稍後再試."
-  errorNotSafe: "&c&l傳送點不安全.請稍後再試."
-  errorNotEnoughLevel: "你的島嶼等級不足，無法建立歡迎牌!"
+  deactivate: 舊的傳送點已被取代！
+  errorDoesNotExist: "&c&l傳送點不存在！"
+  errorDuplicate: 目前位置已經存在傳送點！
+  errorNoPerm: 你沒有權限建立島嶼傳送點！
+  errorNoPlace: 你只能在自己的島嶼上建立傳送點！
+  errorNoRemove: 你只能移除自己的傳送點！
+  errorNoWarpsYet: 目前沒有任何傳送點！
+  errorNotReadyYet: "&c&l傳送點尚未準備好，請稍後再試。"
+  errorNotSafe: "&c&l傳送點不安全，請稍後再試。"
+  errorNotEnoughLevel: "你的島嶼等級不足，無法建立歡迎牌！"
   next: "下一頁"
-  playerWarped: "[name] &2傳送到你的島嶼!"
+  playerWarped: "[name] &2已傳送到你的島嶼！"
   previous: 上一頁
-  removed: "&c&l傳送點已經移除!"
-  removed: "Welcome sign removed!"
-  signRemoved: "&c&l你的島嶼傳送點已經移除!"
-  success: "&b&l空島傳送點成功創建!"
+  removed: "&c&l傳送點已被移除！"
+  removed: "&c&l歡迎牌已被移除！"
+  signRemoved: "&c&l你的島嶼傳送點已被移除！"
+  success: "&b&l空島傳送點建立成功！"
   title: "島嶼傳送點"
-  warpTip: "放置一個木牌,並且在木牌的第一行輸入&b[WELCOME]&e以設置一個島嶼傳送點."
-  warpToPlayersSign: "傳送到玩家: &b<player>&e的島嶼傳送點."
-  warpsAvailable: 以下的傳送點可用
+  warpTip: "放置一個木牌，並在木牌第一行輸入&b[WELCOME]&e，即可設定島嶼傳送點。"
+  warpToPlayersSign: "傳送到玩家：&b<player>&e的島嶼傳送點。"
+  warpsAvailable: 以下傳送點可供使用
   welcomeLine: "[傳送點]"
-needRelog: "你需要重新登入才能看到變更."
+needRelog: "你需要重新登入才會看到變更。"
