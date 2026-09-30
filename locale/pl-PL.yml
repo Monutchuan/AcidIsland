@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "dodaje gracza do drużyny lidera"
   addrange: "dodaje lub odejmuje z zasięgu ochrony wyspy"
+  clearChallengeReset: usuwa globalny reset wyzwania
   clearreset: "resetuje limit resetów wysp graczy"
   clearresetall: "resetuje limit resetów wysp wszystkim graczom"
   cobblestats: "wyświetla statystyki generowania magicznego bruku"
@@ -37,17 +38,21 @@ adminHelp:
   name: "Ustawia nazwę wyspy gracza"
   register: "ustaw wyspę gracza na twoją lokacje"
   reload: "przeładuj plik konfiguracyjny."
+  reserve: rezerwuje to miejsce na następną wyspę gracza
   resetAllChallenges: "resetuje wszystkie zadania gracza"
   resetChallenge: "zaznacza że zadanie nie jest skończone"
   resetChallengeForAll: "globalnie resetuje wyzwanie wszystkim graczom z opcjonalnym powtarzaniem"
+  resethome: usuwa wszystkie domy gracza
   resetname: "Resetuje nazwę wyspy gracza"
   resetsign: "Resetuje tablicę, na którą patrzysz, na właściciela wyspy"
   setbiome: "ustawia biom wyspy lidera"
   setdeaths: "ustawia licznik śmierci gracza"
+  sethome: ustawia dom gracza na twojej pozycji
   setrange: "zmienia zasięg ochrony wyspy"
   setlanguage: "ustawia domyślny język i ustawia go wszystkim graczom"
   setspawn: "ustawia spawn świata wysp w miejscu blisko ciebie"
   settingsreset: "Resetuje wszystkie wyspy do domyślnych ustawień ochrony"
+  switch: przełącza omijanie ochrony
   teamChatSpy: "Podgląd czatów drużyn (wł./wył.)"
   topTen: "manualnie zaktualizuj liste top 10"
   topbreeders: "wypisuje najbardziej zaludnione wczytane wyspy"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "otwiera GUI biomów."
   paneltitle: "Wybierz biom"
+  pleasewait: Proszę czekać, zmiana biomu...
   set: "Biom wyspy został ustawion do [biome]!"
   unknown: "Nieznany biom!"
   youbought: "Kupione za [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] ustawił [player] jako gracza współpracującego!"
   listcoops: "wypisuje graczy współpracujących"
   madeyoucoopy: "[name] made you a coop player until you log out or they expel you."
+  nameHasInvitedYou: "[name] zaprosił cię do współpracy na swojej wyspie!"
   notincoop: "[name] nie jest w twojej współpracy!"
   onyourteam: "Gracz jest już w twojej drużynie!"
   removed: "[name] usunął twój status współpracy!"
@@ -330,6 +337,7 @@ island:
   url: "" 
 islandProtected: "Wyspa chroniona."
 islandguardsettings: 
+  pistonpush: Tłoki mogą przesuwać bloki poza teren wyspy
   TNTdamage: "Obrażenia od TNT"
   allowed: "Dozwolone"
   aciddamage: "Obrażenia od kwasu"
@@ -421,6 +429,8 @@ lock:
   locking: "Blokowanie wyspy"
   nowentering: "Wchodzisz na wyspę [name]"
   nowleaving: "Opuszczasz wyspę [name]"
+  playerlocked: "[name] zablokował wyspę"
+  playerunlocked: "[name] odblokował wyspę"
   unlocking: "Odblokowywanie wyspy"
 makeleader: 
   errorGeneralError: "Nie można zmienić lidera."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Wyspa: &6&N[name]&7 (#[rank])"
   guiTitle: "Top 10 wysp"
   header: "To są najlepsze wyspy z Top 10:"
+visitors: 
+  protected: Goście chronieni
 warps: 
   deactivate: "Deaktywacja starej tabliczki!"
   errorDoesNotExist: "Ten teleport nie istnieje!"

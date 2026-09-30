@@ -1245,8 +1245,8 @@ public class ASLocale {
         purgeSkyBlockFound = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.skyblockFound", "There are [number] unowned islands. Do '/asadmin purge unowned confirm' to delete them within 20 seconds."));
         purgeAcidFound = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.acidFound", "There are [number] unowned islands. Do '/acid purge unowned confirm' to delete them within 20 seconds."));
         purgeLimit = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.maxPurge", "Max purge is [number] islands. Run purge again afterwards to purge more."));
-        adminAllowPurge = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.preventName", "Purge protection removed"));
-        adminPreventPurge = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.allowName", "Island is protected from purging"));
+        adminAllowPurge = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.allowPurge", "Purge protection removed"));
+        adminPreventPurge = ChatColor.translateAlternateColorCodes('&', locale.getString("purge.preventPurge", "Island is protected from purging"));
         confirmerrorTimeLimitExpired = ChatColor.translateAlternateColorCodes('&',
                 locale.getString("confirm.errorTimeLimitExpired", "Time limit expired! Issue command again."));
         deleteremoving = ChatColor.translateAlternateColorCodes('&', locale.getString("delete.removing", "Removing [name]'s island."));
@@ -1261,7 +1261,7 @@ public class ASLocale {
                 locale.getString("adminInfo.errorTeamMembersExist", "Player has team members, but shouldn't!"));
         resetChallengessuccess = ChatColor.translateAlternateColorCodes('&',
                 locale.getString("resetallchallenges.success", "[name] has had all challenges reset."));
-        checkTeamcheckingTeam = ChatColor.translateAlternateColorCodes('&', locale.getString("checkTeam.checkingTeam", "Checking Team of [name]"));
+        checkTeamcheckingTeam = ChatColor.translateAlternateColorCodes('&', locale.getString("checkteam.checkingTeam", "Checking Team of [name]"));
         completeChallengeerrorChallengeDoesNotExist = ChatColor.translateAlternateColorCodes('&',
                 locale.getString("completechallenge.errorChallengeDoesNotExist", "Challenge doesn't exist or is already completed"));
         completeChallengechallangeCompleted = ChatColor.translateAlternateColorCodes('&',
@@ -1280,7 +1280,7 @@ public class ASLocale {
                 locale.getString("adminInfo.errorTeamMembersExist", "Player has team members, but shouldn't!"));
         resetChallengessuccess = ChatColor.translateAlternateColorCodes('&',
                 locale.getString("resetallchallenges.success", "[name] has had all challenges reset."));
-        checkTeamcheckingTeam = ChatColor.translateAlternateColorCodes('&', locale.getString("checkTeam.checkingTeam", "Checking Team of [name]"));
+        checkTeamcheckingTeam = ChatColor.translateAlternateColorCodes('&', locale.getString("checkteam.checkingTeam", "Checking Team of [name]"));
         completeChallengeerrorChallengeDoesNotExist = ChatColor.translateAlternateColorCodes('&',
                 locale.getString("completechallenge.errorChallengeDoesNotExist", "Challenge doesn't exist or is already completed"));
         completeChallengechallangeCompleted = ChatColor.translateAlternateColorCodes('&',
@@ -1317,10 +1317,10 @@ public class ASLocale {
                 locale.getString("adminHelp.clearresetall", "resets the island reset limit for all players."));
         resetYouHave = ChatColor.translateAlternateColorCodes('&', locale.getString("island.resetYouHave", "You have [number] resets left."));
         resetsLeft = ChatColor.translateAlternateColorCodes('&', locale.getString("island.resetsLeft", "Resets left"));
-        unlimited = ChatColor.translateAlternateColorCodes('&', locale.getString("island.unlimitd", "Unlimited"));
+        unlimited = ChatColor.translateAlternateColorCodes('&', locale.getString("island.unlimited", "Unlimited"));
         islandResetNoMore = ChatColor.translateAlternateColorCodes('&',
                 locale.getString("island.resetNoMore", "No more resets are allowed for your island!"));
-        clearedResetLimit = ChatColor.translateAlternateColorCodes('&', locale.getString("resetTo", "Cleared reset limit"));
+        clearedResetLimit = ChatColor.translateAlternateColorCodes('&', locale.getString("island.resetTo", "Cleared reset limit"));
 
         islandhelpBiome = ChatColor.translateAlternateColorCodes('&', locale.getString("biome.help", "open the biome GUI."));
         biomeSet = ChatColor.translateAlternateColorCodes('&', locale.getString("biome.set", "Island biome set to [biome]!"));
@@ -1413,14 +1413,14 @@ public class ASLocale {
         adminInfotitle = ChatColor.translateAlternateColorCodes('&', locale.getString("adminInfo.title", "This is spawn island"));
         adminInfounowned = ChatColor.translateAlternateColorCodes('&', locale.getString("adminInfo.unowned", "This island is not owned by anyone right now."));
         adminHelpResetHome = ChatColor.translateAlternateColorCodes('&', locale.getString("adminHelp.resethome", "Clears all home spots for player"));
-        adminHelpSetHome = ChatColor.translateAlternateColorCodes('&', locale.getString("adminHelp.resethome", "Sets player's home to your position"));
+        adminHelpSetHome = ChatColor.translateAlternateColorCodes('&', locale.getString("adminHelp.sethome", "Sets player's home to your position"));
         adminSetHomeNoneFound = ChatColor.translateAlternateColorCodes('&', locale.getString("adminSetHome.noneFound", "No safe location found!"));
         adminSetHomeHomeSet = ChatColor.translateAlternateColorCodes('&', locale.getString("adminSetHome.homeSet", "Home set to [location]"));
         adminSetHomeNotOnPlayersIsland = ChatColor.translateAlternateColorCodes('&', locale.getString("adminSetHome.notOnPlayersIsland", "You are not on the player's island"));
         adminResetChallengeForAllError = ChatColor.translateAlternateColorCodes('&', locale.getString("adminResetChallengeForAll.error", "Format for repeat time must is [integer number][m/h/d] (minutes, hours, days), e.g. 5h"));
         adminResetChallengeForAllRepeating = ChatColor.translateAlternateColorCodes('&', locale.getString("adminResetChallengeForAll.repeating", "Repeating [duration]"));
         adminResetChallengeForAllReset = ChatColor.translateAlternateColorCodes('&', locale.getString("adminResetChallengeForAll.reset", "Reset [date]"));       
-        adminHelpResetSign = ChatColor.translateAlternateColorCodes('&', locale.getString("adminHelp.resetSign", "Resets the sign you are looking at to the island owner"));
+        adminHelpResetSign = ChatColor.translateAlternateColorCodes('&', locale.getString("adminHelp.resetsign", "Resets the sign you are looking at to the island owner"));
         adminResetSignNoSign = ChatColor.translateAlternateColorCodes('&', locale.getString("adminResetSign.noSign", "You must be looking at a sign post to run this command."));
         adminResetSignFound = ChatColor.translateAlternateColorCodes('&', locale.getString("adminResetSign.found", "Warp Sign found!"));
         adminResetSignRescued = ChatColor.translateAlternateColorCodes('&', locale.getString("adminResetSign.rescued", "Warp sign rescued and assigned to [name]"));
@@ -1431,8 +1431,8 @@ public class ASLocale {
         adminSetRangeWarning = ChatColor.translateAlternateColorCodes('&', locale.getString("adminSetRange.warning", "Warning - range is greater than island range [max]"));
         adminSetRangeWarning2 = ChatColor.translateAlternateColorCodes('&', locale.getString("adminSetRange.warning2", "Overlapped islands will act like spawn!"));
         adminTpManualWarp = ChatColor.translateAlternateColorCodes('&', locale.getString("adminTp.manualWarp", "No safe spot found. Manually warp to somewhere near [location]."));
-        adminUnregisterOnTeam = ChatColor.translateAlternateColorCodes('&', locale.getString("adminUnregsiter.onTeam", "Player is in a team - disband it first."));
-        adminUnregisterKeepBlocks = ChatColor.translateAlternateColorCodes('&', locale.getString("adminUnregsiter.KeepBlocks", "Removing player from world, but keeping island at [location]"));
+        adminUnregisterOnTeam = ChatColor.translateAlternateColorCodes('&', locale.getString("adminUnregister.onTeam", "Player is in a team - disband it first."));
+        adminUnregisterKeepBlocks = ChatColor.translateAlternateColorCodes('&', locale.getString("adminUnregister.keepBlocks", "Removing player from world, but keeping island at [location]"));
         adminInfoPlayer = ChatColor.translateAlternateColorCodes('&', locale.getString("adminInfo.player","Player"));
         adminInfoLastLogin = ChatColor.translateAlternateColorCodes('&', locale.getString("adminInfo.lastLogin","Last Login"));
         adminInfoTeamLeader = ChatColor.translateAlternateColorCodes('&', locale.getString("adminInfo.teamLeader","Team Leader"));

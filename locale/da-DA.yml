@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "tilføjer spiller til leders hold"
   addrange: tilføjer eller fjerner fra Ø'ens beskyttelsesrækkevidde
+  clearChallengeReset: rydder en global nulstilling af en udfordring
   clearreset: "nulstiller reset begrænsning for spiller"
   clearresetall: nulstiller reset begrænsning for alle spillere
   cobblestats: viser statistik for magisk cobblestone
@@ -37,17 +38,21 @@ adminHelp:
   purgeunowned: "fjern Ø'er uden ejer"
   register: "sæt en spillers Ø til din nuværende position"
   reload: "genindlæs konfiguration fra fil."
+  reserve: reserverer dette sted til spillerens næste Ø
   resetAllChallenges: "nulstil alle spillerens udfordringer"
   resetChallenge: "marker en udfordring ikke fuldført"
   resetChallengeForAll: nulstiller en udfordring for alle spillere, valgfrit med gentagelse
+  resethome: rydder alle hjemmepositioner for spilleren
   resetname: nulstil navnet på spillerens Ø
   resetsign: "Nulstil det skilt du kigger på til Ø'ens ejer"
   setbiome: "sætter lederens Ø biome"
   setdeaths: sætter spillerens dødstæller
+  sethome: sætter spillerens hjem til din position
   setlanguage: sætter standardsproget og nulstiller alle spillere til det sprog
   setrange: "ændrer Ø'ens beskyttelsesrækkevidde"
   setspawn: "sætter Ø'ens verdens spawn til en position tæt på dig"
   settingsreset: nulstiller alle Ø'er til standard beskyttelsesindstillinger
+  switch: slår omgåelse af beskyttelse til og fra
   teamChatSpy: "Spionér på holdchat(til/fra)"
   topTen: "opdater Top 10 listen manuelt"
   topbreeders: "lister de mest befolkede Ø'er der er indlæst lige nu"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "åbner biomes GUI."
   paneltitle: "Vælg et Biome"
+  pleasewait: Vent venligst, ændrer biome...
   set: "Ø biome sat til [biome]!"
   unknown: "Ukendt biome!"
   youbought: "Købt for [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] gjorde [player] til en partner!"
   listcoops: list coop spillere
   madeyoucoopy: "[name] gjorde dig til partner!"
+  nameHasInvitedYou: "[name] har inviteret dig til at coop på deres Ø!"
   notincoop: "[name] er ikke din partner!"
   onyourteam: "Spilleren er allerede på dit hold!"
   removed: "[name] fjernede din partner status!"
@@ -342,6 +349,7 @@ islandguardsettings:
   joinleaveislandmessages: Besked ved ind og udgang af Ø
   milking: Besøgende malker køer
   monsterspawning: Tillad eller forbyd monstre at spawne
+  pistonpush: Stempler kan skubbe blokke uden for ø-området
   TNTdamage: "TNT skade"
   allowed: "Tilladt"
   anvil: "Brug ambolt"
@@ -421,6 +429,8 @@ lock:
   locking: "Låser Ø"
   nowentering: "Ankommer til [name]'s Ø"
   nowleaving: "Forlader nu [name]'s Ø"
+  playerlocked: "[name] låste Ø'en"
+  playerunlocked: "[name] låste Ø'en op"
   unlocking: "Låser Ø'en op"
 makeleader: 
   errorGeneralError: "Kunne ikke ændre leder."
@@ -525,6 +535,8 @@ topTen:
   guiHeading: "&E&L<!> Ø: &6&N[name]&7 (#[rank])"
   guiTitle: Top 10 Ø'er
   header: "Her er Top 10 Ø'erne:"
+visitors: 
+  protected: Besøgende beskyttet
 warps: 
   deactivate: "Deaktiverer gammelt skilt!"
   errorDoesNotExist: "Det warp eksisterer ikke!"

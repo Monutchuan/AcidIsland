@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "speler toegevoegd aan de leiders van team"
   addrange: "Verhoog of verlaag het beschermings bereik van je eiland"
+  clearChallengeReset: wist een globale challenge-reset
   clearreset: "Eiland reset limiet gereset voor [name]"
   clearresetall: "reset de reset limiet voor alle spelers"
   cobblestats: "Laat de magische cobblestone generator statistieken zien"
@@ -37,17 +38,21 @@ adminHelp:
   name: "Zet de naam van spelers eiland"
   register: "zet het eiland van een speler naar jouw locatie"
   reload: "herlaad AcidIsland configuratie."
+  reserve: reserveert deze plek voor het volgende eiland van de speler
   resetAllChallenges: "resets alle speler challenges"
   resetChallenge: "markeer een challenge als niet gedaan"
   resetChallengeForAll: "reset globaal een uitdaging voor elke speler met een optionele herhaling"
+  resethome: wist alle thuisposities van de speler
   resetname: "Reset de naam van iemand zen eiland"
   resetsign: "hiermee herstel je het warp bordje van de eigenaar"
   setbiome: "zet de biome van het eiland"
   setdeaths: "Zet spelers sterf getal"
+  sethome: zet het thuispunt van de speler op jouw positie
   setrange: "veranderd het eiland protectie-bereik"
   setlanguage: "Stel de standaart taal in en reset iedereen zen taal naar de nieuwe standaart taal"
   setspawn: "zet de AcidIsland spawn naar jouw locatie"
   settingsreset: "Reset alle protectie instellingen van alle spelers naar de standaart instellingen"
+  switch: schakelt het omzeilen van bescherming in/uit
   teamChatSpy: "spioneer in team chats (aan/uit)"
   topTen: "handmatig bijwerken van de top 10 lijst"
   topbreeders: "lijst van meest bezochte eilanden is geladen"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "Open het biome controle paneel."
   paneltitle: "Slecteer een biome"
+  pleasewait: Een ogenblik geduld, biome word veranderd...
   set: "Eiland biome is veranderd naar [biome]!"
   unknown: "Verkeerde biome!"
   youbought: "Gekocht voor [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] maakte [player] een co-op speler!"
   listcoops: "lijst met medespelers van je eiland"
   madeyoucoopy: "[name] heeft je in een co-op speler veranderd!"
+  nameHasInvitedYou: "[name] heeft je uitgenodigd om samen te werken op hun eiland!"
   notincoop: "[name] zit niet in jouw co-op!"
   onyourteam: "Speler zit al in jouw team!"
   removed: "[name] heeft jouw co-op status verwijderd!"
@@ -330,6 +337,7 @@ island:
   url: ""
 islandProtected: "Eiland beschermd."
 islandguardsettings: 
+  pistonpush: Zuigers kunnen blokken buiten het eilandgebied duwen
   TNTdamage: "TNT Schade"
   allowed: Toegestaan
   aciddamage: "Zuurschade"
@@ -421,6 +429,8 @@ lock:
   locking: "Bezig met het vergrendelen van het eiland"
   nowentering: "Je betreed nu [name]'s eiland"
   nowleaving: "Je verlaat nu [name]'s eiland"
+  playerlocked: "[name] heeft het eiland vergrendeld"
+  playerunlocked: "[name] heeft het eiland ontgrendeld"
   unlocking: "Bezig met het ontgrendelen van het eiland."
 makeleader: 
   errorGeneralError: "Kan de leiders niet veranderen."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Eiland: &6&N[name]&7 (#[rank])"
   guiTitle: "Top 10 Eilanden"
   header: "Dit zijn de top tien eilanden:"
+visitors: 
+  protected: Bezoekers beschermt
 warps: 
   deactivate: "Bezig met het oude warp bordje deactiveren..."
   errorDoesNotExist: "Die warp bestaat niet."

@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp:
   add: "prida hrace do tymu vedouciho"
   addrange: "prida nebo odebere z dosahu ochrany ostrova"
+  clearChallengeReset: zrusi globalni reset vyzvy
   clearreset: "zresetuje limit poctu restartu ostrovu hrace."
   clearresetall: "resetne limit resetu ostrova pro vsechny hrace"
   cobblestats: "zobrazi statistiky tvorby magickeho cobblestone"
@@ -37,17 +38,21 @@ adminHelp:
   name: "Nastavi jmeno ostrova hrace"
   register: "nastavi hracuv ostrov na tvou pozici"
   reload: "nahraje konfiguraci ze souboru."
+  reserve: rezervuje toto misto pro dalsi ostrov hrace
   resetAllChallenges: "zresetuje vsechny ukoly hrace"
   resetChallenge: "oznaci ukol za nesplneny"
   resetChallengeForAll: "globalne resetne vyzvu vsem hracum s volitelnym opakovanim"
+  resethome: vymaze vsechny domovni pozice hrace
   resetname: "Resetne jmeno ostrova hrace"
   resetsign: "Resetne ceduli, na kterou se divas, vlastnikovi ostrova"
   setbiome: "nastavi biom ostrova vedouciho"
   setdeaths: "nastavi pocet umrti hrace"
+  sethome: nastavi domov hraca na tvoji pozici
   setlanguage: "nastavi vychozi jazyk a nastavi ho vsem hracum"
   setrange: "zmeni dosah ochranne oblasti."
   setspawn: "nastavi spawn ostrovniho sveta na tvou pozici."
   settingsreset: "Resetne vsechny ostrovy na vychozi nastaveni ochrany"
+  switch: prepne obchazeni ochrany
   teamChatSpy: "Sledovani tymoveho chatu (zapnout/vypnout)"
   topTen: "provede rucni update top 10 ostrovu"
   topbreeders: "vypise nejvice obydlene nactene ostrovy"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "otevre ovladaci panel biomu."
   paneltitle: "Vyber biom"
+  pleasewait: Prosim pockej, menim biom...
   set: "Biom ostrova nastaven na [biome]!"
   unknown: "Neznamy biom!"
   youbought: "Koupeno za [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] udelal z [player] kooperujiciho hrace!"
   listcoops: "vypise hrace v coop"
   madeyoucoopy: "[name] z tebe udelal kooperujiciho hrace dokud se neodpoji nebo te nevylouci."
+  nameHasInvitedYou: "[name] te pozval do coop na svem ostrove!"
   notincoop: "[name] neni v tvem coop!"
   onyourteam: "Hrac uz je v tvem tymu!"
   removed: "[name] odstrani tvuj status kooperatora!"
@@ -332,6 +339,7 @@ islandProtected: "Ostrov chranen."
 islandguardsettings: 
   horseinventoryaccess: Navstevnik pouziva inventar kone
   horseriding: Navstevnik jezdi na koni
+  pistonpush: Pisty mohou posouvat bloky mimo ostrov
   TNTdamage: "Poskozeni TNT"
   allowed: Povoleno
   aciddamage: "Poskozeni kyselinou"
@@ -421,6 +429,8 @@ lock:
   locking: "Ostrov uzamcen"
   nowentering: "Nyni vstupujete na ostrov hrace [name]"
   nowleaving: "Nyni opoustite otrov hrace [name]"
+  playerlocked: "[name] uzamkl ostrov"
+  playerunlocked: "[name] odemkl ostrov"
   unlocking: "Ostrov odemknut"
 makeleader: 
   errorGeneralError: "Nemohu zmenit vudce ostrova."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Ostrov: &6&N[name]&7 (#[rank])"
   guiTitle: "Top 10 ostrovu"
   header: "Nejlepsich 10 ostrovu:"
+visitors: 
+  protected: Navstevnici chraneni
 warps: 
   deactivate: "Deaktivace stare cedulky!"
   errorDoesNotExist: "Tento warp neexistuje!"

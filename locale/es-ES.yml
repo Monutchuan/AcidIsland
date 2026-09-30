@@ -17,6 +17,7 @@ adminDeleteIsland:
 adminHelp:
   add: "Añade jugador para el equipo de líder."
   addrange: "Sumar o restar rango de proteccion de la isla."
+  clearChallengeReset: elimina el reinicio global de un desafío
   clearreset: "Resetea el límite de reseteos de isla para el jugador."
   clearresetall: "Resetear la isla resetea el limite para todos los jugadores."
   cobblestats: "Mostrar las estadisticas de generacion magica de cobble."
@@ -36,17 +37,21 @@ adminHelp:
   name: "Establece el nombre de la isla del usuario."
   register: "Ajusta la isla de un jugador a tu ubicación."
   reload: "Recarga la configuración de los achivos."
+  reserve: reserva este lugar para la próxima isla del jugador
   resetAllChallenges: "Resetea todos los retos del jugador."
   resetChallenge: "Marca un reto como incompleto."
   resetChallengeForAll: "Resetear globalmente un cambio a todos los jugadores con una repeticion opcional."
+  resethome: borra todos los puntos de hogar del jugador
   resetname: "Resetea el nombre de la isla del usuario."
   resetsign: "Restablece la señal que tu está mirando para el propietario de la isla."
   setbiome: "Establece isla bioma del líder."
   setdeaths: "Establece el recuento de la muerte del usuario."
+  sethome: establece el hogar del jugador en tu posición
   setrange: "Cambio de rango de proteccion de isla."
   setlanguage: "Establecer el idioma por defecto y resetear a todos los jugadores a este idioma."
   setspawn: "Establece el punto de reaparicion donde estas."
   settingsreset: "Restablecer todas las islas a los parametros de proteccion predefinidos."
+  switch: activa/desactiva la omisión de protección
   teamChatSpy: "Espiar a los chats de equipo. (Encendido/Apagado)"
   topTen: "Actualiza manualmente el top 10 de islas"
   topbreeders: "Enumera islas más pobladas actualmente cargado."
@@ -156,6 +161,7 @@ ban:
 biome:
   help: "Abre el GUI de biomas."
   paneltitle: "Selecciona un bioma."
+  pleasewait: Espera, cambiando el bioma...
   set: "Bioma de isla ajustado a [biome]!"
   unknown: "Bioma desconocido!"
   youbought: "Comprado por [cost]!"
@@ -211,6 +217,7 @@ coop:
   invited: "[name] ahora es coop en la isla de [player]!"
   listcoops: "Lista de usuarios que cooperan en tu isla."
   madeyoucoopy: "Le has dado coop a [name] hasta que se desconecte o se le expulse."
+  nameHasInvitedYou: ¡[name] te ha invitado a cooperar en su isla!
   notincoop: "[name] no está en su coop!"
   onyourteam: "El jugador ya esta en modo coop."
   removed: "[name] ha sido eliminado del coop."
@@ -329,6 +336,7 @@ island:
   url: ""
 islandProtected: "Isla protegida."
 islandguardsettings:
+  pistonpush: Los pistones pueden empujar bloques fuera del área de la isla
   TNTdamage: "Daño de tnt"
   allowed: "Activado"
   aciddamage: "Daño de ácido"
@@ -420,6 +428,8 @@ lock:
   locking: "Isla bloqueada"
   nowentering: "Entrando a la isla de [name]."
   nowleaving: "Saliendo de la isla de [name]."
+  playerlocked: "[name] ha bloqueado la isla"
+  playerunlocked: "[name] ha desbloqueado la isla"
   unlocking: "Isla desbloqueada"
 makeleader:
   errorGeneralError: "No se pueden cambiar líderes."
@@ -523,6 +533,8 @@ topTen:
   guiHeading: "&E&L<!> Isla: &6&N[name]&7 (#[rank])"
   guiTitle: "Las 10 mejores islas"
   header: "Este es el top 10 de islas:"
+visitors: 
+  protected: Visitantes protegidos
 warps:
   deactivate: "Desactivando cartel viejo!"
   errorDoesNotExist: "Ese warp no existe!"

@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "Hozzáadja játékos a vezető csapatához."
   addrange: "A szigeti védelmi tartományhoz hozzáadódik, vagy a szubsztrátumoktól."
+  clearChallengeReset: globális kihívás-visszaállítás törlése
   clearreset: "Visszaállítja egy játékosnak az alap szigetre."
   clearresetall: "Visszaállítja a szigetek alaphelyzetét minden játékos számára."
   cobblestats: "Megjeleníti a mágikus zúzott generációs statisztikákat."
@@ -37,17 +38,21 @@ adminHelp:
   name: "Állítsa be a játékos szigetének nevét"
   register: "Sziget regisztráció."
   reload: "Beállítások frissítése."
+  reserve: lefoglalja ezt a helyet a játékos következő szigetének
   resetAllChallenges: "Küldetések újratöltése egy játékosnak."
   resetChallenge: "Egy küldetés megtekintése, hogy teljesítve, vagy nincs kész."
   resetChallengeForAll: "Globálisan minden küldetést állít be minden játékos számára az opcionális ismétléssel."
+  resethome: törli a játékos összes otthon pontját
   resetname: "Beállítja a játékos szigetének a nevét."
   resetsign: "Tábla frissítés és a sziget tulajdonosa."
   setbiome: "Meghatározza a vezető sziget biomát."
   setdeaths: "Meghatározza a játékos halálát"
+  sethome: a játékos otthonát a pozíciódra állítja
   setlanguage: "Beállítja az alapértelmezett nyelvet, és minden játékos visszaállítja az adott nyelvet."
   setrange: "Megváltoztatja a sziget védelmi tartományát."
   setspawn: "A sziget világát egy közeli helyre állítja."
   settingsreset: "Az összes szigetet visszaállítja az alapértelmezett védelmi beállításokra."
+  switch: védelem megkerülésének kapcsolása
   teamChatSpy: "Spy a csapatcsevegésekre (be/ki)"
   topTen: "Kilistázza a legjobb szigeteket."
   topbreeders: "Felsorolja a jelenleg betöltött legtöbb lakott szigetet."
@@ -213,6 +218,7 @@ coop:
   invited: "[name] szövetkezett [player] játékossal!"
   listcoops: "Kilistázza a bezárt játékosokat."
   madeyoucoopy: "[name] egy önálló játékossal!"
+  nameHasInvitedYou: "[name] meghívott, hogy együttműködj a szigetén!"
   notincoop: "[name] nem a sajátod szövetségedben van!"
   onyourteam: "Ez a játékos már szerepel a csapatodban!"
   removed: "[name] eltávolította a coop állapotát!"
@@ -331,6 +337,7 @@ island:
   url: ""
 islandProtected: "A sziget védett."
 islandguardsettings:
+  pistonpush: A dugattyúk blokkokat tolhatnak a sziget területén kívülre
   TNTdamage: "TNT robbanás"
   allowed: "Engedélyezve"
   aciddamage: "Savas sebzés"
@@ -422,6 +429,8 @@ lock:
   locking: "A sziget levédve!"
   nowentering: "&5Beléptél&7 [name]&5 szigetébe!"
   nowleaving: "&cElhagytad&7 [name]&c szigetét!"
+  playerlocked: "[name] levédte a szigetet"
+  playerunlocked: "[name] feloldotta a sziget védelmét"
   unlocking: "A sziget feloldva a védelem alól!"
 makeleader: 
   errorGeneralError: "Nem sikerült megváltoztatni a vezetőket."

@@ -19,6 +19,7 @@ adminDeleteIsland:
 adminHelp:
   add: "cho player làm chủ đảo"
   addrange: thêm hoặc bớt phạm vi bảo vệ của đảo
+  clearChallengeReset: xóa một lần reset thử thách toàn cục
   clearreset: "Reset giới hạn reset đảo cho player"
   clearresetall: reset giới hạn reset đảo cho tất cả player
   cobblestats: hiển thị thống kê tạo đá cuội ma thuật
@@ -38,17 +39,21 @@ adminHelp:
   purgeunowned: "loại bỏ đảo không chủ"
   register: "Thiết lập đảo của player đến vị trí của bạn"
   reload: "Khởi động lại plugins."
+  reserve: đặt chỗ này cho đảo tiếp theo của người chơi
   resetAllChallenges: "Reset lại thử thách cho all member ( xài cái này Tùng chém )"
   resetChallenge: "Đánh dấu thử thách không đầy đủ"
   resetChallengeForAll: reset một thử thách cho tất cả player, có thể lặp lại
+  resethome: xóa tất cả điểm nhà của người chơi
   resetname: reset tên đảo của player
   resetsign: "Cấu hình lại các dấu hiệu bạn đang tìm kiếm ở cho chủ sở hữu đảo"
   setbiome: "set biome cho chủ đảo"
   setdeaths: đặt số lần chết của player
+  sethome: đặt nhà của người chơi tại vị trí của bạn
   setlanguage: đặt ngôn ngữ mặc định và chuyển tất cả player sang ngôn ngữ đó
   setrange: "thay đỗi phạm vi bảo vệ đảo"
   setspawn: "đặt spawn đảo thế giới đến một địa điểm gần bạn"
   settingsreset: reset tất cả đảo về cài đặt bảo vệ mặc định
+  switch: bật/tắt bỏ qua bảo vệ
   teamChatSpy: "Team chat nhóm (bật/tắt)"
   topTen: "tự cập nhật top 10 đảo"
   topbreeders: "liệt kê các đảo ngươi nhất hiện nay tải"
@@ -215,6 +220,7 @@ coop:
   invited: "[name] cho [player] một người chơi coo!"
   listcoops: liệt kê player hợp tác
   madeyoucoopy: "[name] làm cho bạn một người chơi coop!"
+  nameHasInvitedYou: "[name] đã mời bạn hợp tác trên đảo của họ!"
   notincoop: "[name] không có trong chuồng của bạn!"
   onyourteam: "Player là đã vào nhóm của bạn!"
   removed: "[name] xóa bạn khỏi coop!"
@@ -345,6 +351,7 @@ islandguardsettings:
   joinleaveislandmessages: Thông báo vào/rời đảo
   milking: Khách vắt sữa bò
   monsterspawning: Cho phép/Không cho phép quái vật xuất hiện
+  pistonpush: Piston có thể đẩy khối ra ngoài khu vực đảo
   TNTdamage: "Sát thương TNT"
   allowed: "Được phép"
   anvil: "Sử dụng cái de"
@@ -424,6 +431,8 @@ lock:
   locking: "Khóa đảo"
   nowentering: "Đã vào đảo [name]"
   nowleaving: "Đã thoát đảo [name]"
+  playerlocked: "[name] đã khóa đảo"
+  playerunlocked: "[name] đã mở khóa đảo"
   unlocking: "Mở khóa đảo"
 makeleader:
   errorGeneralError: "Không thể thay đổi chủ đảo"

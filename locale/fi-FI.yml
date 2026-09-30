@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "lisää pelaajan johtajan tiimiin"
   addrange: "lisää tai vähentää saaren suojausaluetta"
+  clearChallengeReset: poistaa yleisen haastenollauksen
   clearreset: "nollaa pelaajan saaren nollaukset"
   clearresetall: "nollaa kaikkien pelaajien saaren nollausrajan"
   cobblestats: "näyttää taikacobblen syntymistilastot"
@@ -37,17 +38,21 @@ adminHelp:
   name: "Asettaa pelaajan saaren nimen"
   register: "asettaa saaren jolla olet pelaajan saareksi"
   reload: "lataa config-tiedoston"
+  reserve: varaa tämän paikan pelaajan seuraavaa saarta varten
   resetAllChallenges: "nollaa kaikki pelaajan tehtävät"
   resetChallenge: "merkkaa tehtävän tekemättömäksi"
   resetChallengeForAll: "nollaa tehtävän kaikilta pelaajilta, toisto valinnaisena"
+  resethome: tyhjentää pelaajan kaikki kotisijainnit
   resetname: "Nollaa pelaajan saaren nimen"
   resetsign: "nollaa kyltin jota katsot saaren omistajalle"
   setbiome: "asettaa johtajan saaren biomen"
   setdeaths: "asettaa pelaajan kuolemien määrän"
+  sethome: asettaa pelaajan kodin sijaintiisi
   setlanguage: "asettaa oletuskielen ja vaihtaa kaikkien pelaajien kielen siihen"
   setrange: "vaihtaa saaren suojausrajaa"
   setspawn: "asettaa saaren spawn-sijainnin lähelle sinua"
   settingsreset: "Palauttaa kaikkien saarten suojausasetukset oletuksiin"
+  switch: kytkee suojauksen ohituksen päälle ja pois
   teamChatSpy: "Tiimichatin spy (on/off)"
   topTen: "manuaalisesti päivittää top10:n"
   topbreeders: "listaa saaret joilla eniten pelaajia"
@@ -155,6 +160,7 @@ ban:
   notyourself: "Et voi tehdä tuota itsellesi!"
   success: "Pelaaja [name] on saanut porttikiellon tälle saarelle!"
 biome:
+  pleasewait: Odota, biomea vaihdetaan...
   set: "Saaren biome asetettu [biome]!"
   help: "avaa biomen valikon."
   unknown: "Tuntematon biome!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] teki pelaajasta [player] kanssapelaajan!"
   listcoops: "listaa kanssapelaajat"
   madeyoucoopy: "[name] teki sinusta kanssapelaajan siihen asti kun poistut palvelimelta."
+  nameHasInvitedYou: "[name] kutsui sinut kanssapelaajaksi saarelleen!"
   notincoop: "[name] ei ole kanssapelaajasi!"
   onyourteam: "Pelaaja on jo sinun tiimissäsi!"
   removed: "[name] poistaa sinun kanssapelaamisesi!"
@@ -330,6 +337,7 @@ island:
   url: ""
 islandProtected: "Saari suojattu."
 islandguardsettings: 
+  pistonpush: Männät voivat työntää palikoita saaren ulkopuolelle
   TNTdamage: "TNT Vahinko"
   allowed: "Mahdollista"
   aciddamage: "Happovahinko"
@@ -421,6 +429,8 @@ lock:
   locking: "Lukitaan saari"
   nowentering: "&aLiitytään pelaajan [name] saarelle"
   nowleaving: "&cPoistutaan pelaajan [name] saarelta"
+  playerlocked: "[name] lukitsi saaren"
+  playerunlocked: "[name] avasi saaren"
   unlocking: "Avataan saari"
 makeleader: 
   errorGeneralError: "Ei voitu vaihtaa johtajia."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Saari: &6&N[name]&7 (#[rank])"
   guiTitle: "10 parasta saarta"
   header: "Top 10 saaret:"
+visitors: 
+  protected: Vierailijat suojattu
 warps: 
   deactivate: "Poistetaan vanha kyltti käytöstä!"
   errorDoesNotExist: "Tuota warppia ei ole olemassa!"

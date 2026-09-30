@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "adiciona o jogador à equipe do líder"
   addrange: "adiciona ou subtrai do alcance do espaço protegido da ilha"  
+  clearChallengeReset: limpa um reset global de desafio
   clearreset: "redefine o limite de resets da ilha para o jogador."
   clearresetall: "redefine o limite de resets da ilha para todos os jogadores."
   cobblestats: "mostra estatísticas de geração mágica de cobblestone"  
@@ -37,17 +38,21 @@ adminHelp:
   name: "Define o nome da ilha do jogador"  
   register: "define o local atual como sendo a ilha de um jogador"
   reload: "recarrega a o arquivo de configuração."
+  reserve: reserva este local para a próxima ilha do jogador
   resetAllChallenges: "reinicia todos os desafios do jogador."
   resetChallenge: "Marca um desafio como incompleto."
   resetChallengeForAll: "redefine um desafio para todos os jogadores, com repetição opcional"
+  resethome: limpa todos os homes do jogador
   resetname: "Restaura o nome da ilha do jogador"  
   resetsign: "Devolve ao dono da ilha a placa para a qual você está olhando."
   setbiome: "Define o bioma da ilha do líder."  
   setdeaths: "Especifica a contagem de mortes do jogador"    
+  sethome: define o home do jogador na sua posição
   setrange: "Muda o alcance do espaço protegido da ilha."
   setlanguage: "define o idioma padrão e redefine todos os jogadores para esse idioma"
   setspawn: "Define o spawn do island world como sendo um local próximo a você."
   settingsreset: "Restaura as configurações de proteção default para todas as ilhas"
+  switch: ativa/desativa o desbloqueio da proteção
   teamChatSpy: "Visualiza o chat de equipes (liga/desliga)."  
   topTen: "Atualiza a lista de 'Top 10' manualmente."
   topbreeders: "Lista as ilhas mais populosas carregadas no momento."
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "abre a interface gráfica de biomas."
   paneltitle: "Escolha um bioma"
+  pleasewait: Aguarde, alterando o bioma...
   set: "Bioma da ilha definido como [biome]!"
   unknown: "Bioma desconhecido!"
   youbought: "Comprado por [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] tornou [player] um jogador coop! Use expel para removê-lo."
   listcoops: "lista os jogadores da coop"  
   madeyoucoopy: "[name] tornou você um jogador coop - até você se desconectar ou ser expulso."  
+  nameHasInvitedYou: "[name] convidou você para cooperar na ilha dele!"
   notincoop: "[name] não faz parte da sua coop!"
   onyourteam: "Esse jogador já está na sua equipe!"
   removed: "[name] removeu seu status de coop!"
@@ -330,6 +337,7 @@ island:
   url: ""
 islandProtected: "Ilha protegida."
 islandguardsettings: 
+  pistonpush: Os pistões podem empurrar blocos para fora da área da ilha
   TNTdamage: "Danos por TNT"
   allowed: "Permitido"
   aciddamage: "Dano por ácido"
@@ -421,6 +429,8 @@ lock:
   locking: "Travando a ilha"
   nowentering: "Você está entrando na ilha de [name]"
   nowleaving: "Você está saindo da liha de [name]"
+  playerlocked: "[name] trancou a ilha"
+  playerunlocked: "[name] destrancou a ilha"
   unlocking: "Destravando a ilha"
 makeleader: 
   errorGeneralError: "Não foi possível transferir a ilha."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Ilha: &6&N[name]&7 (#[rank])"
   guiTitle: "As 10 melhores ilhas"
   header: "Essas são as ilhas 'Top 10':"
+visitors: 
+  protected: Visitantes protegidos
 warps: 
   deactivate: "Desativando a placa antiga!"
   errorDoesNotExist: "Esse ponto de warp não existe!"

@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "adds player to leader's team"
   addrange: "adds to or substracts from the island's protection range"
+  clearChallengeReset: clear a global challenge reset
   clearreset: "resets the island reset limit for player"
   clearresetall: "resets the island reset limit for all players"
   cobblestats: "displays magic cobble generation stats"
@@ -37,17 +38,21 @@ adminHelp:
   name: "Set name of player's island"
   register: "set a player's island to your location"
   reload: "reload configuration from file."
+  reserve: reserves this spot for player's next island
   resetAllChallenges: "resets all of the player's challenges"
   resetChallenge: "marks a challenge as incomplete"
   resetChallengeForAll: "globally resets a challenge for every player with an optional repetition"
+  resethome: Clears all home spots for player
   resetname: "Reset name of player's island"
   resetsign: "Resets the sign you are looking at to the island owner"
   setbiome: "sets leader's island biome"
   setdeaths: "sets player's death count"
+  sethome: Sets player's home to your position
   setlanguage: "sets the default language and resets every player to that language"
   setrange: "changes the island's protection range"
   setspawn: "sets the island world spawn to a location close to you"
   settingsreset: "Resets all islands to default protection settings"
+  switch: toggles protection bypass
   teamChatSpy: "Spy on team chats (on/off)"
   topTen: "manually update the top 10 list"
   topbreeders: "lists most populated islands currently loaded"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "open the biomes GUI."
   paneltitle: "Select A Biome"
+  pleasewait: Please wait, changing biome...
   set: "Island biome set to [biome]!"
   unknown: "Unknown biome!"
   youbought: "Purchased for [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] made [player] a coop player!"
   listcoops: "list coop players"
   madeyoucoopy: "[name] made you a coop player until he logs out or expels you."
+  nameHasInvitedYou: "[name] has invited you to coop on their island!"
   notincoop: "[name] is not in your coop!"
   onyourteam: "Player is already on your team!"
   removed: "[name] removed your coop status!"
@@ -330,6 +337,7 @@ island:
   url: ""
 islandProtected: "Island protected."
 islandguardsettings: 
+  pistonpush: Pistons can push blocks outside island area
   TNTdamage: "TNT Damage"
   allowed: "Allowed"
   aciddamage: "Acid damage"
@@ -421,6 +429,8 @@ lock:
   locking: "Locking island"
   nowentering: "Now entering [name]'s island"
   nowleaving: "Now leaving [name]'s island"
+  playerlocked: "[name] locked the island"
+  playerunlocked: "[name] unlocked the island"
   unlocking: "Unlocking island"
 makeleader: 
   errorGeneralError: "Could not change leaders."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Island: &6&N[name]&7 (#[rank])"
   guiTitle: "Top 10 Islands"
   header: "These are the Top 10 islands:"
+visitors: 
+  protected: Visitors protected
 warps: 
   deactivate: "Deactivating old sign!"
   errorDoesNotExist: "That warp doesn't exist!"

@@ -19,6 +19,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "Bir oyuncunun adasına başka bir oyuncu eklemeni sağlar"
   addrange: "adanın koruma alanına ekler veya ondan çıkarır"
+  clearChallengeReset: küresel bir görev sıfırlamasını temizler
   clearreset: "Bir oyuncunun ada yenileme haklarını sıfırlar"
   clearresetall: tüm oyuncuların ada sıfırlama limitini sıfırlar
   cobblestats: "büyülü taş üretim istatistiklerini gösterir"
@@ -38,17 +39,21 @@ adminHelp:
   name: "Bir oyuncunun adasının adını değiştirmeni sağlar"
   register: "Bir oyuncunun adasını senin yerin olarak belirler"
   reload: "Ayarları yeniler."
+  reserve: bu noktayı oyuncunun bir sonraki adası için ayırır
   resetAllChallenges: "Bir oyuncunun tüm hedeflerini sıfırlar"
   resetChallenge: "Bir hedefi tamamlanmamış olarak işaretler"
   resetChallengeForAll: "bir hedefi isteğe bağlı tekrarla tüm oyuncular için sıfırlar"
+  resethome: oyuncunun tüm ev konumlarını temizler
   resetname: "Bir oyuncunun adasının adını sıfırlar"
   resetsign: "Baktığın tabelayı sıfırlar"
   setbiome: "Bir adanın biyomunu ayalrar"
   setdeaths: "Bir oyuncunun ölme sayısını ayarlar"
+  sethome: oyuncunun evini senin konumuna ayarlar
   setlanguage: "varsayılan dili ayarlar ve tüm oyuncuları bu dile geçirir"
   setrange: "Bir adanın koruma menzilini değiştirir"
   setspawn: "ada dünyasının doğma noktasını sana yakın bir konuma ayarlar"
   settingsreset: "Tüm adaların koruma ayarını varsayılana sıfırlar"
+  switch: koruma atlama özelliğini açar/kapatır
   teamChatSpy: "Takım sohbetlerini görüntüleme (aç/kapa)"
   topTen: "En iyi 10 kişi listesini manuel olarak yeniler"
   topbreeders: "En popüler adaları gösterir"
@@ -158,6 +163,7 @@ ban:
 biome: 
   help: "Biyom GUI sini aç."
   paneltitle: "Biyom seç"
+  pleasewait: Lütfen bekleyin, biyom değiştiriliyor...
   set: "Ada biyomu [biome] olarak ayarlandı!"
   unknown: "Bilinmeyen biyom!"
   youbought: "[cost] para karşılığında satın alındı!"
@@ -213,6 +219,7 @@ coop:
   invited: "[name], [player] adlı oyuncuyu coop oyuncusu olarak davet etti!"
   listcoops: "coop oyuncularını göster"
   madeyoucoopy: "[name] seni coop oyuncusu yaptı!"
+  nameHasInvitedYou: "[name] seni adasında ortak olmaya davet etti!"
   notincoop: "[name] senin coop unda değil!"
   onyourteam: "Bu oyuncu zaten senin takımında!"
   removed: "[name] senin coop durumunu kaldırdı!"
@@ -331,6 +338,7 @@ island:
   url: ""
 islandProtected: "Ada korunuyor."
 islandguardsettings: 
+  pistonpush: Pistonlar ada alanının dışına blok itebilir
   TNTdamage: "TNT Hasarı"
   allowed: "izinli"
   aciddamage: "Asit hasarı"
@@ -422,6 +430,8 @@ lock:
   locking: "Ada kilitleniyor"
   nowentering: "[name] adlı oyuncunun adasına giriliyor"
   nowleaving: "[name] adlı oyuncunun adasından ayrılınıyor"
+  playerlocked: "[name] adayı kilitledi"
+  playerunlocked: "[name] adanın kilidini açtı"
   unlocking: "Ada kilidi kaldırılıyor"
 makeleader: 
   errorGeneralError: "Lider değiştirilemedi."
@@ -526,6 +536,8 @@ topTen:
   guiHeading: "&E&L<!> Ada: &6&N[name]&7 (#[rank])"
   guiTitle: "İlk 10 Ada"
   header: "Bunlar en iyi 10 ada listesindeki adalar:"
+visitors: 
+  protected: Ziyaretçiler korunuyor
 warps: 
   deactivate: "Eski tabela devre dışı bırakılıyor!"
   errorDoesNotExist: "Böyle bir ışınlanma noktası yok!"

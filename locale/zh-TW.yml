@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "將玩家加入領隊的隊伍"
   addrange: "增加或減少島嶼的保護範圍大小."
+  clearChallengeReset: 清除一次全伺服器挑戰重設
   clearreset: 重置一位玩家的島嶼重置次數
   clearresetall: "為所有玩家重設島嶼的重置次數."
   cobblestats: "顯示魔法鵝卵石的生成統計數據."
@@ -37,17 +38,21 @@ adminHelp:
   name: "設定玩家島嶼的名稱"
   register: 設置玩家的島嶼到你的位置
   reload: 重新載入設定檔案
+  reserve: 為玩家的下一座島嶼保留此處
   resetAllChallenges: 重製一位玩家所有的挑戰
   resetChallenge: 設置挑戰為未完成
   resetChallengeForAll: "為全體玩家重設指定挑戰（可選擇重複）"
+  resethome: 清除玩家的所有家
   resetname: "重設玩家島嶼的名稱"
   resetsign: "將你注視的告示牌重設給島嶼擁有者"
   setbiome: "設定領隊島嶼的生物群系."
   setdeaths: "設定玩家的死亡次數."
+  sethome: 將玩家的家設置到你的位置
   setrange: 改變島嶼保護的範圍
   setlanguage: "設定預設語言並套用至所有玩家."
   setspawn: 設置島嶼世界的重生點
   settingsreset: "將所有島嶼重設為預設保護設定"
+  switch: 切換保護繞過
   teamChatSpy: "監聽隊伍聊天（開啟/關閉）"
   topTen: 強制更新前十名島嶼列表
   topbreeders: "列出目前已載入且生物最多的島嶼"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: 打開生態系介面.
   paneltitle: "&5&l購買生態系&e-&d&l一次性購買"
+  pleasewait: 正在變更生物群系，請稍候...
   set: "島嶼生態系設置為:[biome]!"
   unknown: 未知生態系!
   youbought: "購買花費:[cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] 使 [player] 成為了合作玩家! 使用驅逐功能可結束關係."
   listcoops: "列出協作玩家"
   madeyoucoopy: "[name] 使你成為了合作玩家直到你登出或被驅逐."
+  nameHasInvitedYou: "[name] 邀請你到他們的島嶼協作!"
   notincoop: "[name] 不在你的協作名單中!"
   onyourteam: 玩家已經在隊伍內了!
   removed: "[name] 移除了你的合作狀態!"
@@ -330,6 +337,7 @@ island:
   url: ""
 islandProtected: 島嶼保護.
 islandguardsettings: 
+  pistonpush: 活塞可以將方塊推到島嶼範圍之外
   TNTdamage: "TNT 傷害"
   allowed: 允許
   aciddamage: "酸雨傷害"
@@ -421,6 +429,8 @@ lock:
   locking: 鎖住島嶼
   nowentering: "進入了 [name] 的島嶼"
   nowleaving: "離開了 [name] 的島嶼"
+  playerlocked: "[name] 鎖住了島嶼"
+  playerunlocked: "[name] 解除了島嶼鎖定"
   unlocking: 解鎖島嶼
 makeleader: 
   errorGeneralError: 不能改變島嶼主人.
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> 島嶼: &6&N[name]&7 (#[rank])"
   guiTitle: "前 10 名島嶼"
   header: "排名前10的島嶼:"
+visitors: 
+  protected: 訪客保護
 warps: 
   deactivate: 舊的傳送點被替換!
   errorDoesNotExist: "&c&l傳送點不存在!"

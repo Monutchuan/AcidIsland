@@ -18,6 +18,7 @@ adminDeleteIsland:
 adminHelp: 
   add: "Fügt einen Spieler zum Team des Leiters hinzu."
   addrange: "Vergrößert bzw. verkleinert den Schutzbereich der Insel."
+  clearChallengeReset: loescht einen globalen Challenge-Reset
   clearreset: "Resetlimit für Spieler zurücksetzen."
   clearresetall: "Setzt das Insel-Reset-Limit von allen Spielern"
   cobblestats: "Zeigt Statistiken des Magic Cobble Generators"
@@ -37,17 +38,21 @@ adminHelp:
   name: "Setzt Name der Insel des Spielers"
   register: "Setzt die Insel eines Spielers an deinen Standpunkt."
   reload: "Lädt die Konfiguration neu."
+  reserve: reserviert diesen Platz für die nächste Insel des Spielers
   resetAllChallenges: "Setzt alle Challenges des Spielers zurück."
   resetChallenge: "Markiert eine Herausforderung als nicht abgeschlossen."
   resetChallengeForAll: "Setzt Challenge für alle Spieler zurück mit optionaler Wiederholung"
+  resethome: löscht alle Home-Punkte des Spielers
   resetname: "Setzt Name der Insel des Spielers zurück"
   resetsign: "Macht das angesehene Schild zum Warp-Schild des Inselbesitzers."
   setbiome: "Setzt das Biom des Inselbesitzers."
   setdeaths: "Setzt Anzahl an Toden des Spielers"
+  sethome: setzt das Home des Spielers auf deine Position
   setlanguage: "Setzt die Standard-Sprache und ändert von allen Spielern die Sprache auf diese"
   setrange: "Ändert den Schutzbereich einer Insel"
   setspawn: "Setzt den Insel-Welt Spawn."
   settingsreset: "Setzt den Schutzbereich für alle Inseln auf die Standard-Einstellungen zurück."
+  switch: Schutzumgehung umschalten
   teamChatSpy: "Team Chats ausspionieren (on/off)"
   topTen: "Aktualisiert die Top-Liste manuell"
   topbreeders: "Listet die Inseln mit den meisten Mobs welche derzeit geladen sind"
@@ -157,6 +162,7 @@ ban:
 biome: 
   help: "Öffnet das Biom Menü."
   paneltitle: "Wähle ein Biom"
+  pleasewait: Bitte warten, Biom wird geändert...
   set: "Insel Biom geändert in [biome]!"
   unknown: "Unbekanntes Biom!"
   youbought: "Gekauft für [cost]!"
@@ -212,6 +218,7 @@ coop:
   invited: "[name] ernannte [player] zum temporären Partner! Nutze /expel um ihn zu entfernen!"
   listcoops: "Liste kooperierende Spieler"
   madeyoucoopy: "[name] hat dich zum temporären Partner gemacht, bis du dich ausloggt oder er dich mit /expel entfernt!"
+  nameHasInvitedYou: "[name] hat dich eingeladen, auf seiner Insel mitzuarbeiten!"
   notincoop: "[name] ist nicht dein Partner!"
   onyourteam: "Spieler ist bereits temporärer Partner!"
   removed: "[name] entfernte deine Partnerschaft!"
@@ -330,6 +337,7 @@ island:
   url: ""
 islandProtected: "Insel ist gesichert!"
 islandguardsettings: 
+  pistonpush: Kolben können Blöcke außerhalb des Inselbereichs schieben
   TNTdamage: "TNT Schaden"
   allowed: "Erlaubt"
   aciddamage: "Säure Schaden"
@@ -421,6 +429,8 @@ lock:
   locking: "Insel für Besucher gesperrt"
   nowentering: "Du betrittst nun die Insel von: [name]"
   nowleaving: "Du verlässt nun die Insel von: [name]"
+  playerlocked: "[name] hat die Insel gesperrt"
+  playerunlocked: "[name] hat die Insel entsperrt"
   unlocking: "Insel für Besucher wieder geöffnet"
 makeleader: 
   errorGeneralError: "Konnte Leiter nicht ändern."
@@ -524,6 +534,8 @@ topTen:
   guiHeading: "&E&L<!> Insel: &6&N[name]&7 (#[rank])"
   guiTitle: "Top 10 Inseln"
   header: "Das sind die Top 10 Inseln:"
+visitors: 
+  protected: Besucher geschützt
 warps: 
   deactivate: "Das alte Insel-Warp-Schild wurde deaktiviert!"
   errorDoesNotExist: "Dieser Insel-Warp existiert nicht!"
