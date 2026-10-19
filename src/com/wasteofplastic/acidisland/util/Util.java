@@ -175,11 +175,16 @@ public final class Util {
      * @param data the complete new contents
      */
     private static void queueSave(Path dest, String data) {
-        pendingSaves.put(dest, data);
-        startSaveThread();
+        // The put has to happen under the same lock the writer waits on. Done
+        // outside it, a save can land between the writer's isEmpty() check and
+        // its wait() call, and then the notify goes to nobody at all: the save
+        // sits in the queue until the wait times out a second later. Under a
+        // burst that is exactly how a dozen saves turn into one write.
         synchronized (SAVE_LOCK) {
+            pendingSaves.put(dest, data);
             SAVE_LOCK.notifyAll();
         }
+        startSaveThread();
     }
 
     private static void startSaveThread() {
@@ -202,7 +207,7 @@ public final class Util {
         while (saveThreadRunning) {
             drainSaves();
             synchronized (SAVE_LOCK) {
-                if (pendingSaves.isEmpty()) {
+                while (saveThreadRunning && pendingSaves.isEmpty()) {
                     try {
                         SAVE_LOCK.wait(1000L);
                     } catch (InterruptedException e) {
